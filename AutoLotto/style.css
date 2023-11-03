@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Sen&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Rowdies, sans-serif;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #787c78;
+    
+}
+
+.lotto-container {
+    width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #6ebb75;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.4);
+}
+.message-container {
+    width: 200px;
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+    background: #80ddc1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+form {
+    width: 90%;
+}
+
+.form-group {
+    height: 65px;
+}
+
+label {
+    position: relative;
+    bottom: 3px;
+}
+
+input {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    justify-content: center;
+    text-align: center;
+    font-family: Rowdies, sans-serif;
+    align-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:valid {
+    border: 1px solid blue;
+    border-radius: 20px;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background: black;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    font-family: Sen, sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+  }
+
+  button:hover {
+    filter: brightness(200%);
+    background: rgb(22, 22, 22);
+  }
+
+button:focus {
+    outline: none;
+}
+
+
+/* Media Query: Tablet or smaller */
+@media screen and (max-width: 1000px){
+    .quote-container{
+        margin: auto 10px;
+    }
+
+    .quote-text {
+        font-size: 2.5rem;
+    }
+}

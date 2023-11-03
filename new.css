@@ -1,0 +1,416 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Abel", sans-serif;
+  /* font: normal 16px/1.5 "Helvetica Neue", sans-serif; */
+  /* background: #DBD9D2; */
+  background: -webkit-linear-gradient(left, #999 , #222); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #999, #222); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #999, #222); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #999 , #222); /* Standard syntax */
+  color: #373737;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}  
+/* INTRO SECTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.intro {
+  background: #DCD0C0;
+  color: #373737;
+  padding: 75px 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.blurb {
+  background: #DCD0C0;
+  color: #373737;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+h1 {
+  font-size: 2.5rem;
+}
+
+
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline ul {
+  background: #F4F4F4;
+  padding: 50px 0;
+}
+
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  margin: 0 auto;
+  padding-top: 50px;
+  background: #373737;
+}
+
+.timeline ul li::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 15px;
+  /* box-shadow: 0 3px 3px rgba(0,0,0,0.2); */
+  background: #F4F4F4;
+}
+
+.timeline ul li div::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  width: 0;
+  height: 0;
+  /* border-style: solid; */
+}
+
+.timeline ul li:nth-child(odd) div {
+  left: 45px;
+}
+
+.timeline ul li:nth-child(odd) div::before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent #373737 transparent transparent;
+}
+
+.timeline ul li:nth-child(even) div {
+  left: -439px;
+}
+
+.timeline ul li:nth-child(even) div::before {
+  right: -15px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent #373737;
+}
+
+time {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+
+/* EFFECTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline ul li::after {
+  transition: background .5s ease-in-out;
+}
+
+.timeline ul li.in-view::after {
+  background: #373737;
+}
+
+.timeline ul li div {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.timeline ul li:nth-child(odd) div {
+  transform: translate3d(200px, 0, 0);
+}
+
+.timeline ul li:nth-child(even) div {
+  transform: translate3d(-200px, 0, 0);
+}
+
+.timeline ul li.in-view div {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* GENERAL MEDIA QUERIES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media screen and (max-width: 900px) {
+  .timeline ul li div {
+    width: 250px;
+  }
+  .timeline ul li:nth-child(even) div {
+    left: -289px;
+    /*250+45-6*/
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timeline ul li {
+    margin-left: 20px;
+  }
+  .timeline ul li div {
+    width: calc(100vw - 91px);
+  }
+  .timeline ul li:nth-child(even) div {
+    left: 45px;
+  }
+  .timeline ul li:nth-child(even) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent #373737 transparent transparent;
+  }
+}
+/* MY SECTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+html {
+  font-family: "Abel", sans-serif;
+  color: #FFF;
+  background: -webkit-linear-gradient(left, #999 , #222); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #999, #222); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #999, #222); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #999 , #222); /* Standard syntax */
+}
+
+#wrapper {
+  height: 100vh;
+}
+
+#overlay {
+  background: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  -o-transition: 1s;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#info {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  background: rgba(99, 99, 99, .9);
+  /*    box-shadow: 10px 10px 50px 20px #722f37;*/
+  
+  width: 90%;
+  max-width: 400px;
+  padding: 40px;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 1s;
+  z-index: 99;
+  box-shadow: 20px 20px 0 -5px rgba(68, 68, 68, .9);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+#info button:hover {
+  color: #999;
+}
+
+#info label#close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  margin: 15px;
+  font-size: 1.6em;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"][id="open"]:checked ~ #overlay {
+  opacity: .8;
+  z-index: 98;
+}
+
+input[type="radio"][id="open"]:checked ~ #info {
+  visibility: visible;
+  opacity: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+label {
+  color: #FFF;
+}
+
+label:hover {
+  Color: #999;
+  cursor: pointer;
+}
+
+#button {
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: solid 4px;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 2em;
+  color: #999;
+  cursor: pointer;
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#button:hover {
+  color: #9df;
+}
+/* MY SECTION
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: solid 4px;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 2em;
+  color: #999;
+  cursor: pointer;
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.button:hover {
+  color: #9df;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  background: rgba(99, 99, 99, .9);
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  transition: all 1s ease-in-out;
+  z-index: 99;
+  box-shadow: 20px 20px 0 -5px rgba(68, 68, 68, .9);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  margin: 15px;
+  font-size: 1.6em;
+  /* position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333; */
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}

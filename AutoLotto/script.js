@@ -66,28 +66,28 @@ function playLotto() {
         winnings.textContent = my_winnings.toString();
     }
     if (correct == 1) {
-        message.textContent = 'Only 1 Right'
+        message.textContent = 'Only 1 correct'
         document.body.style.backgroundColor = "#787c78";
         my_winnings = parseInt(winnings.textContent, 10); 
         --my_winnings;
         winnings.textContent = my_winnings.toString();
     }
     if (correct == 2) {
-        message.textContent = 'You got 2'
+        message.textContent = 'You got 2 correct'
         document.body.style.backgroundColor = "#224b27";
         my_winnings = parseInt(winnings.textContent, 10); 
         my_winnings = my_winnings + 1;
         winnings.textContent = my_winnings.toString();
     }
     if (correct == 3) {
-        message.textContent = '3 correct, getting closer'
+        message.textContent = '3 correct, getting closer!'
         document.body.style.backgroundColor = "#2b8037";
         my_winnings = parseInt(winnings.textContent, 10); 
         my_winnings = my_winnings + 100;
         winnings.textContent = my_winnings.toString();
     }
     if (correct == 4) {
-        message.textContent = '4 CORRECT ALMOST!!!'
+        message.textContent = '4 correct, almost!!!'
         document.body.style.backgroundColor = "#23b339";
         my_winnings = parseInt(winnings.textContent, 10); 
         my_winnings = my_winnings + 10000;
@@ -97,7 +97,7 @@ function playLotto() {
 
     if (correct == 5) {
         console.log("YAY");
-        message.textContent = 'Hot Damn you actually WON'
+        message.textContent = 'Hot damn, you actually won!'
         document.body.style.backgroundColor = "#00ff26";
         document.getElementById("submit").disabled = true;
         my_winnings = parseInt(winnings.textContent, 10);

@@ -2,13 +2,13 @@
 <html>
 <head>
 <title>Brian W. Smith</title>
-</head>
-<body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-<!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./new.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 <section class="intro">
@@ -137,7 +137,7 @@
           purpose, cluster name, and an expiration date. This information is saved to a git repository in JSON format. My pipeline is triggered upon a change to this repository. 
           The pipeline build this Kubernetes cluster based on the information provided. Once the cluster is created, a Helm chart is used to deploy Prometheus, Grafana, and Alert Manager to the cluster.  
           At this time the exposed Prometheus endpoint is added as a data source to a centralized Grafana implementation. The user then receives an email with all the information they need to begin using their cluster. 
-          A sperate pipeline runs daily to identify expired clusters and complete the deletion process.<br><a href="https://github.com/theautoroboto/kubernetes-onboarding">See the solution here</a><br>View the Grafana PKS SLI dashboard <a href="images/pks_sli.png">HERE</a>
+          A sperate pipeline runs daily to identify expired clusters and complete the deletion process.<br><a href="https://github.com/theautoroboto/kubernetes-onboarding">See the solution here</a><br>View the Grafana PKS SLI dashboard <a href="images/pks_sli.png" title="Grafana PKS SLI dashboard" class="image-link">HERE</a>
         </div>
       </li>
       <li>
@@ -153,15 +153,15 @@
       </li>
       <li>
         <div>
-          <time>Fiserv - Monitoring</time>Defined and implemented SLI dashboards to allow development teams easy access to performance metrics<br><a href="images/pas_sli.png">PAS SLI Dashboard</a>
-          <br><a href="images/service_sli.png">Service SLI Dashboards</a><br>
-          <a href="images/pks_sli.png">PKS SLI dashboards</a>
+          <time>Fiserv - Monitoring</time>Defined and implemented SLI dashboards to allow development teams easy access to performance metrics<br><a href="images/pas_sli.png" title="PAS SLI Dashboard" class="image-link">PAS SLI Dashboard</a>
+          <br><a href="images/service_sli.png" title="Service SLI Dashboards" class="image-link">Service SLI Dashboards</a><br>
+          <a href="images/pks_sli.png" title="PKS SLI dashboards" class="image-link">PKS SLI dashboards</a>
         </div>
       </li>
       <li>
         <div>
           <time>Fiserv - Automations</time><b>Custom Control Plane</b><br>
-          Designed and built a <a href="images/bosh_generic.jpg">centralized bosh environment</a> for dashboards and automation of the disparate production environments. <br><a href="https://github.com/theautoroboto/standalone-bosh">Work-in-Progress public solution</a>
+          Designed and built a <a href="images/bosh_generic.jpg" title="Centralized BOSH environment" class="image-link">centralized bosh environment</a> for dashboards and automation of the disparate production environments. <br><a href="https://github.com/theautoroboto/standalone-bosh">Work-in-Progress public solution</a>
         </div>
       </li>
       <li>
@@ -172,8 +172,8 @@
       <li>
         <div>
           <time>Fiserv - Monitoring</time>Using Splunk, Grafana, AlertManager, and Prometheus; I designed and built monitors, alerts, and custom dashboards for 14 foundations, ensuring we were aware of issues before our customers were impacted<br>
-          <a href="images/probes.png">HTTP Probe dashboard</a><br>
-          <a href="images/allocations.png">Environment allocations</a>
+          <a href="images/probes.png" title="HTTP Probe dashboard" class="image-link">HTTP Probe dashboard</a><br>
+          <a href="images/allocations.png" title="Environment allocations" class="image-link">Environment allocations</a>
         </div>
       </li>
       <li>
@@ -280,7 +280,7 @@
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><b><a class="image-link" href="./images/PeopleSoftImports.png">PeopleSoft Imports</a></b><br>
+          <time>Grange Insurance - Automations</time><b><a class="image-link" href="./images/PeopleSoftImports.png" title="PeopleSoft Imports">PeopleSoft Imports</a></b><br>
           I was chosen to architect and implement PeopleSoft General Ledger. This required file imports from several different systems. 
           PeopleSoft did not have a method of completing this task without manually running a command directly on the server. I created a process to monitor a folder and act upon the file as directed. 
           The process would run the VB Script on the PeopleSoft server from the central FTP server location. 
@@ -705,6 +705,7 @@
     </ul>
     </div>
   </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
   <script src="index.js"></script> 
 </body>
 </html>

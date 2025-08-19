@@ -31,11 +31,9 @@
     window.addEventListener("scroll", callbackFunc);
   
   })();
-  $(document).ready(function() {
+$(document).ready(function() {
   $('.image-link').magnificPopup({type:'image'});
-});
 
-$(document).ready(function(){
   $('.one').click(function(){
     $('.frame').fadeIn();
   });
@@ -43,14 +41,13 @@ $(document).ready(function(){
   $('.close').click(function(){
     $('.frame').fadeOut();
   });
-});
 
-$(document).mouseup(function (e)
-{
+  $(document).mouseup(function (e) {
     var container = $('.frame');
     if (!container.is(e.target) 
         && container.has(e.target).length === 0)
     {
         container.fadeOut();
     }
+  });
 });

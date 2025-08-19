@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for
 # render_template allows us to render HTML
 app = Flask(__name__)
-print(__name__)
 
 @app.route('/')
 def website():
@@ -13,15 +12,9 @@ def about():
     # Wants a template folder
     return render_template('about.htm')
 
-@app.route('/hello_world')
-def hello_world():
-    print(url_for('static', filename='favicon.ico'))
-    return 'Hello, World!'
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.htm'), 404
 
-@app.route('/blog')
-def blog():
-    return 'This is my blog'
-    
-@app.route('/blog/2020/family')
-def family_blog():
-    return 'This is my family blog'
+if __name__ == '__main__':
+    app.run(debug=True)

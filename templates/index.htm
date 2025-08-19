@@ -2,24 +2,117 @@
 <html>
 <head>
 <title>Brian W. Smith</title>
-</head>
-<body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-<!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='new.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+</head>
+<body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="static/index.css">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 
 <section class="intro">
     <div class="container">
+      <h1>Quick blurb</h1>
+      I am a proud father of 3. I enjoy live music, reading, learning, and home improvement. I started my IT career in 1998. In my career, I have been fortunate to have worked with many great companies and great teams. I tend to succeed best when working in a high-functioning team along with other high-performing team members.
+      Collaoration is extreamly important to me. I enjoy being challenged and working with cutting-edge technologies. I have worked remotely since 2017, but I would like to return to working face-to-face in an office. I have a long history with Microsoft technologies, but more energized by open source projects. I still have ~20 years left in my career and want to make the most of it.
+      <p>I still have so much to learn.</p>
+      <hr>
       <h1>My Tech Timeline &darr;</h1>
     </div>
   </section>
-  
   <section class="timeline">
     <ul>
+      <li>
+        <div>
+          <time>Implementing a Git Merge Strategy</time>
+          <p></p>
+          <p><a href="Presentations/MergingStrategies-5-12-2021.pptx">Presentation</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>SonarQube</time>
+          <p>Static Application Security Testing</p>
+          <p>Implemented SonarQube scanning solution to ensure code remains secure and up to modern coding standards.</p>
+          <p><a href="Presentations/SAST-OneStream.pptx">Presentation</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Implementing a Git Workflow</time>
+          <p>Working with the various development teams, I developed a Git workflow strategy based on GitFlow workflow.</p>
+          <p><a href="Presentations/Branching Strategies-Platform-OneStream.pptx">Platform Team Presentation</a></p>
+          <p><a href="Presentations/Marketplace-BranchingStrategies.pptx">Marketplace Team Presentation</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Educating on Git Workflows</time>
+          <p>As a base to start from, I presented the various git workflows being used in the industry. This presentation would pave the way to
+            the implementation of a customized git workflow to be used by each team.
+          </p>
+          <p><a href="Presentations/Branching Strategies-101-OneStream.pptx">Presentation</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Get down with git</time>
+          <p>In my first month with OneStream I successfuly migrated all (70+) repositories from TFS to Bitbucket. We quickly discovered Bitbucket would not
+            suffice for the size of repository of OneStream's codebase. I then migrated all code from Bitbucket to Azure DevOps.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Choosing and implementing a CI/CD solution</time>
+          <p>After evaluaing CircleCI, TravisCI, and Jenkins; I decided Azure DevOps was the best solution for OneStream needs</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Joining OneStream - 02/21</time>
+          <p>Joining OneStream as the first DevOps Engineer responsible for building the DevOps organization at OneStream</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Passed my DevOps Engineer Expert (AZ-400) Exam - 12/20</time>
+          <p><a href=https://www.youracclaim.com/badges/dcb3ec85-aec3-4f53-9560-23d969f9069b>Azure DevOps Engineer Expert</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Passed my Azure Architect Technologies (AZ-304) Exam - 10/20</time>
+          <p><a href=https://www.youracclaim.com/badges/6637502a-fcf5-48fa-b8df-ff1ba856c8c3/public_url>Azure Solutions Architect Expert</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Passed my Azure Architect Technologies (AZ-303) Exam - 10/20</time>
+          <p><a href=https://www.youracclaim.com/badges/4ad1a497-6d30-4ad1-a71c-1f5b7e8c03ac/public_url>CERT 1 of 2</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Passed my Azure Administrator Associate (AZ-104) certification - 10/20</time>
+          <p><a href=https://www.youracclaim.com/badges/960db2bb-da7c-4566-972b-ab64d35aeb27/public_url>Azure Administrator Associate</a></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Joining Immuta - 08/20</time>
+          <p>Throughout my career and with each job change, I search for a culture fit. The culture brought me to Immuta. Everyone I work with is absolutely AMAZING</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <time>Fun with JavaScript</time>
+          <p>I wanted to learn JavaScript. I built these 2 apps to play with JavaScript</p>
+          <a href="AskRick/index.htm">AskRick</a><br>
+          <a href="AutoLotto/index.htm">AutoRobotoLotto</a>
+        </div>
+      </li>
       <li>
         <div>
           <time>My Tech Timeline</time>
@@ -44,7 +137,7 @@
           purpose, cluster name, and an expiration date. This information is saved to a git repository in JSON format. My pipeline is triggered upon a change to this repository. 
           The pipeline build this Kubernetes cluster based on the information provided. Once the cluster is created, a Helm chart is used to deploy Prometheus, Grafana, and Alert Manager to the cluster.  
           At this time the exposed Prometheus endpoint is added as a data source to a centralized Grafana implementation. The user then receives an email with all the information they need to begin using their cluster. 
-          A sperate pipeline runs daily to identify expired clusters and complete the deletion process.<br><a href="https://github.com/theautoroboto/pks-onboarding">See the solution here</a><br>View the Grafana PKS SLI dashboard <a href="images/pks_sli.png">HERE</a>
+          A sperate pipeline runs daily to identify expired clusters and complete the deletion process.<br><a href="https://github.com/theautoroboto/kubernetes-onboarding">See the solution here</a><br>View the Grafana PKS SLI dashboard <a href="images/pks_sli.png" title="Grafana PKS SLI dashboard" class="image-link">HERE</a>
         </div>
       </li>
       <li>
@@ -60,15 +153,15 @@
       </li>
       <li>
         <div>
-          <time>Fiserv - Monitoring</time>Defined and implemented SLI dashboards to allow development teams easy access to performance metrics<br><a href="images/pas_sli.png">PAS SLI Dashboard</a>
-          <br><a href="images/service_sli.png">Service SLI Dashboards</a><br>
-          <a href="images/pks_sli.png">PKS SLI dashboards</a>
+          <time>Fiserv - Monitoring</time>Defined and implemented SLI dashboards to allow development teams easy access to performance metrics<br><a href="images/pas_sli.png" title="PAS SLI Dashboard" class="image-link">PAS SLI Dashboard</a>
+          <br><a href="images/service_sli.png" title="Service SLI Dashboards" class="image-link">Service SLI Dashboards</a><br>
+          <a href="images/pks_sli.png" title="PKS SLI dashboards" class="image-link">PKS SLI dashboards</a>
         </div>
       </li>
       <li>
         <div>
           <time>Fiserv - Automations</time><b>Custom Control Plane</b><br>
-          Designed and built a <a href="images/bosh_generic.jpg">centralized bosh environment</a> for dashboards and automation of the disparate production environments. <br><a href="https://github.com/theautoroboto/standalone-bosh">Work-in-Progress public solution</a>
+          Designed and built a <a href="images/bosh_generic.jpg" title="Centralized BOSH environment" class="image-link">centralized bosh environment</a> for dashboards and automation of the disparate production environments. <br><a href="https://github.com/theautoroboto/standalone-bosh">Work-in-Progress public solution</a>
         </div>
       </li>
       <li>
@@ -79,8 +172,8 @@
       <li>
         <div>
           <time>Fiserv - Monitoring</time>Using Splunk, Grafana, AlertManager, and Prometheus; I designed and built monitors, alerts, and custom dashboards for 14 foundations, ensuring we were aware of issues before our customers were impacted<br>
-          <a href="images/probes.png">HTTP Probe dashboard</a><br>
-          <a href="images/allocations.png">Environment allocations</a>
+          <a href="images/probes.png" title="HTTP Probe dashboard" class="image-link">HTTP Probe dashboard</a><br>
+          <a href="images/allocations.png" title="Environment allocations" class="image-link">Environment allocations</a>
         </div>
       </li>
       <li>
@@ -187,7 +280,7 @@
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><b><a class="image-link" href="./images/PeopleSoftImports.png">PeopleSoft Imports</a></b><br>
+          <time>Grange Insurance - Automations</time><b><a class="image-link" href="./images/PeopleSoftImports.png" title="PeopleSoft Imports">PeopleSoft Imports</a></b><br>
           I was chosen to architect and implement PeopleSoft General Ledger. This required file imports from several different systems. 
           PeopleSoft did not have a method of completing this task without manually running a command directly on the server. I created a process to monitor a folder and act upon the file as directed. 
           The process would run the VB Script on the PeopleSoft server from the central FTP server location. 
@@ -258,313 +351,844 @@
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Security</time><b>Anti-Spam</b><br>Completed end-to-end project of replacing on-premise email filtering to a ProofPoint cloud solution 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance - Optmization</time>Migration from Exchange 2007 to 2013 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance - Optmization</time><b>Key Management Service</b><br>Implemented KMS for the enterprise, resulting in optimized tracking of licensing.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance</time><b>Lync 2013</b><br>Migrated users from OCS to Lync 2013
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance - Monitoring</time>Reengineered the enterprise monitoring environment. The new environment includes a customized .Net web application allowing users to enter and modify their monitoring events. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance - Optmization</time><b>Exchange 2007</b><br>
-          Redesigned the Exchange 2007 E-Mail architecture to provide additional redundancy, ease of management, increased availability, and advanced monitoring functions. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance - Optmization</time><b>Domain Upgrades</b><br>Led project to decommission 2003 domain controllers and upgrade the domains to 2008 and later 2012. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance</time>Designed and deployed Office Communicator as the Enterprise Instant Messaging solution.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>11/2008 - Rejoining Grange Insurance</time>Having remained in contact with my coworkers from Grange Insurance, 
-          I discovered a new position was created at the perfect time. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>11/2008 - Leaving WD Partners</time>
-          I enjoyed my team at WD Partners and loved working with an Architecture company. However, the economy of 2008 was not kind to this industry. Again, for stability, 
-          I needed to find employment elsewhere.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Integrations</time>
-          Led the technical efforts to integrate Schorleaf, a 50 user company, into WD Partners infrastructure.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Administrator</time>Supported and maintained a 650 user Active Directory environment containing 16 Domain Controllers across 9 locations.  Services included logon scripts, DNS, DHCP, and Group Policies. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Security</time>
-          Through delegation, Exchange and Active Directory security was reorganized to limit the number of Domain Administrators while providing additional permissions to remote administrators. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Security</time>
-          Replaced OWA server and webpage, providing additional functionality, speed, and security. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Security</time>
-          Implemented Websense remote filtering services to ensure all laptops were protected. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Automation</time>
-          Implemented WSUS to ensure all servers and workstations were brought up to date with the latest Microsoft updates. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Security</time>
-          I replaced Trend spam solution into a secure VMWare environment running the latest version of Trend IMSS. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Optimizations</time>Successfully migrated the <b>380GB</b> Exchange Public Folder store onto new hardware without disrupting service. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>WD Partners - Optimizations</time>I successfully migrated Trend Micro ServerProtect and OfficeScan clients from old hardware and software onto a new Windows 2003 server with the latest OfficeScan software. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>5/2008 - Joining WD Partners</time>I was hired as an "IT Infrastructure Admin", responsible for the operation and stability of all Microsoft Server systems. 
-          I have always been intrigued by architecture. Joining WD Partners allowed me to join an industry where I had great interest.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>5/2008 - Leaving BMW Financial</time>The economy at the time caused an unexpected impact on my employment. As much as I loved working with the team here, I needed something more stable.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>BMW Financial - Optimizations</time>I completed hardware replacement of 6 web servers within two 24x7 F5 pools without disrupting production 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>BMW Financial - Optimizations</time>Support and monitor the performance of 165 Middleware web services. Proactive monitoring allowed the correction of all issues before causing production outages.  
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>BMW Financial - Monitoring</time>Successfully increased our post-deployment  Web Service tests from 65 to 132 XML request strings
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>BMW Financial - Monitoring</time>I implemented additional monitoring using Microsoft Operation Manager, 
-          providing early detection and correction of many critical system issues while meeting the defined SLA 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>BMW Financial - Automations</time>I developed scripts to assist us in bimonthly deployments of new code and other system upgrades 
-          following dev, test, prep, and production deployment cycles
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>BMW Financial - Disaster Recovery</time>Complete yearly disaster recovery scenario, which consists of full 
-          production deployment to a remote disaster recovery location. Documentation created throughout the year is also tested and validated at this time. 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>6/2007 - Joining BMW Financial (Kforce)</time>I was hired as a consultant as a "CRM Administrator". I was responsible for Siebel 7.5, Informatica 7.1, 
-          BizTalk 2003, .Net 1.1/2.0 Web services, and Middleware environments, consisting of more than 100 servers. 
-          Server performance is monitored for changes and possible issues are evaluated. If needed, development groups are engaged to take corrective action on custom code. 
-          I was excited about the opportunity to be challenged by technology I had never been exposed to.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance - Automations</time><b>Conference Room Scheduling</b><br>Greatly improved conference room scheduling by deploying new method of reservation using Microsoft Exchange Auto Accept Agent
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance</time><b>Exchange Admin</b><br>Administer, monitor, and update 9 server Exchange 2003 environment, including clustered node using Microsoft Clustering Solutions 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance</time><b>SMS Admin</b><br>Using Microsoft SMS, software packages and monthly operating system patches were created and deployed to workstations and servers throughout the company 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Grange Insurance</time><b>FTP Admin</b><br>mplemented an enterprise FTP solution using GlobalScape EFT server. 
-          Over 30 FTP servers were eliminated throughout the environment. 
-          Each process owner was consulted to understand their needs and solutions were customized to automate manual 
-          processes using scripting, network transfers, file concatenation, file compression, and external FTP transfers. 
-          A PGP solution was also implemented to ensure sensitive files were not compromised during and after file transfers.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>8/2006 - Joining Grange Insurance</time>I was brought to Grange Insurance as a "System Administrator" responsible for SMS, Exchange, and FTP administrator.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Active Directory</time>Designed and implemented Microsoft Operations Manager 2005 across the 120 server infrastructure.  
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Optimizations</time>Restructured the web server environment 
-          moving 6 servers and 23 websites from the DMZ to the internal Cisco CSS 
-          web farm, thus improving security and reliability.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Optimizations</time>Restructured internal DNS, WINS, DHCP, and 
-          Active Directory infrastructure to improve replication and reliability 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Optimizations</time>Implemented VMWare 2.5 Virtual Server solution 
-          eliminating over 30 physical servers   
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Optimizations</time>Initiated a project to research poor 
-          terminal server performance.  Efforts were coordinated with business units 
-          in Lisbon and London. Project outcome produced a solution allowing 40% more users per server.   
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Monitoring</time>Designed and implemented Microsoft Operations Manager 2005 
-          across the 120 server infrastructure.  
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>NetJets - Standardizations</time>Migrated 3,000+ clients, from varying Anti-Virus clients 
-          to Trend Micro OfficeScan 7.0 
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>2/2005 - Joining NetJets</time>I was hired as a "Senior Network Administrator"<br>While at NetJets, I led projects to research and 
-          implement new technology and improve existing technology.  I was top tier 
-          support and mentor for the production support team.  Organized and optimized 
-          key infrastructure components.  Website administrator for 23 public-facing 
-          NetJets websites using IIS 6.0 and ISA 2004, supporting secure certificate 
-          stores and new site deployments.  
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>2/2005 - Leaving Cardinal Health</time>I truly enjoyed my time at Cardinal Health. 
-          As a team, we migrated over 30,000 accounts from various E-Mail systems; including Sendmail, Lotus Notes, Exchange 5.5, and 
-          Groupwise.  The 128 server environment provided 24x7 E-Mail services for Cardinal Health facilities around the world. 
-          For the remainder of my career, I would compare each team to the team we built at Cardinal Health. Not very many were able to compare. 
-          However, I felt I was to the point I was no longer being challenged and my career had become stale. I felt it was the right time to move on.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Cardinal Health - Automations</time><a href="documents/Cardinal/EMS Intranet Revised.wmv">EMS Intranet Site</a><br>Using VB.Net, VB Script, Java Script, C#, ASP.Net, APS, XML, Action Script, and HTML (Yeah, I know. A bit of everything); I built the intranet site for our team. 
-          The site would provide user and management insight into our team. This gave us an avenue to communicate issues and project timelines. The site provided an automated way for users to enter trouble tickets without requiring access to the ticketing system. 
-          The site provided a web form for other administrators to easily and quickly enter details on issues and maintenance. The site acted as a document repository to provide documentation and diagrams to the user community. 
-          Policy and Procedures were clearly defined here
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Cardinal Health - Monitoring</time>As a team we implemented Microsoft Operations manager 2000 and
-          Spotlight on Exchange. I always had a personal goal to identify issues before my customers.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>2003 - Back to school</time>Recognizing my ability to quickly learn and understand technology, I felt it was the right time to return to Franklin University to complete my bachelor degree.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Cardinal Health - Mailbox Migrations</time>Our primary objective was to move 30,000+ mailboxes from various email systems to Exchange 2000. We were responsible for all aspects of the messaging system. Active Directory, IIS servers, anti-spam, Anti-Virus, DFS, and Instant Messaging.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Cardinal Health - OWA Webpage</time>I built the webpage to be used for Outlook Web Access.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>3/2002 - Joining Cardinal Health</time>I joined the Tier II messaging team at Cardinal Health as a "Senior Messaging Engineer". My experience at Cardinal Health is something I will always cherish. I was able to see what true teamwork produced. 
-          We all had the play hard - work hard mentality. We were responsible for building the first shared service for Cardinal Health.  I felt like I was able to make a difference. We were going to do things no one else in the 30,000 user company was doing. 
-          This was going to be AWESOME!!!
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>CBC Companies - PC Tech</time>Proving my ability and desire to learn, I was hired as a PC Tech on another team within the company. 
-          I picked up the 1000+ page Windows NT book and started my next challenge. I attended and passed my first Microsoft certification exam. I became a very proud Microsoft Certified Professional. I picked up more experience as the administrator of the Shiva Modem bank, 
-          Novell 3.x and 4.11, NT Domain, Exchange 5.5, Cisco 6513, and Citrix Metaframe 1.8. At this time I also became Citrix Certified. I was approached by a recruiter about a position that would result in much higher responsibility and pay.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>CBC Companies - Tech Support</time>1999-2000 I provided tech support for lending software. This helped me refine my communication and troubleshooting skills and begin to understand the working of an office environment (and how to tie a tie). 
-          I studied and passed my first certification (A+) and survived the non-event of Y2K.
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>6/1999 - Joining CBC Companies</time>After teaching myself HTML and mastering the internal workings of a PC, I landed my very first salary role. Oh boy, I was proud of myself!!!
-        </div>
-      </li>
-      <li>
-        <div>
-          <time>Summer 1998 - My first PC build</time>For my birthday, my mother took me to Hackers Haven in downtown Columbus. 
-          Not having a clue what I was doing, they loaded me up with all the components I would need to build a PC. Living in an apartment alone with no option for entertainment other than my childhood gaming system, this was a conquest. 
-          Of all the opportunities I have been provided, this may have been the most impactful. I honestly I felt I was doing something others I knew could not do. I thought I would never get this computer running. I would get the display working and the keyboard would stop. 
-          I would get the keyboard working and the mouse would stop. A few weeks later I was up and running with Windows 95 and on AOL with my 14.4 modem. Man, I was proud.  When others would say they had a Gateway, or Acer, or Compaq; I proudly said "I built my own".
-        </div>
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+-          <time>Grange Insurance - Security</time><b>Anti-Spam</b><br>Completed end-to-end project of replacing on-premise email filtering to a ProofPoint cloud solution
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance - Optmization</time>Migration from Exchange 2007 to 2013
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance - Optmization</time><b>Key Management Service</b><br>Implemented KMS for the enterprise, resulting in optimized tracking of licensing.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance</time><b>Lync 2013</b><br>Migrated users from OCS to Lync 2013
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance - Monitoring</time>Reengineered the enterprise monitoring environment. The new environment includes a customized .Net web application allowing users to enter and modify their monitoring events.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance - Optmization</time><b>Exchange 2007</b><br>
+-          Redesigned the Exchange 2007 E-Mail architecture to provide additional redundancy, ease of management, increased availability, and advanced monitoring functions.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance - Optmization</time><b>Domain Upgrades</b><br>Led project to decommission 2003 domain controllers and upgrade the domains to 2008 and later 2012.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance</time>Designed and deployed Office Communicator as the Enterprise Instant Messaging solution.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>11/2008 - Rejoining Grange Insurance</time>Having remained in contact with my coworkers from Grange Insurance,
+-          I discovered a new position was created at the perfect time.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>11/2008 - Leaving WD Partners</time>
+-          I enjoyed my team at WD Partners and loved working with an Architecture company. However, the economy of 2008 was not kind to this industry. Again, for stability,
+-          I needed to find employment elsewhere.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Integrations</time>
+-          Led the technical efforts to integrate Schorleaf, a 50 user company, into WD Partners infrastructure.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Administrator</time>Supported and maintained a 650 user Active Directory environment containing 16 Domain Controllers across 9 locations.  Services included logon scripts, DNS, DHCP, and Group Policies.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Security</time>
+-          Through delegation, Exchange and Active Directory security was reorganized to limit the number of Domain Administrators while providing additional permissions to remote administrators.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Security</time>
+-          Replaced OWA server and webpage, providing additional functionality, speed, and security.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Security</time>
+-          Implemented Websense remote filtering services to ensure all laptops were protected.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Automation</time>
+-          Implemented WSUS to ensure all servers and workstations were brought up to date with the latest Microsoft updates.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Security</time>
+-          I replaced Trend spam solution into a secure VMWare environment running the latest version of Trend IMSS.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Optmizations</time>Successfully migrated the <b>380GB</b> Exchange Public Folder store onto new hardware without disrupting service.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>WD Partners - Optmizations</time>I successfully migrated Trend Micro ServerProtect and OfficeScan clients from old hardware and software onto a new Windows 2003 server with the latest OfficeScan software.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>5/2008 - Joining WD Partners</time>I was hired as an "IT Infrastructure Admin", responsible for the operation and stability of all Microsoft Server systems.
+-          I have always been intrigued by architecture. Joining WD Partners allowed me to join an industry where I had great interest.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>5/2008 - Leaving BMW Financial</time>The economy at the time caused an unexpected impact on my employment. As much as I loved working with the team here, I needed something more stable.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>BMW Financial - Optmizations</time>I completed hardware replacement of 6 web servers within two 24x7 F5 pools without disrupting production
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>BMW Financial - Optmizations</time>Support and monitor the performance of 165 Middleware web services. Proactive monitoring allowed the correction of all issues before causing production outages.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>BMW Financial - Monitoring</time>Successfully increased our post-deployment  Web Service tests from 65 to 132 XML request.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>BMW Financial - Monitoring</time>I implemented additional monitoring using Microsoft Operation Manager,
+-          providing early detection and correction of many critical system issues while meeting the defined SLA
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>BMW Financial - Automations</time>I developed scripts to assist us in bimonthly deployments of new code and other system upgrades
+-          following dev, test, prep, and production deployment cycles
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>BMW Financial - Disaster Recovery</time>Complete yearly disaster recovery scenario, which consists of full
+-          production deployment to a remote disaster recovery location. Documentation created throughout the year is also tested and validated at this time.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>6/2007 - Joining BMW Financial (Kforce)</time>I was hired as a consultant as a "CRM Administrator". I was responsible for Siebel 7.5, Informatica 7.1,
+-          BizTalk 2003, .Net 1.1/2.0 Web services, and Middleware environments, consisting of more than 100 servers.
+-          Server performance is monitored for changes and possible issues are evaluated. If needed, development groups are engaged to take corrective action on custom code.
+-          I was excited about the opportunity to be challenged by technology I had never been exposed to.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance - Automations</time><b>Conference Room Scheduling</b><br>Greatly improved conference room scheduling by deploying new method of reservation using Microsoft Exchange Auto Accept Agent
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance</time><b>Exchange Admin</b><br>Administer, monitor, and update 9 server Exchange 2003 environment, including clustered node using Microsoft Clustering Solutions
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance</time><b>SMS Admin</b><br>Using Microsoft SMS, software packages and monthly operating system patches were created and deployed to workstations and servers throughout the company
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Grange Insurance</time><b>FTP Admin</b><br>mplemented an enterprise FTP solution using GlobalScape EFT server.
+-          Over 30 FTP servers were eliminated throughout the environment.
+-          Each process owner was consulted to understand their needs and solutions were customized to automate manual
+-          processes using scripting, network transfers, file concatenation, file compression, and external FTP transfers.
+-          A PGP solution was also implemented to ensure sensitive files were not compromised during and after file transfers.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>8/2006 - Joining Grange Insurance</time>I was brought to Grange Insurance as a "System Administrator" responsible for SMS, Exchange, and FTP administrator.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Active Directory</time>Designed and implemented Microsoft Operations Manager 2005 across the 120 server infrastructure.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Optmizations</time>Restructured the web server environment
+-          moving 6 servers and 23 websites from the DMZ to the internal Cisco CSS
+-          web farm, thus improving security and reliability.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Optmizations</time>Restructured internal DNS, WINS, DHCP, and
+-          Active Directory infrastructure to improve replication and reliability
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Optmizations</time>Implemented VMWare 2.5 Virtual Server solution
+-          eliminating over 30 physical servers
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Optmizations</time>Initiated a project to research poor
+-          terminal server performance.  Efforts were coordinated with business units
+-          in Lisbon and London. Project outcome produced a solution allowing 40% more users per server.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Monitoring</time>Designed and implemented Microsoft Operations Manager 2005
+-          across the 120 server infrastructure.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>NetJets - Standardizations</time>Migrated 3,000+ clients, from varying Anti-Virus clients
+-          to Trend Micro OfficeScan 7.0
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>2/2005 - Joining NetJets</time>I was hired as a "Senior Network Administrator"<br>While at NetJets, I led projects to research and
+-          implement new technology and improve existing technology.  I was top tier
+-          support and mentor for the production support team.  Organized and optimized
+-          key infrastructure components.  Website administrator for 23 public-facing
+-          NetJets websites using IIS 6.0 and ISA 2004, supporting secure certificate
+-          stores and new site deployments.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>2/2005 - Leaving Cardinal Health</time>I truly enjoyed my time at Cardinal Health.
+-          As a team, we migrated over 30,000 accounts from various E-Mail systems; including Sendmail, Lotus Notes, Exchange 5.5, and
+-          Groupwise.  The 128 server environment provided 24x7 E-Mail services for Cardinal Health facilities around the world.
+-          For the remainder of my career, I would compare each team to the team we built at Cardinal Health. Not very many were able to compare.
+-          However, I felt I was to the point I was no longer being challenged and my career had become stale. I felt it was the right time to move on.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Cardinal Health - Automations</time><a href="documents/Cardinal/EMS Intranet Revised.wmv">EMS Intranet Site</a><br>Using VB.Net, VB Script, Java Script, C#, ASP.Net, APS, XML, Action Script, and HTML (Yeah, I know. A bit of everything); I built the intranet site for our team.
+-          The site would provide user and management insight into our team. This gave us an avenue to communicate issues and project timelines. The site provided an automated way for users to enter trouble tickets without requiring access to the ticketing system.
+-          The site provided a web form for other administrators to easily and quickly enter details on issues and maintenance. The site acted as a document repository to provide documentation and diagrams to the user community.
+-          Policy and Procedures were clearly defined here
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Cardinal Health - Monitoring</time>As a team we implemented Microsoft Operations manager 2000 and
+-          Spotlight on Exchange. I always had a personal goal to identify issues before my customers.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>2003 - Back to school</time>Recognizing my ability to quickly learn and understand technology, I felt it was the right time to return to Franklin University to complete my bachelor degree.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Cardinal Health - Mailbox Migrations</time>Our primary objective was to move 30,000+ mailboxes from various email systems to Exchange 2000. We were responsible for all aspects of the messaging system. Active Directory, IIS servers, anti-spam, Anti-Virus, DFS, and Instant Messaging.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Cardinal Health - OWA Webpage</time>I built the webpage to be used for Outlook Web Access.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>3/2002 - Joining Cardinal Health</time>I joined the Tier II messaging team at Cardinal Health as a "Senior Messaging Engineer". My experience at Cardinal Health is something I will always cherish. I was able to see what true teamwork produced.
+-          We all had the play hard - work hard mentality. We were responsible for building the first shared service for Cardinal Health.  I felt like I was able to make a difference. We were going to do things no one else in the 30,000 user company was doing.
+-          This was going to be AWESOME!!!
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>CBC Companies - PC Tech</time>Proving my ability and desire to learn, I was hired as a PC Tech on another team within the company.
+-          I picked up the 1000+ page Windows NT book and started my next challenge. I attended and passed my first Microsoft certification exam. I became a very proud Microsoft Certified Professional. I picked up more experience as the administrator of the Shiva Modem bank,
+-          Novell 3.x and 4.11, NT Domain, Exchange 5.5, Cisco 6513, and Citrix Metaframe 1.8. At this time I also became Citrix Certified. I was approached by a recruiter about a position that would result in much higher responsibility and pay.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>CBC Companies - Tech Support</time>I provided tech support for lending software. This helped me refine my communication and troubleshooting skills and begin to understand the working of an office environment (and how to tie a tie).
+-          I studied and passed my first certification (A+) and survived the non-event of Y2K.
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>6/1999 - Joining CBC Companies</time>After teaching myself HTML and mastering the internal workings of a PC, I landed my very first salary role. Oh boy, I was proud of myself!!!
+-        </div>
+-      </li>
+-      <li>
+-        <div>
+-          <time>Summer 1998 - My first PC build</time>For my birthday, my mother took me to Hackers Haven in downtown Columbus.
+-          Not having a clue what I was doing, they loaded me up with all the components I would need to build a PC. Living in an apartment alone with no option for entertainment other than my childhood gaming system, this was a conquest.
+-          Of all the opportunities I have been provided, this may have been the most impactful. I honestly I felt I was doing something others I knew could not do. I thought I would never get this computer running. I would get the display working and the keyboard would stop.
+-          I would get the keyboard working and the mouse would stop. A few weeks later I was up and running with Windows 95 and on AOL with my 14.4 modem. Man, I was proud.  When others would say they had a Gateway, or Acer, or Compaq; I proudly said "I built my own".
+-        </div>
       </li>
       <li>
         <div>
@@ -590,7 +1214,7 @@
           <time>Boy Scount of America</time>Throughout the late 80's and 90's I was an active member of Boy Scouts of America.
           At a young age, this taught me the leadership skills I still use today. In 1994, I spent the summer working at <a href="https://en.wikipedia.org/wiki/Philmont_Scout_Ranch">Philmont</a>. 
            To this point in my life, this was the most difficult challenge I had undergone. 28 days alone in the mountains of New Mexico with my peers I had never met before this summer. No adults to watch over or direct us. We were on our own with 
-           a common goal to achieve. I continued with Boy Scouts to the point of achievving my <a href="https://en.wikipedia.org/wiki/Order_of_the_Arrow">Order of the Arrow</a> and <a href="https://en.wikipedia.org/wiki/Eagle_Scout_(Boy_Scouts_of_America)">Eagle Scout.</a>
+           a common goal to achieve. I continued with Boy Scouts to the point of achieving my <a href="https://en.wikipedia.org/wiki/Order_of_the_Arrow">Order of the Arrow</a> and <a href="https://en.wikipedia.org/wiki/Eagle_Scout_(Boy_Scouts_of_America)">Eagle Scout.</a>
         </div>
       </li>
       <li>
@@ -612,6 +1236,7 @@
     </ul>
     </div>
   </section>
-  <script src="static/index.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>

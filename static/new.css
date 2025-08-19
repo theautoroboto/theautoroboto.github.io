@@ -181,21 +181,9 @@ time {
     border-color: transparent #373737 transparent transparent;
   }
 }
-/* MY SECTION
+
+/* POPUP/OVERLAY
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-html {
-  font-family: "Abel", sans-serif;
-  color: #FFF;
-  background: -webkit-linear-gradient(left, #999 , #222); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #999, #222); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #999, #222); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #999 , #222); /* Standard syntax */
-}
-
-#wrapper {
-  height: 100vh;
-}
 
 #overlay {
   background: #000;
@@ -206,10 +194,6 @@ html {
   left: 0;
   opacity: 0;
   z-index: -1;
-  -o-transition: 1s;
-  -ms-transition: 1s;
-  -moz-transition: 1s;
-  -webkit-transition: 1s;
   transition: 1s;
 }
 
@@ -218,8 +202,6 @@ html {
   top: 70%;
   left: 50%;
   background: rgba(99, 99, 99, .9);
-  /*    box-shadow: 10px 10px 50px 20px #722f37;*/
-  
   width: 90%;
   max-width: 400px;
   padding: 40px;
@@ -229,10 +211,6 @@ html {
   transition: all 1s;
   z-index: 99;
   box-shadow: 20px 20px 0 -5px rgba(68, 68, 68, .9);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -265,10 +243,6 @@ input[type="radio"][id="open"]:checked ~ #info {
   position: fixed;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -286,10 +260,6 @@ label:hover {
   width: 400px;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   border: solid 4px;
   padding: 20px;
@@ -297,18 +267,12 @@ label:hover {
   font-size: 2em;
   color: #999;
   cursor: pointer;
-  -o-transition: .5s;
-  -ms-transition: .5s;
-  -moz-transition: .5s;
-  -webkit-transition: .5s;
   transition: .5s;
 }
 
 #button:hover {
   color: #9df;
 }
-/* MY SECTION
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .box {
   width: 40%;
@@ -326,10 +290,6 @@ label:hover {
   width: 400px;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   border: solid 4px;
   padding: 20px;
@@ -337,10 +297,6 @@ label:hover {
   font-size: 2em;
   color: #999;
   cursor: pointer;
-  -o-transition: .5s;
-  -ms-transition: .5s;
-  -moz-transition: .5s;
-  -webkit-transition: .5s;
   transition: .5s;
 }
 .button:hover {
@@ -353,11 +309,7 @@ label:hover {
   height: 100%;
   top: 0;
   left: 0;
-  /* top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, .7);
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
@@ -368,7 +320,6 @@ label:hover {
 }
 
 .popup {
-  background: rgba(99, 99, 99, .9);
   margin: 70px auto;
   padding: 20px;
   background: #fff;
@@ -379,10 +330,6 @@ label:hover {
   transition: all 1s ease-in-out;
   z-index: 99;
   box-shadow: 20px 20px 0 -5px rgba(68, 68, 68, .9);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -398,14 +345,6 @@ label:hover {
   width: 40px;
   margin: 15px;
   font-size: 1.6em;
-  /* position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333; */
 }
 .popup .close:hover {
   color: #06D85F;

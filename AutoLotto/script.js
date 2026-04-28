@@ -135,4 +135,4 @@ function processFormData(e) {
 
 // Event Listner
 form.addEventListener('submit', processFormData);
-auto_btn.addEventListener("click", autoPick)
+auto_btn.addEventListener("click", autoPick);

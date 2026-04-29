@@ -3,8 +3,8 @@
 theautoroboto.github.io — combined API backend
 Handles both AI demos: Ask Brian and FedRAMP Control Explainer.
 
-Local:  ANTHROPIC_API_KEY=your-key python app.py
-Render: gunicorn app:app  (PORT and ANTHROPIC_API_KEY set in Render dashboard)
+Local:  GEMINI_API_KEY=your-key python app.py
+Render: gunicorn app:app  (PORT and GEMINI_API_KEY set in Render dashboard)
 """
 
 import json
@@ -12,7 +12,7 @@ import os
 import re
 import sys
 
-import anthropic
+import google.generativeai as genai
 from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
@@ -20,7 +20,7 @@ app = Flask(__name__)
 CORS(app)
 
 # ---------------------------------------------------------------------------
-# Ask Brian — system prompt with full career context (prompt-cached)
+# Ask Brian — system prompt with full career context
 # ---------------------------------------------------------------------------
 
 _CAREER_CONTEXT = """
@@ -87,7 +87,6 @@ Title: First DevOps Engineer — responsible for building the DevOps organizatio
   - Evaluated CircleCI, TravisCI, and Jenkins; selected and implemented Azure DevOps as CI/CD.
   - Implemented SonarQube SAST scanning to ensure code security and standards compliance.
   - Developed Git merge and branching strategies (GitFlow-based) and trained multiple dev teams.
-  - Gave internal presentations on Git workflows, merge strategies, and branching best practices.
 
 CERTIFICATIONS (achieved during 2020):
   - Azure DevOps Engineer Expert (AZ-400) — December 2020
@@ -109,13 +108,11 @@ Title: Senior System Engineer Lead → Cloud Platform Team.
     Clusters auto-expired via daily cleanup pipelines. (GitHub: kubernetes-onboarding)
   - Azure initiative: Led the PaaS effort deploying Fiserv into Azure using PKS (Pivotal
     Kubernetes Service). Presented "Putting Pivotal Platform to the Hybrid Cloud Test: Azure"
-    at SpringOne 2019 (YouTube talk available). Published azure-terraform repo on GitHub.
+    at SpringOne 2019 (YouTube talk available).
   - Monitoring: Defined and implemented SLI dashboards using Splunk, Grafana, AlertManager,
     and Prometheus for 14 PCF foundations.
   - BOSH: Designed a centralized BOSH environment for dashboards and automation across
-    disparate production environments. (GitHub: standalone-bosh)
-  - Version tracking: Built a process exporting and comparing all platform configurations.
-    (GitHub: pcf-env-report)
+    disparate production environments.
   - Concourse: Created pipelines to automate all repetitive administrative processes.
   - Certified Kubernetes Administrator (CKA-2000-008308-0100).
 
@@ -127,79 +124,52 @@ Title: System Administrator / Exchange/Active Directory Engineer.
     Internal PKI, KMS, Enterprise FTP (GlobalScape EFT), ADFS, Hitachi Password Manager.
   - Built numerous PowerShell automations: new user provisioning tool, nested AD group reports,
     local admin enforcement tool, employee photo import/ID assignment, PeopleSoft file imports,
-    stale account discovery/disable, SharePoint cleanup, mailbox export on employee offboarding,
-    WINS removal across 1,000+ servers, Lync auto-enablement, file server permission tool,
-    scratch folder cleanup, and Novell migration scripts.
+    stale account discovery/disable, SharePoint cleanup, mailbox export on offboarding,
+    WINS removal across 1,000+ servers, Lync auto-enablement, file server permission tool.
   - Won Grange Star Award and was runner-up for the Golden Trash Can Award.
   - OCS → Lync 2013 migration; Exchange 2007 → 2013 migration; domain upgrades 2003 → 2012.
-  - ProofPoint cloud anti-spam deployment.
-  - Reengineered enterprise monitoring environment with a custom .Net web application.
 
 PREVIOUS ROLE: WD Partners (May 2008 – November 2008)
 ======================================================
   - IT Infrastructure Admin for a 650-user, 16-DC, 9-location Active Directory environment.
   - Led technical integration of Schorleaf (50-user company acquisition).
-  - Implemented Websense remote filtering, WSUS patching automation, Trend spam replacement.
-  - Migrated 380GB Exchange Public Folder store to new hardware without service disruption.
 
 PREVIOUS ROLE: BMW Financial Services via Kforce (June 2007 – May 2008)
 ========================================================================
   - CRM Administrator: Siebel 7.5, Informatica 7.1, BizTalk 2003, .Net web services,
     Middleware environments (100+ servers).
-  - Expanded post-deployment Web Service tests from 65 to 132 XML request strings.
-  - Implemented Microsoft Operations Manager for proactive monitoring.
-  - Completed full yearly disaster recovery scenario.
-  - Replaced 6 web servers in F5 pools without production disruption.
-
-PREVIOUS ROLE: Grange Insurance – First Stint (August 2006 – June 2007)
-========================================================================
-  - SMS, Exchange 2003, and FTP administration.
-  - Deployed GlobalScape EFT consolidating 30+ FTP servers across the enterprise.
 
 PREVIOUS ROLE: NetJets (February 2005 – August 2006)
 ======================================================
   - Senior Network Administrator; top-tier support and mentor for production support team.
   - Website administrator for 23 public-facing websites (IIS 6.0, ISA 2004).
-  - Implemented Microsoft Operations Manager 2005 across 120 servers.
   - VMware 2.5 virtual server solution eliminating 30+ physical servers.
   - Terminal server performance project: 40% more users per server.
-  - Migrated 3,000+ clients to Trend Micro OfficeScan 7.0.
-  - Restructured web servers from DMZ to internal Cisco CSS web farm.
 
 PREVIOUS ROLE: Cardinal Health (March 2002 – February 2005)
 ============================================================
-  - Senior Messaging Engineer on the Tier II messaging team.
-  - Core objective: migrated 30,000+ mailboxes from Sendmail, Lotus Notes, Exchange 5.5,
-    and Groupwise to Exchange 2000 across a 128-server, 24x7 global environment.
+  - Senior Messaging Engineer; migrated 30,000+ mailboxes from Sendmail, Lotus Notes,
+    Exchange 5.5, and Groupwise to Exchange 2000 across a 128-server, 24x7 global environment.
   - Built the team intranet site using VB.Net, VB Script, JS, C#, ASP.Net, XML, HTML.
-  - Implemented Microsoft Operations Manager 2000 and Spotlight on Exchange.
-  - Built the custom OWA webpage.
-  - Returned to Franklin University part-time (2003).
 
 PREVIOUS ROLE: CBC Companies (June 1999 – March 2002)
 ======================================================
-  - Started in tech support for lending software (A+ cert, survived Y2K).
-  - Promoted to PC Tech: became MCP (Microsoft Certified Professional).
-  - Administrator of Shiva Modem bank, Novell 3.x/4.11, NT Domain, Exchange 5.5,
-    Cisco 6513, Citrix Metaframe 1.8. Also became Citrix Certified.
+  - Started in tech support, promoted to PC Tech, became MCP and Citrix Certified.
+  - Administrator of Shiva Modem bank, Novell, NT Domain, Exchange 5.5, Cisco 6513.
 
 FIRST IT JOB: CallTech (June 1998 – June 1999)
 ===============================================
-  - Top-tier support for BellSouth.net ISP.
-  - Guided first-time users through Windows 3.1, 95, dial-up, ISDN troubleshooting.
-  - No screen sharing — all verbal. This forged lifelong communication skills.
+  - Top-tier support for BellSouth.net ISP. No screen sharing — all verbal.
+  - This forged lifelong communication and troubleshooting skills.
 
 PERSONAL BACKGROUND & CHARACTER
 ================================
   - Grew up in a small suburb of Columbus, Ohio.
   - 1980s: Used mother's Apple IIe from school — first exposure to computing.
-  - Early 1990s: Windows 3.1 laptop, 2400 baud modem, BBS ("The Pit").
-  - Mid 1990s: Family's first PC; AOL; self-taught HTML, VB Script, Windows NT.
-  - Summer 1998: Built first PC from parts bought at Hackers Haven in Columbus.
-    Booted Windows 95, connected via 14.4 modem. Took weeks. He was proud.
-  - Eagle Scout and Order of the Arrow member. Worked at Philmont Scout Ranch in 1994:
-    28 days in the mountains of New Mexico with strangers, no adult supervision.
-  - Football (middle school through high school): teamwork, persistence, humility.
+  - Summer 1998: Built first PC from parts at Hackers Haven in Columbus. Took weeks to boot.
+  - Eagle Scout and Order of the Arrow member. Philmont Scout Ranch 1994: 28 days in the
+    mountains of New Mexico with strangers, no adult supervision, working toward a common goal.
+  - Football through high school: teamwork, persistence, humility.
     Lives by coach's words: "Act like you have been there."
   - Values: humble, team-oriented, lifelong learner, energized by unsolvable problems
     and open source technology.
@@ -221,7 +191,7 @@ Guidelines:
 {_CAREER_CONTEXT}"""
 
 # ---------------------------------------------------------------------------
-# FedRAMP Explainer — system prompt (prompt-cached)
+# FedRAMP Explainer — system prompt
 # ---------------------------------------------------------------------------
 
 FEDRAMP_SYSTEM = """You are a FedRAMP and NIST 800-53 Rev 5 compliance expert with extensive \
@@ -257,35 +227,32 @@ technically expert but may be new to FedRAMP assessment processes."""
 # Shared helpers
 # ---------------------------------------------------------------------------
 
-def _get_client():
-    api_key = os.environ.get('ANTHROPIC_API_KEY')
+def _get_model(system_instruction, model_name='gemini-2.0-flash'):
+    api_key = os.environ.get('GEMINI_API_KEY')
     if not api_key:
-        return None, {'error': 'ANTHROPIC_API_KEY is not set'}, 500
-    return anthropic.Anthropic(api_key=api_key), None, None
+        return None, {'error': 'GEMINI_API_KEY is not set'}, 500
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel(
+        model_name=model_name,
+        system_instruction=system_instruction,
+    )
+    return model, None, None
 
 
-def _sse_stream(stream_fn):
-    """Wrap a generator in an SSE Response."""
+def _sse_stream(gen_fn):
     return Response(
-        stream_with_context(stream_fn()),
+        stream_with_context(gen_fn()),
         content_type='text/event-stream',
         headers={'Cache-Control': 'no-cache', 'X-Accel-Buffering': 'no'},
     )
 
 
-def _sse_generate(client, model, system_blocks, messages, max_tokens=1024):
+def _stream_gemini(response_iter):
     try:
-        with client.messages.stream(
-            model=model,
-            max_tokens=max_tokens,
-            system=system_blocks,
-            messages=messages,
-        ) as stream:
-            for text in stream.text_stream:
+        for chunk in response_iter:
+            text = getattr(chunk, 'text', None)
+            if text:
                 yield f"data: {json.dumps({'text': text})}\n\n"
-        yield "data: [DONE]\n\n"
-    except anthropic.AuthenticationError:
-        yield f"data: {json.dumps({'text': 'Error: Invalid API key.'})}\n\n"
         yield "data: [DONE]\n\n"
     except Exception as e:
         yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
@@ -298,7 +265,7 @@ def _sse_generate(client, model, system_blocks, messages, max_tokens=1024):
 
 @app.route('/api/ask', methods=['POST'])
 def ask_brian():
-    client, err, status = _get_client()
+    model, err, status = _get_model(ASK_BRIAN_SYSTEM)
     if err:
         return err, status
 
@@ -313,17 +280,24 @@ def ask_brian():
     if not clean or clean[-1]['role'] != 'user':
         return {'error': 'Last message must be from user'}, 400
 
-    system_blocks = [{'type': 'text', 'text': ASK_BRIAN_SYSTEM,
-                      'cache_control': {'type': 'ephemeral'}}]
+    # Gemini uses "model" instead of "assistant" and "parts" instead of "content"
+    gemini_history = [
+        {'role': 'model' if m['role'] == 'assistant' else 'user',
+         'parts': [m['content']]}
+        for m in clean[:-1]
+    ]
+    last_message = clean[-1]['content']
 
-    return _sse_stream(lambda: _sse_generate(
-        client, 'claude-haiku-4-5-20251001', system_blocks, clean, max_tokens=1024
+    chat = model.start_chat(history=gemini_history)
+
+    return _sse_stream(lambda: _stream_gemini(
+        chat.send_message(last_message, stream=True)
     ))
 
 
 @app.route('/api/fedramp', methods=['POST'])
 def fedramp_explain():
-    client, err, status = _get_client()
+    model, err, status = _get_model(FEDRAMP_SYSTEM)
     if err:
         return err, status
 
@@ -335,12 +309,11 @@ def fedramp_explain():
     if not re.match(r'^[A-Z]{2,3}-\d{1,2}(\(\d+\))?$', control_id):
         return {'error': f'"{control_id}" does not look like a valid NIST 800-53 control ID'}, 400
 
-    system_blocks = [{'type': 'text', 'text': FEDRAMP_SYSTEM,
-                      'cache_control': {'type': 'ephemeral'}}]
-    messages = [{'role': 'user', 'content': f'Explain NIST 800-53 Rev 5 control: {control_id}'}]
-
-    return _sse_stream(lambda: _sse_generate(
-        client, 'claude-opus-4-5', system_blocks, messages, max_tokens=1200
+    return _sse_stream(lambda: _stream_gemini(
+        model.generate_content(
+            f'Explain NIST 800-53 Rev 5 control: {control_id}',
+            stream=True,
+        )
     ))
 
 
@@ -354,8 +327,8 @@ def health():
 # ---------------------------------------------------------------------------
 
 if __name__ == '__main__':
-    if not os.environ.get('ANTHROPIC_API_KEY'):
-        print('Warning: ANTHROPIC_API_KEY is not set.', file=sys.stderr)
+    if not os.environ.get('GEMINI_API_KEY'):
+        print('Warning: GEMINI_API_KEY is not set.', file=sys.stderr)
     port = int(os.environ.get('PORT', 5001))
     print(f'API server starting on http://localhost:{port}')
     app.run(host='0.0.0.0', port=port, debug=False)

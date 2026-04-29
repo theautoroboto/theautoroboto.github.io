@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedRAMP Control Explainer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="header-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="header-text">
+                <h1>FedRAMP Control Explainer</h1>
+                <p class="subtitle">Explain any NIST 800-53 Rev 5 control in plain English &mdash; powered by Claude AI</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-row">
+                    <input
+                        type="text"
+                        id="control-input"
+                        placeholder="Enter control ID (e.g., AC-2, IA-5, AU-12)"
+                        autocomplete="off"
+                        spellcheck="false"
+                        maxlength="10"
+                    />
+                    <button id="explain-btn" onclick="explain()">
+                        <i class="fas fa-search"></i> Explain
+                    </button>
+                </div>
+
+                <div class="chips-section">
+                    <span class="chips-label">Controls I've implemented at Red Hat:</span>
+                    <div class="chips">
+                        <button class="chip" onclick="selectChip(this, 'AC-08')">AC-08</button>
+                        <button class="chip" onclick="selectChip(this, 'AC-17')">AC-17</button>
+                        <button class="chip" onclick="selectChip(this, 'AU-02')">AU-02</button>
+                        <button class="chip" onclick="selectChip(this, 'AU-09')">AU-09</button>
+                        <button class="chip" onclick="selectChip(this, 'AU-11')">AU-11</button>
+                        <button class="chip" onclick="selectChip(this, 'AU-12')">AU-12</button>
+                        <button class="chip" onclick="selectChip(this, 'CM-07')">CM-07</button>
+                        <button class="chip" onclick="selectChip(this, 'IA-07')">IA-07</button>
+                        <button class="chip" onclick="selectChip(this, 'IA-08')">IA-08</button>
+                        <button class="chip" onclick="selectChip(this, 'SC-13')">SC-13</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-section" id="output-section">
+                <div class="output-placeholder" id="output-placeholder">
+                    <i class="fas fa-shield-alt placeholder-icon"></i>
+                    <p>Enter a NIST 800-53 control ID above to get a plain-English explanation, cloud implementation guidance, and FedRAMP assessment tips.</p>
+                </div>
+                <div class="output-content" id="output-content"></div>
+                <div class="error-message" id="error-message"></div>
+            </div>
+        </main>
+
+        <footer>
+            <a href="../index.htm" class="back-link"><i class="fas fa-arrow-left"></i> Back to portfolio</a>
+            <span class="powered-by">Powered by <a href="https://anthropic.com" target="_blank" rel="noopener">Claude AI</a></span>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

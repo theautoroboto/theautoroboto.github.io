@@ -9,8 +9,10 @@ Run: GEMINI_API_KEY=your-key python ask_brian_api.py
 import json
 import os
 import sys
+import time
 
 import google.generativeai as genai
+from google.api_core.exceptions import ResourceExhausted
 from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
@@ -152,16 +154,25 @@ def ask():
     last_message = clean[-1]['content']
 
     def generate():
-        try:
-            chat = model.start_chat(history=gemini_history)
-            for chunk in chat.send_message(last_message, stream=True):
-                text = getattr(chunk, 'text', None)
-                if text:
-                    yield f"data: {json.dumps({'text': text})}\n\n"
-            yield "data: [DONE]\n\n"
-        except Exception as e:
-            yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
-            yield "data: [DONE]\n\n"
+        for attempt in range(3):
+            try:
+                chat = model.start_chat(history=gemini_history)
+                for chunk in chat.send_message(last_message, stream=True):
+                    text = getattr(chunk, 'text', None)
+                    if text:
+                        yield f"data: {json.dumps({'text': text})}\n\n"
+                yield "data: [DONE]\n\n"
+                return
+            except ResourceExhausted:
+                if attempt < 2:
+                    time.sleep(2 ** attempt)
+                else:
+                    yield f"data: {json.dumps({'text': '⚠️ Gemini rate limit hit. Wait a moment and try again.'})}\n\n"
+                    yield "data: [DONE]\n\n"
+            except Exception as e:
+                yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
+                yield "data: [DONE]\n\n"
+                return
 
     return Response(
         stream_with_context(generate()),

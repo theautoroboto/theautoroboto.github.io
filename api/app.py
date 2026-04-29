@@ -11,8 +11,10 @@ import json
 import os
 import re
 import sys
+import time
 
 import google.generativeai as genai
+from google.api_core.exceptions import ResourceExhausted
 from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
@@ -247,16 +249,26 @@ def _sse_stream(gen_fn):
     )
 
 
-def _stream_gemini(response_iter):
-    try:
-        for chunk in response_iter:
-            text = getattr(chunk, 'text', None)
-            if text:
-                yield f"data: {json.dumps({'text': text})}\n\n"
-        yield "data: [DONE]\n\n"
-    except Exception as e:
-        yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
-        yield "data: [DONE]\n\n"
+def _stream_gemini(make_response, retries=2):
+    """Call make_response() to get the stream iterator, retrying on 429."""
+    for attempt in range(retries + 1):
+        try:
+            for chunk in make_response():
+                text = getattr(chunk, 'text', None)
+                if text:
+                    yield f"data: {json.dumps({'text': text})}\n\n"
+            yield "data: [DONE]\n\n"
+            return
+        except ResourceExhausted:
+            if attempt < retries:
+                time.sleep(2 ** attempt)  # 1s, then 2s
+            else:
+                yield f"data: {json.dumps({'text': '⚠️ Gemini rate limit hit. Wait a moment and try again.'})}\n\n"
+                yield "data: [DONE]\n\n"
+        except Exception as e:
+            yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
+            yield "data: [DONE]\n\n"
+            return
 
 
 # ---------------------------------------------------------------------------
@@ -288,10 +300,8 @@ def ask_brian():
     ]
     last_message = clean[-1]['content']
 
-    chat = model.start_chat(history=gemini_history)
-
     return _sse_stream(lambda: _stream_gemini(
-        chat.send_message(last_message, stream=True)
+        lambda: model.start_chat(history=gemini_history).send_message(last_message, stream=True)
     ))
 
 
@@ -310,7 +320,7 @@ def fedramp_explain():
         return {'error': f'"{control_id}" does not look like a valid NIST 800-53 control ID'}, 400
 
     return _sse_stream(lambda: _stream_gemini(
-        model.generate_content(
+        lambda: model.generate_content(
             f'Explain NIST 800-53 Rev 5 control: {control_id}',
             stream=True,
         )

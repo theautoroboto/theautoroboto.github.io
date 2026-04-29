@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5001/api/fedramp';
+const API_URL = 'https://theautoroboto-github-io-1.onrender.com/api/fedramp';
 
 const input = document.getElementById('control-input');
 const btn = document.getElementById('explain-btn');

@@ -101,5 +101,6 @@ def health():
 if __name__ == '__main__':
     if not os.environ.get('ANTHROPIC_API_KEY'):
         print('Warning: ANTHROPIC_API_KEY is not set. Set it before making requests.', file=sys.stderr)
-    print('FedRAMP API server starting on http://localhost:5001')
-    app.run(host='0.0.0.0', port=5001, debug=False)
+    port = int(os.environ.get('PORT', 5001))
+    print(f'FedRAMP API server starting on port {port}')
+    app.run(host='0.0.0.0', port=port, debug=False)

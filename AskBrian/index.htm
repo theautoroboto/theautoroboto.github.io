@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Brian</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app">
+
+        <header>
+            <div class="avatar"><i class="fas fa-user-astronaut"></i></div>
+            <div class="header-text">
+                <h1>Ask Brian</h1>
+                <p>AI-powered career Q&amp;A &mdash; 25+ years of experience, zero waiting rooms</p>
+            </div>
+            <a href="../index.htm" class="back-link" title="Back to portfolio">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </header>
+
+        <div class="suggestions" id="suggestions">
+            <button class="suggestion" onclick="sendSuggestion(this)">What's Brian's FedRAMP experience?</button>
+            <button class="suggestion" onclick="sendSuggestion(this)">How did Brian's career start?</button>
+            <button class="suggestion" onclick="sendSuggestion(this)">What cloud platforms has he worked with?</button>
+            <button class="suggestion" onclick="sendSuggestion(this)">Why should I hire Brian?</button>
+            <button class="suggestion" onclick="sendSuggestion(this)">Tell me about his Red Hat work</button>
+            <button class="suggestion" onclick="sendSuggestion(this)">What's Brian most proud of?</button>
+        </div>
+
+        <div class="messages" id="messages">
+            <div class="message assistant">
+                <div class="bubble">
+                    Hi! I'm an AI assistant with full knowledge of Brian's 25+ year career in SRE, DevOps, and cloud infrastructure. Ask me anything — his FedRAMP experience, his journey from IT help desk to Principal SRE at Red Hat, what technologies he's mastered, or why you should consider hiring him. What would you like to know?
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <textarea
+                id="user-input"
+                placeholder="Ask about Brian's experience, skills, or background..."
+                rows="1"
+                maxlength="500"
+            ></textarea>
+            <button id="send-btn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

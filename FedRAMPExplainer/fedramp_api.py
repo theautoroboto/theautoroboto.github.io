@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
 """
 FedRAMP Control Explainer - Flask backend (local dev)
-Streams Gemini AI explanations of NIST 800-53 Rev 5 controls.
+Streams Claude AI explanations of NIST 800-53 Rev 5 controls.
 
-Run: GEMINI_API_KEY=your-key python fedramp_api.py
+Run: ANTHROPIC_API_KEY=your-key python fedramp_api.py
 """
 
 import json
 import os
 import re
 import sys
-import time
 
-import google.generativeai as genai
-from google.api_core.exceptions import ResourceExhausted
+import anthropic
 from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
@@ -51,9 +49,9 @@ technically expert but may be new to FedRAMP assessment processes."""
 
 @app.route('/api/fedramp', methods=['POST'])
 def fedramp_explain():
-    api_key = os.environ.get('GEMINI_API_KEY')
+    api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
-        return {'error': 'GEMINI_API_KEY environment variable is not set'}, 500
+        return {'error': 'ANTHROPIC_API_KEY environment variable is not set'}, 500
 
     data = request.get_json(silent=True) or {}
     control_id = data.get('control_id', '').strip().upper()
@@ -63,33 +61,27 @@ def fedramp_explain():
     if not re.match(r'^[A-Z]{2,3}-\d{1,2}(\(\d+\))?$', control_id):
         return {'error': f'"{control_id}" does not look like a valid NIST 800-53 control ID'}, 400
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(
-        model_name='gemini-2.0-flash',
-        system_instruction=SYSTEM_PROMPT,
-    )
+    client = anthropic.Anthropic(api_key=api_key)
+    system_blocks = [{'type': 'text', 'text': SYSTEM_PROMPT,
+                      'cache_control': {'type': 'ephemeral'}}]
+    messages = [{'role': 'user', 'content': f'Explain NIST 800-53 Rev 5 control: {control_id}'}]
 
     def generate():
-        for attempt in range(3):
-            try:
-                response = model.generate_content(
-                    f'Explain NIST 800-53 Rev 5 control: {control_id}',
-                    stream=True,
-                )
-                for chunk in response:
-                    text = getattr(chunk, 'text', None)
-                    if text:
-                        yield f"data: {json.dumps({'text': text})}\n\n"
-                yield "data: [DONE]\n\n"
-                return
-            except ResourceExhausted:
-                if attempt < 2:
-                    time.sleep(2 ** attempt)
-                else:
-                    yield f"data: {json.dumps({'text': '⚠️ Gemini rate limit hit. Wait a moment and try again.'})}\n\n"
-                    yield "data: [DONE]\n\n"
-            except Exception as e:
-                yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
+        try:
+            with client.messages.stream(
+                model='claude-sonnet-4-6',
+                max_tokens=1200,
+                system=system_blocks,
+                messages=messages,
+            ) as stream:
+                for text in stream.text_stream:
+                    yield f"data: {json.dumps({'text': text})}\n\n"
+            yield "data: [DONE]\n\n"
+        except anthropic.AuthenticationError:
+            yield f"data: {json.dumps({'text': 'Error: Invalid API key.'})}\n\n"
+            yield "data: [DONE]\n\n"
+        except Exception as e:
+            yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
             yield "data: [DONE]\n\n"
 
     return Response(
@@ -105,8 +97,8 @@ def health():
 
 
 if __name__ == '__main__':
-    if not os.environ.get('GEMINI_API_KEY'):
-        print('Warning: GEMINI_API_KEY is not set.', file=sys.stderr)
+    if not os.environ.get('ANTHROPIC_API_KEY'):
+        print('Warning: ANTHROPIC_API_KEY is not set.', file=sys.stderr)
     port = int(os.environ.get('PORT', 5001))
     print(f'FedRAMP API server starting on port {port}')
     app.run(host='0.0.0.0', port=port, debug=False)

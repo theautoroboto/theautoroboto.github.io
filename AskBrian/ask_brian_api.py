@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 """
 Ask Brian - Flask backend (local dev)
-Multi-turn AI chat about Brian W. Smith's career, powered by Gemini.
+Multi-turn AI chat about Brian W. Smith's career, powered by Claude.
 
-Run: GEMINI_API_KEY=your-key python ask_brian_api.py
+Run: ANTHROPIC_API_KEY=your-key python ask_brian_api.py
 """
 
 import json
 import os
 import sys
-import time
 
-import google.generativeai as genai
-from google.api_core.exceptions import ResourceExhausted
+import anthropic
 from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
@@ -125,9 +123,9 @@ Guidelines:
 
 @app.route('/api/ask', methods=['POST'])
 def ask():
-    api_key = os.environ.get('GEMINI_API_KEY')
+    api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
-        return {'error': 'GEMINI_API_KEY environment variable is not set'}, 500
+        return {'error': 'ANTHROPIC_API_KEY environment variable is not set'}, 500
 
     data = request.get_json(silent=True) or {}
     messages = data.get('messages', [])
@@ -140,39 +138,27 @@ def ask():
     if not clean or clean[-1]['role'] != 'user':
         return {'error': 'Last message must be from user'}, 400
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(
-        model_name='gemini-2.0-flash',
-        system_instruction=SYSTEM_PROMPT,
-    )
-
-    gemini_history = [
-        {'role': 'model' if m['role'] == 'assistant' else 'user',
-         'parts': [m['content']]}
-        for m in clean[:-1]
-    ]
-    last_message = clean[-1]['content']
+    client = anthropic.Anthropic(api_key=api_key)
+    system_blocks = [{'type': 'text', 'text': SYSTEM_PROMPT,
+                      'cache_control': {'type': 'ephemeral'}}]
 
     def generate():
-        for attempt in range(3):
-            try:
-                chat = model.start_chat(history=gemini_history)
-                for chunk in chat.send_message(last_message, stream=True):
-                    text = getattr(chunk, 'text', None)
-                    if text:
-                        yield f"data: {json.dumps({'text': text})}\n\n"
-                yield "data: [DONE]\n\n"
-                return
-            except ResourceExhausted:
-                if attempt < 2:
-                    time.sleep(2 ** attempt)
-                else:
-                    yield f"data: {json.dumps({'text': '⚠️ Gemini rate limit hit. Wait a moment and try again.'})}\n\n"
-                    yield "data: [DONE]\n\n"
-            except Exception as e:
-                yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
-                yield "data: [DONE]\n\n"
-                return
+        try:
+            with client.messages.stream(
+                model='claude-haiku-4-5-20251001',
+                max_tokens=1024,
+                system=system_blocks,
+                messages=clean,
+            ) as stream:
+                for text in stream.text_stream:
+                    yield f"data: {json.dumps({'text': text})}\n\n"
+            yield "data: [DONE]\n\n"
+        except anthropic.AuthenticationError:
+            yield f"data: {json.dumps({'text': 'Error: Invalid API key.'})}\n\n"
+            yield "data: [DONE]\n\n"
+        except Exception as e:
+            yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
+            yield "data: [DONE]\n\n"
 
     return Response(
         stream_with_context(generate()),
@@ -187,7 +173,7 @@ def health():
 
 
 if __name__ == '__main__':
-    if not os.environ.get('GEMINI_API_KEY'):
-        print('Warning: GEMINI_API_KEY is not set.', file=sys.stderr)
+    if not os.environ.get('ANTHROPIC_API_KEY'):
+        print('Warning: ANTHROPIC_API_KEY is not set.', file=sys.stderr)
     print('Ask Brian API starting on http://localhost:5002')
     app.run(host='0.0.0.0', port=5002, debug=False)

@@ -84,26 +84,22 @@
 
     <li>
       <div>
-        <time>Red Hat — FedRAMP</time><b>NIST 800-53 Rev 5 Controls</b>
-        Implemented 10+ NIST 800-53 Rev 5 controls directly in Terraform as part of the FedRAMP High ATO effort. Controls included FIPS endpoint enforcement (IA-07, SC-13), PIV/CAC identity validation (IA-08), KMS CMK encryption for CloudWatch and S3 (AU-09), multi-region CloudTrail (AU-12), 365-day log retention (AU-11, AC-17), API Gateway access logging (AU-02), system use notification banners (AC-08), and least-functionality API method settings (CM-07).
+        <time>2026 Q2</time><b>Strategic Security Validation – FedRAMP Compliance &amp; Cryptography</b>
+        <ul>
+          <li>Orchestrated a cross-vendor FIPS validation effort for OCP on EKS, confirming the integrity of the dlopen dispatch path from UBI9-based Go binaries to host-level kernel flags (<code>/proc/sys/crypto/fips_enabled</code>)</li>
+          <li>Designed negative-control testing methodologies to distinguish infrastructure-level enforcement from binary-level compliance, mitigating false-positive validation risks</li>
+          <li>Collaborated with Red Hat cryptographic maintainers to implement hardcoded known-answer tests (KAT), ensuring NIST SP 800-131A compliance for AES, RSA, and ECDSA algorithm sets</li>
+        </ul>
       </div>
     </li>
     <li>
       <div>
-        <time>Red Hat — AI Automation</time><b>FedRAMP Agent Workflow</b>
-        Designed and deployed an AI agent workflow using Claude to automate FedRAMP control evaluation and reporting, significantly reducing manual assessment toil.
-      </div>
-    </li>
-    <li>
-      <div>
-        <time>Red Hat — Observability</time><b>Thanos &amp; Grafana</b>
-        Deployed Thanos and the Thanos-operator for distributed platform observability. Built Grafana dashboards for API Gateway, RDS, IoT Core, and NAT Gateway. Integrated CloudWatch as a Thanos data source.
-      </div>
-    </li>
-    <li>
-      <div>
-        <time>1/2026 — Present: Principal SRE</time>
-        <p>Promoted to Principal SRE. Continuing to drive the technical direction of the ROSA Regional Platform.</p>
+        <time>2026 Q2</time><b>FedRAMP Moderate Compliance &amp; Security Hardening</b>
+        <ul>
+          <li>Leading FedRAMP Moderate compliance remediation for the ROSA Regional Platform</li>
+          <li>Implementing 13+ NIST 800-53 Rev 5 controls spanning AU, AC, SC, SI, RA, IA, CA, and CP families</li>
+          <li>Enhanced platform visibility by architecting Thanos and Grafana observability suites, utilizing IaC to ensure consistent, repeatable deployments across multi-cluster environments</li>
+        </ul>
       </div>
     </li>
     <li>
@@ -114,26 +110,192 @@
     </li>
     <li>
       <div>
+        <time>Red Hat — AI Tooling</time><b>FedRAMP Compliance Agent</b>
+        <ul>
+          <li>Built a fully automated FedRAMP audit system using a Claude Sonnet sub-agent that evaluates ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls across the ROSA Regional Platform repositories</li>
+          <li>Implements a 7-step orchestrated workflow: repository cloning → control classification (Inherited / Out of Scope / Red Hat Responsibility) → evidence analysis → report generation → PDF conversion → Google Drive upload → Jira ticket creation and GitHub PR opening</li>
+          <li>Integrates Trivy CVE scanning to downgrade Met controls to Gap when CRITICAL/HIGH vulnerabilities are present, mapping findings into SI-02, RA-05, and SA-11 assessments</li>
+          <li>Produces 12 artifacts per run — per-repository and cross-repository executive summaries in Markdown and PDF, each with Mermaid control-family heatmaps and a delta analysis against prior audit reports</li>
+          <li>Deduplicates Jira tickets via JQL before creation (per control × repo × epic tuple); opens draft GitHub PRs for concrete remediations, each linked to its Jira key; supports plan-mode dry runs, per-baseline filtering (<code>--moderate</code>, <code>--high</code>, <code>--both</code>), and CVE-only scans</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2026 Q1</time><b>ROSA Regionality Platform Engineering &amp; Secret Management</b>
+        <ul>
+          <li>Architected and implemented a comprehensive Secret Management framework for the ROSA Regional Platform, establishing a secure, scalable standard for sensitive credential handling across multi-region infrastructure.</li>
+          <li>Engineered an automated AWS Sandbox account leasing system to provide ephemeral, isolated environments for end-to-end testing, significantly reducing infrastructure drift and resource contention.</li>
+          <li>Modernized infrastructure delivery by migrating legacy Terraform provisioning into containerized workflows, enhancing pipeline portability and ensuring environment consistency across the CI/CD lifecycle.</li>
+          <li>Orchestrated the global expansion of the Red Hat Observability Stack by developing reusable Infrastructure as Code (IaC) modules, enabling rapid, consistent deployments across multiple new geographic regions.</li>
+          <li>Validated the Terraform-based deployment architecture for ROSA Hosted Control Planes (HCP) to ensure alignment with FedRAMP Moderate security baselines and NIST 800-53 controls</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>1/2026 — Present: Principal SRE</time>
+        <p>Promoted to Principal SRE. Continuing to drive the technical direction of the ROSA Regional Platform.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2025 Q4</time><b>Extended Update Support Lifecycle, Terraform Automation &amp; API Cleanup</b>
+        <ul>
+          <li>Managed production rollout of Extended Update Support (EUS) ClusterImageSets, enabling standardized, multi-year support cycles for automated OpenShift cluster provisioning</li>
+          <li>Architected and implemented a comprehensive Terraform automation framework, standardizing infrastructure-as-code (IaC) execution and ensuring repeatable, high-velocity deployments across multi-cloud environments</li>
+          <li>Streamlined Hive infrastructure by identifying and removing redundant api components, leading to improved system maintainability and a leaner service architecture.</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2025 Q3</time><b>Dynatrace Observability Platform Deployment</b>
+        <ul>
+          <li>Architected and deployed Dynatrace Managed Service across FedRAMP environments, implementing OneAgent log forwarding to satisfy strict federal auditability and centralized monitoring requirements</li>
+          <li>Authored detailed Dynatrace architecture diagrams to support Significant Change Requests (SCRs), providing the technical visualization required to secure stakeholder approval for complex observability migrations</li>
+          <li>Streamlined container image management by engineering a secure mirroring pipeline from AWS ECR to Quay, ensuring consistent image availability and local registry performance for the ROSA platform</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2025 Q2</time><b>Backplane FedRAMP Integration &amp; CONMON Remediation</b>
+        <ul>
+          <li>Eliminated critical infrastructure blockers by integrating backplane-cli and backplane-api with FedRAMP-compliant authentication protocols, resolving high-priority bugs that had previously impeded SRE emergency cluster access</li>
+          <li>Spearheaded the FedRAMP Continuous Monitoring (CONMON) remediation effort, architecting and deploying compliance-monkey across Management Clusters to automate security auditing and ensure persistent adherence to federal baselines</li>
+          <li>Authored the Architecture Decision Record (ADR) for the implementation of the External DNS Operator within FedRAMP-authorized environments, formalizing the technical strategy for secure, automated DNS management</li>
+          <li>Authored the definitive operational playbook for Hosted Control Plane (HCP) upgrades, codifying the sequence for Management and Service Cluster updates to ensure zero-downtime migrations and environment stability</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
         <time>1/2025 — 1/2026: Principal SRE Team Lead</time>
-        <p>Promoted to Principal SRE while continuing to lead the team. Expanded scope to include platform-wide CI/CD ownership and end-to-end test infrastructure.</p>
+        <p>Promoted to Principal SRE while continuing to lead the team deliverables in alignment with business priorities.</p>
       </div>
     </li>
     <li>
       <div>
-        <time>Red Hat — CI/CD</time><b>Centralized CodeBuild Pipelines</b>
-        Designed and built centralized multi-environment AWS CodeBuild deployment pipelines for regional and management clusters. Implemented environment-scoped validation, pipeline delete workflows, AWS Parameter Store integration for account management, and retry logic for resilience.
+        <time>2025 Q1</time><b>ROSA Hosted Control Plane</b>
+        <ul>
+          <li>Architected and implemented AWS PrivateLink support for ROSA Hosted Control Planes (HCP) across all GovCloud regions, establishing secure, private network connectivity that bypasses the public internet for sensitive federal workloads</li>
+          <li>Directed and delivered over 10 comprehensive Hosted Control Plane (HCP) technical training sessions, educating cross-functional teams on Fleet Manager architecture, Service/Management cluster dynamics, and automated AMI deployment pipelines</li>
+        </ul>
       </div>
     </li>
     <li>
       <div>
-        <time>Red Hat — Testing</time><b>E2E Regionality</b>
-        Added concurrent regional cluster and management cluster log monitoring to the e2e test suite. Contributed new cluster profile and test job definitions to <a href="https://github.com/openshift/release">openshift/release</a> for regionality coverage (ROSAENG-34).
+        <time>2024 Q4</time><b>ROSA Hosted Control Plane &amp; Continuous CVE Remediation</b>
+        <ul>
+          <li>Architected and delivered the AWS PrivateLink networking framework for ROSA Hosted Control Planes, designing a secure cross-account VPC Peering strategy and automating the provisioning of underlying AWS infrastructure</li>
+          <li>Authored and finalized mission-critical FedRAMP architectural diagrams for Hosted Control Planes (HCP), providing the high-fidelity technical visualizations required for formal system authorization and boundary definition</li>
+          <li>Optimized platform availability by troubleshooting and resolving critical Keycloak IDP authentication failures and proactively scaling AWS Elastic IP (EIP) limits to support rapid cluster expansion</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2024 Q3</time><b>CVE Remediation Sprints &amp; Keycloak Simplification</b>
+        <ul>
+          <li>Streamlined the Keycloak identity architecture by decommissioning redundant metrics sidecars, significantly reducing resource overhead and simplifying the container lifecycle for the regional platform</li>
+          <li>Codified the ClusterImageSet update lifecycle for the ROSA Regional Platform, authoring the definitive operational playbook to ensure consistent, repeatable version transitions across global management and service clusters</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2024 Q2</time><b>Critical User Journey, PSCR Remediations &amp; OCP 4.14 Upgrade Analysis</b>
+        <ul>
+          <li>Defined and formalized the Critical User Journey (CUJ) for 'Create a Cluster' within the ROSA FedRAMP environment, establishing a comprehensive reliability framework through detailed documentation, multi-layer dependency analysis, and full-stack observability traceability</li>
+          <li>Directed the comprehensive technical analysis for the OpenShift (OCP) 4.14 regional upgrade, meticulously auditing STS (Security Token Service) policies, version gates, and API deprecations to ensure zero-impact migrations across high-compliance clusters</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2024 Q1</time><b>Keycloak Observability &amp; Day 2 Alerting Improvements</b>
+        <ul>
+          <li>Engineered a secure observability pipeline to ship Keycloak identity logs to Splunk, establishing centralized audit trails and real-time security monitoring for the regional platform's authentication layer</li>
+          <li>Optimized platform reliability by troubleshooting and resolving critical Keycloak ephemeral storage exhaustion issues and patching AWS SES/SNS logging failures to ensure persistent delivery auditability</li>
+          <li>Spearheaded the SSP (System Security Plan) Access Control validation for the ROSA Regional Platform, directing a high-impact engineering epic to modernize FedRAMP Day 2 Alerting and automated incident response</li>
+        </ul>
       </div>
     </li>
     <li>
       <div>
         <time>12/2023 — 1/2025: Senior SRE Functional Lead</time>
         <p>Led a team of 9 SREs using agile methodologies. Responsible for defining and driving projects aligned with business unit priorities. Key initiatives included CVE mitigation, annual FedRAMP assessments, Significant Change Requests, automating operational toil, and continuous platform improvements.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2023 Q4</time><b>Keycloak Production Launch &amp; FedRAMP Boundary Diagrams</b>
+        <ul>
+          <li>Deployed Red Hat build of Keycloak (RHBK) to production via SES — replacing the legacy FedRAMP identity provider</li>
+          <li>Architected and authored six comprehensive FedRAMP Boundary Architecture Diagrams, establishing the definitive technical visualization for Customer Clusters, SREP Administration, and Keycloak/KCM identity services to secure formal system authorization</li>
+          <li>Engineered a robust Keycloak availability monitoring framework, implementing real-time health checks and synthetic transactions to ensure persistent identity provider uptime across the regional platform</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2023 Q3</time><b>AWS Security Services Deployment &amp; FedRAMP Hardening</b>
+        <ul>
+          <li>Automated the deployment of AWS Config, GuardDuty, and SecurityHub using Terraform, establishing a hardened security baseline and continuous compliance monitoring across the ROSA FedRAMP infrastructure</li>
+          <li>Eliminated critical infrastructure technical debt by resolving an AWS Account Operator networking cleanup defect and successfully orchestrating the platform-wide migration from PagerDuty to GoAlert, streamlining incident response workflows</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2023 Q2</time><b>GoAlert Maintenance</b>
+        <ul>
+          <li>Streamlined the GoAlert deployment lifecycle by redirecting the GitLab build repository to the managed internal fork, mitigating risks associated with external upstream changes and stabilizing regional platform releases</li>
+          <li>Conducted a comprehensive gap analysis of the regional platform's observability stack, identifying and remediating missing Splunk datasets to restore critical audit trails and security visibility across FedRAMP environments</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2023 Q1</time><b>GoAlert Production Deployment &amp; FedRAMP OSDE2E</b>
+        <ul>
+          <li>Spearheaded the production deployment of GoAlert as the primary on-call alerting platform for FedRAMP environments, orchestrating the full lifecycle from Initial PoC through Configure Alert Manager Operator integration and VPCE network architecture</li>
+          <li>Engineered the standardized framework for integrating Single Sign-On (SSO) across the AWS organization, establishing a secure, scalable methodology for centralized identity management and federated access control</li>
+          <li>Spearheaded the FedRAMP Maintenance and Toil Reduction epic, directing a cross-functional initiative to automate repetitive operational tasks and reclaim engineering velocity within high-compliance environments</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2022 Q4</time><b>GoAlert Launch &amp; Alerting Infrastructure</b>
+        <ul>
+          <li>Engineered the production rollout of GoAlert within FedRAMP-authorized environments, orchestrating the end-to-end app-interface onboarding and deep-level integration with Configure Alert Manager Operator to provide secure, high-availability incident response</li>
+          <li>Remediated critical Splunk configuration defects that were obstructing automated alerting for Malware Detected events, restoring mission-critical security visibility and ensuring rapid incident response capabilities for the regional platform</li>
+          <li>Re-engineered the platform's Terraform architecture by migrating fragmented components into a consolidated module structure, enhancing code reusability and simplifying cross-regional infrastructure management</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2022 Q3</time><b>Terraform GitOps, Infrastructure Refactoring &amp; Incident Preparedness</b>
+        <ul>
+          <li>Executed a technical spike of Atlantis to architect a GitOps-driven Terraform automation workflow, evaluating its ability to standardize pull-request-based infrastructure changes and enhance peer review transparency across the engineering organization</li>
+          <li>Completed major infrastructure refactoring — stackarmor_network, stackarmor_shared_services, SREP, and PrivateLink terraform repos</li>
+          <li>Led the production rollout of GoAlert, establishing a hardened deployment framework and performing end-to-end functional testing to verify mission-critical alerting paths and cross-service dependencies within FedRAMP security boundaries</li>
+          <li>Directed comprehensive incident response tabletop exercises, simulating both Standard and Catastrophic Loss scenarios to validate organizational readiness and bridge operational gaps within high-compliance environments</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2022 Q2</time><b>FedRAMP Integration Validation &amp; Platform Foundations</b>
+        <ul>
+          <li>Validated the ROSA CLI toolchain and cluster deployment architecture for high-compliance regions, confirming the integrity of the provisioning pipeline and cross-service authentication within the FedRAMP boundary/li>
+          <li>Hardened the platform's security posture through the global implementation of VPC Flow Logs, providing the deep-packet metadata necessary for advanced threat detection and proactive network troubleshooting across long-lived production environments</li>
+          <li>Architected the Transit Gateway (TGW) hub-and-spoke network topology for the GovCloud environment, engineering a centralized routing hub to streamline multi-VPC connectivity and enforce strict traffic isolation across high-compliance security zones</li>
+          <li>Conducted a comprehensive WAF (Web Application Firewall) compliance audit to ensure persistent adherence to federal security standards; simultaneously spearheaded a strategic evaluation of Grafana On-Call to optimize the platform's alerting and incident response lifecycle</li>
+        </ul>
       </div>
     </li>
     <li>

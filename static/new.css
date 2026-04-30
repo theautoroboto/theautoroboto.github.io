@@ -426,6 +426,29 @@ time {
   color: var(--text);
 }
 
+/* Bullet lists inside cards — reset timeline spine styles */
+.timeline ul li:not(.era-marker) div ul {
+  list-style: disc;
+  padding: 0 0 0 1.2em;
+  margin-top: 0.35rem;
+  background: none;
+}
+
+.timeline ul li:not(.era-marker) div ul li {
+  position: static;
+  width: auto;
+  margin: 0;
+  padding: 0 0 0.15rem;
+  background: none;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.timeline ul li:not(.era-marker) div ul li::after {
+  display: none;
+}
+
 .timeline ul li:not(.era-marker) div a {
   color: var(--link);
   text-decoration: none;

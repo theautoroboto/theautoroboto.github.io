@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>Playing With Python</title>
-    <link rel="stylesheet" type="text/css" href="static/index.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     All about My Py Play page
-    <script src="static/index.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
     <script data-goatcounter="https://theautoroboto.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 </body>

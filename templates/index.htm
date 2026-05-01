@@ -4,7 +4,7 @@
 <title>Brian W. Smith</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./static/new.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='new.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
         <div>
           <time>Implementing a Git Merge Strategy</time>
           <p></p>
-          <p><a href="Presentations/MergingStrategies-5-12-2021.pptx">Presentation</a></p>
+          <p><a href="{{ url_for('static', filename='Presentations/MergingStrategies-5-12-2021.pptx') }}">Presentation</a></p>
         </div>
       </li>
       <li>
@@ -35,15 +35,15 @@
           <time>SonarQube</time>
           <p>Static Application Security Testing</p>
           <p>Implemented SonarQube scanning solution to ensure code remains secure and up to modern coding standards.</p>
-          <p><a href="Presentations/SAST-OneStream.pptx">Presentation</a></p>
+          <p><a href="{{ url_for('static', filename='Presentations/SAST-OneStream.pptx') }}">Presentation</a></p>
         </div>
       </li>
       <li>
         <div>
           <time>Implementing a Git Workflow</time>
           <p>Working with the various development teams, I developed a Git workflow strategy based on GitFlow workflow.</p>
-          <p><a href="Presentations/Branching Strategies-Platform-OneStream.pptx">Platform Team Presentation</a></p>
-          <p><a href="Presentations/Marketplace-BranchingStrategies.pptx">Marketplace Team Presentation</a></p>
+          <p><a href="{{ url_for('static', filename='Presentations/Branching Strategies-Platform-OneStream.pptx') }}">Platform Team Presentation</a></p>
+          <p><a href="{{ url_for('static', filename='Presentations/Marketplace-BranchingStrategies.pptx') }}">Marketplace Team Presentation</a></p>
         </div>
       </li>
       <li>
@@ -52,7 +52,7 @@
           <p>As a base to start from, I presented the various git workflows being used in the industry. This presentation would pave the way to
             the implementation of a customized git workflow to be used by each team.
           </p>
-          <p><a href="Presentations/Branching Strategies-101-OneStream.pptx">Presentation</a></p>
+          <p><a href="{{ url_for('static', filename='Presentations/Branching Strategies-101-OneStream.pptx') }}">Presentation</a></p>
         </div>
       </li>
       <li>
@@ -109,8 +109,8 @@
         <div>
           <time>Fun with JavaScript</time>
           <p>I wanted to learn JavaScript. I built these 2 apps to play with JavaScript</p>
-          <a href="WasItRickOrMorrissey/index.htm">Was It Rick Or Morrissey?</a><br>
-          <a href="AutoLotto/index.htm">AutoRobotoLotto</a>
+          Was It Rick Or Morrissey?<br>
+          AutoRobotoLotto
         </div>
       </li>
       <li>
@@ -137,7 +137,7 @@
           purpose, cluster name, and an expiration date. This information is saved to a git repository in JSON format. My pipeline is triggered upon a change to this repository. 
           The pipeline build this Kubernetes cluster based on the information provided. Once the cluster is created, a Helm chart is used to deploy Prometheus, Grafana, and Alert Manager to the cluster.  
           At this time the exposed Prometheus endpoint is added as a data source to a centralized Grafana implementation. The user then receives an email with all the information they need to begin using their cluster. 
-          A sperate pipeline runs daily to identify expired clusters and complete the deletion process.<br><a href="https://github.com/theautoroboto/kubernetes-onboarding">See the solution here</a><br>View the Grafana PKS SLI dashboard <a href="images/pks_sli.png" title="Grafana PKS SLI dashboard" class="image-link">HERE</a>
+          A sperate pipeline runs daily to identify expired clusters and complete the deletion process.<br><a href="https://github.com/theautoroboto/kubernetes-onboarding">See the solution here</a><br>View the Grafana PKS SLI dashboard <a href="{{ url_for('static', filename='images/pks_sli.png') }}" title="Grafana PKS SLI dashboard" class="image-link">HERE</a>
         </div>
       </li>
       <li>
@@ -153,15 +153,15 @@
       </li>
       <li>
         <div>
-          <time>Fiserv - Monitoring</time>Defined and implemented SLI dashboards to allow development teams easy access to performance metrics<br><a href="images/pas_sli.png" title="PAS SLI Dashboard" class="image-link">PAS SLI Dashboard</a>
-          <br><a href="images/service_sli.png" title="Service SLI Dashboards" class="image-link">Service SLI Dashboards</a><br>
-          <a href="images/pks_sli.png" title="PKS SLI dashboards" class="image-link">PKS SLI dashboards</a>
+          <time>Fiserv - Monitoring</time>Defined and implemented SLI dashboards to allow development teams easy access to performance metrics<br><a href="{{ url_for('static', filename='images/pas_sli.png') }}" title="PAS SLI Dashboard" class="image-link">PAS SLI Dashboard</a>
+          <br><a href="{{ url_for('static', filename='images/service_sli.png') }}" title="Service SLI Dashboards" class="image-link">Service SLI Dashboards</a><br>
+          <a href="{{ url_for('static', filename='images/pks_sli.png') }}" title="PKS SLI dashboards" class="image-link">PKS SLI dashboards</a>
         </div>
       </li>
       <li>
         <div>
           <time>Fiserv - Automations</time><b>Custom Control Plane</b><br>
-          Designed and built a <a href="images/bosh_generic.jpg" title="Centralized BOSH environment" class="image-link">centralized bosh environment</a> for dashboards and automation of the disparate production environments. <br><a href="https://github.com/theautoroboto/standalone-bosh">Work-in-Progress public solution</a>
+          Designed and built a <a href="{{ url_for('static', filename='images/bosh_generic.jpg') }}" title="Centralized BOSH environment" class="image-link">centralized bosh environment</a> for dashboards and automation of the disparate production environments. <br><a href="https://github.com/theautoroboto/standalone-bosh">Work-in-Progress public solution</a>
         </div>
       </li>
       <li>
@@ -172,8 +172,8 @@
       <li>
         <div>
           <time>Fiserv - Monitoring</time>Using Splunk, Grafana, AlertManager, and Prometheus; I designed and built monitors, alerts, and custom dashboards for 14 foundations, ensuring we were aware of issues before our customers were impacted<br>
-          <a href="images/probes.png" title="HTTP Probe dashboard" class="image-link">HTTP Probe dashboard</a><br>
-          <a href="images/allocations.png" title="Environment allocations" class="image-link">Environment allocations</a>
+          <a href="{{ url_for('static', filename='images/probes.png') }}" title="HTTP Probe dashboard" class="image-link">HTTP Probe dashboard</a><br>
+          <a href="{{ url_for('static', filename='images/allocations.png') }}" title="Environment allocations" class="image-link">Environment allocations</a>
         </div>
       </li>
       <li>
@@ -221,12 +221,12 @@
       </li>
       <li>
         <div>
-          <time>Independent Consulting</time><a href="documents/Webforce/Rhema_Site.htm">Rhema Order System</a><br>I was contracted to build an internal system to allow order processing to be completed.
+          <time>Independent Consulting</time>Rhema Order System<br>I was contracted to build an internal system to allow order processing to be completed.
         </div>
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><a href="documents/Grange/NewUserTool.png">New User Tool</a><br>
+          <time>Grange Insurance - Automations</time>New User Tool<br>
           The steps to create a new user required accessing many different tools and systems and entering the same information many times. 
           I created a tool to allow the process to be complete from a single interface. 
         </div>
@@ -244,7 +244,7 @@
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><a href="documents/Grange/NestedReport.htm">Nested Group report</a><br>
+          <time>Grange Insurance - Automations</time>Nested Group report<br>
           As the Active Directory administrator, I would often get requests to produce reports of group members. 
           I would also receive requests to add groups within groups. I wanted a tool I could give to IT managers to 
           produce this report and produce a report showing the impact of nesting groups.
@@ -252,7 +252,7 @@
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><a href="documents/Grange/LocalAdmin.png">Local Account enforcement</a><br>
+          <time>Grange Insurance - Automations</time>Local Account enforcement<br>
           I created this tool while we were in the process of standardizing the groups allowed in the 
           local administrators group on workstations. The tool would display the members of the administrators 
           groups, allowing the helpdesk to remotely reset to our pre-defined standard. This would also allow 
@@ -261,26 +261,26 @@
       </li>
       <li>
         <div>
-          <time><a href="documents/Grange/star award.jpg">Grange Insurance - Star Award</a></time>
+          <time>Grange Insurance - Star Award</time>
         </div>
       </li>
       <li>
         <div>
-          <time><a href="documents/Grange/AutoRespondProject.htm">Grange Insurance - Golden Trash Can Award - Runner up</a></time>
+          <time>Grange Insurance - Golden Trash Can Award - Runner up</time>
         </div>
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><a href="documents/Grange/Image Import.jpg">Image Import/Assign employee IDs</a><br>The image import process is one I am particularly proud of. 
+          <time>Grange Insurance - Automations</time>Image Import/Assign employee IDs<br>The image import process is one I am particularly proud of.
           HR did not want to open the system to allow users to upload their own pictures to their AD account in fear of the unexpected. Management wanted the 
           pictures to put faces to names. Security wanted the pictures to assist in identifying potential unhappy ex-employees. As the AD administrator, I 
           needed a common static attribute to assign to user objects outside of a GUID.  My automated process achieved what was previously thought to be unachievable. 
-          While a properly configured Identity and Access management system would have achieved this, it was not in the budget in the foreseeable future. <br><a href="documents/Grange/ImageImport_Technical_Specification.htm">Tech spec</a>
+          While a properly configured Identity and Access management system would have achieved this, it was not in the budget in the foreseeable future. <br>Tech spec
         </div>
       </li>
       <li>
         <div>
-          <time>Grange Insurance - Automations</time><b><a class="image-link" href="./images/PeopleSoftImports.png" title="PeopleSoft Imports">PeopleSoft Imports</a></b><br>
+          <time>Grange Insurance - Automations</time><b><a class="image-link" href="{{ url_for('static', filename='images/PeopleSoftImports.png') }}" title="PeopleSoft Imports">PeopleSoft Imports</a></b><br>
           I was chosen to architect and implement PeopleSoft General Ledger. This required file imports from several different systems. 
           PeopleSoft did not have a method of completing this task without manually running a command directly on the server. I created a process to monitor a folder and act upon the file as directed. 
           The process would run the VB Script on the PeopleSoft server from the central FTP server location. 
@@ -1130,7 +1130,7 @@
 -      </li>
 -      <li>
 -        <div>
--          <time>Cardinal Health - Automations</time><a href="documents/Cardinal/EMS Intranet Revised.wmv">EMS Intranet Site</a><br>Using VB.Net, VB Script, Java Script, C#, ASP.Net, APS, XML, Action Script, and HTML (Yeah, I know. A bit of everything); I built the intranet site for our team.
+-          <time>Cardinal Health - Automations</time>EMS Intranet Site<br>Using VB.Net, VB Script, Java Script, C#, ASP.Net, APS, XML, Action Script, and HTML (Yeah, I know. A bit of everything); I built the intranet site for our team.
 -          The site would provide user and management insight into our team. This gave us an avenue to communicate issues and project timelines. The site provided an automated way for users to enter trouble tickets without requiring access to the ticketing system.
 -          The site provided a web form for other administrators to easily and quickly enter details on issues and maintenance. The site acted as a document repository to provide documentation and diagrams to the user community.
 -          Policy and Procedures were clearly defined here

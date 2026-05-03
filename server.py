@@ -12,6 +12,10 @@ def about():
     # Wants a template folder
     return render_template('about.htm')
 
+@app.route('/blog/seniority-paradox')
+def blog_seniority_paradox():
+    return render_template('seniority-paradox.htm')
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.htm'), 404

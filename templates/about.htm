@@ -3,9 +3,20 @@
 <head>
     <title>Playing With Python</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='new.css') }}">
 </head>
 <body>
-    All about My Py Play page
+    <nav class="top-nav">
+      <ul>
+        <li><a href="{{ url_for('website') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('blog_seniority_paradox') }}">Blog</a></li>
+        <li><a href="/resume.html">Resume</a></li>
+      </ul>
+    </nav>
+    <div style="padding: 20px;">
+        All about My Py Play page
+    </div>
     <script scr="static/index.js"></script>
     <script data-goatcounter="https://theautoroboto.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>

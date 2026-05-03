@@ -732,3 +732,42 @@ label:hover { color: var(--muted); cursor: pointer; }
 
 .popup .close:hover { color: var(--accent); }
 .popup .content { max-height: 30%; overflow: auto; }
+
+/* ================================================================
+   NAVIGATION MENU
+   ================================================================ */
+
+.top-nav {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 15px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.top-nav a {
+  font-family: var(--font-mono);
+  color: var(--text);
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.top-nav a:hover, .top-nav a.active {
+  color: var(--accent);
+}

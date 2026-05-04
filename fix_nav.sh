@@ -1,1 +1,0 @@
-sed -i 's|<li><a href="seniority-paradox.html">Blog</a></li>|<li><a href="about.htm">About</a></li>\n    <li><a href="seniority-paradox.html">Blog</a></li>|g' index.htm resume.html seniority-paradox.html

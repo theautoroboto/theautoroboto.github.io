@@ -771,3 +771,10 @@ label:hover { color: var(--muted); cursor: pointer; }
 .top-nav a:hover, .top-nav a.active {
   color: var(--accent);
 }
+
+
+@media print {
+  .screen-only {
+    display: none !important;
+  }
+}

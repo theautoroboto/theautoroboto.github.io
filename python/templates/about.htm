@@ -1,13 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Playing With Python</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Brian W. Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='new.css') }}">
+  <style>
+    .about-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px 80px 20px;
+        font-family: 'Source Serif 4', serif;
+        color: #ccd6f6;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+    .about-section h2 {
+        font-family: 'JetBrains Mono', monospace;
+        color: #64ffda;
+        font-size: 1.5rem;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #233554;
+        padding-bottom: 10px;
+    }
+    .about-section p {
+        margin-bottom: 20px;
+    }
+    .about-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .about-section ul li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+    .about-section ul li::before {
+        content: "▹";
+        color: #64ffda;
+        position: absolute;
+        left: 0;
+    }
+  </style>
 </head>
 <body>
-    All about My Py Play page
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
-    <script data-goatcounter="https://theautoroboto.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<nav class="top-nav">
+  <ul>
+    <li><a href="{{ url_for('website') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About</a></li>
+    <li><a href="{{ url_for('blog_seniority_paradox') }}">Blog</a></li>
+    <li><a href="/resume.html">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; padding-top: 80px;">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Getting to know the real me</div>
+    <h1 class="hero-name">Beyond the Terminal</h1>
+    <div class="hero-role">Because there's more to life than uptime and pipelines.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT CONTENT
+     ============================================================ -->
+<section class="about-section">
+    <h2>Family & Home</h2>
+    <p>When I'm not orchestrating enterprise-scale infrastructure, my world revolves around my family. I love spending time with my wife and our three amazing kids. My son is a true inspiration—a craniopharyngioma survivor who reminds me every day of what resilience really looks like.</p>
+    <p>Our home is always full of life (and a bit of chaos), thanks to our vibrant crew of three dogs and two cats. They keep us on our toes and make sure there's never a dull moment.</p>
+
+    <h2>Hobbies & Interests</h2>
+    <p>I thrive on finding a balance between the digital and the natural world. Here's what I love doing to recharge:</p>
+    <ul>
+        <li><strong>The Great Outdoors:</strong> Whether it's a quiet hike or just taking in the fresh air, I love being outdoors.</li>
+        <li><strong>Culinary Adventures:</strong> I have a real passion for cooking. There's something incredibly satisfying about bringing ingredients together to create a great meal.</li>
+        <li><strong>Casual Gaming:</strong> I enjoy unwinding with a good game. I'm a casual gamer at heart and still have a major soft spot for classic side-scrollers.</li>
+        <li><strong>Reading:</strong> A good book is the best escape. My absolute favorites are <em>Into the Wild</em> and <em>The Untethered Soul</em>.</li>
+    </ul>
+
+    <h2>Fun Facts</h2>
+    <p>A few more things that make me, well, me:</p>
+    <ul>
+        <li><strong>Live Music:</strong> I am a huge fan of Nine Inch Nails—I've seen them live 23 times!</li>
+        <li><strong>Ink:</strong> I have a number of tattoos, each with its own story and meaning.</li>
+    </ul>
+
+    <h2>My Philosophy</h2>
+    <p>I believe in keeping things simple and positive, both in my personal life and in my career.</p>
+    <ul>
+        <li><strong>Daily Goal:</strong> I strive to accomplish at least one thing a day to be proud of.</li>
+        <li><strong>The Golden Rule:</strong> Put good into the world, and good will return.</li>
+        <li><strong>The Dream:</strong> I have a dream of a frictionless environment where all personalities and opinions can live in blissful harmony—a lofty goal, maybe, but one worth working toward every single day.</li>
+    </ul>
+</section>
+
+<script data-goatcounter="https://theautoroboto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -86,7 +86,7 @@ async function sendMessage() {
     } catch (err) {
         assistantBubble.classList.remove('streaming');
         assistantBubble.classList.add('error');
-        assistantBubble.textContent = `Couldn't reach the backend. Make sure ask_brian_api.py is running (python ask_brian_api.py). Error: ${err.message}`;
+        assistantBubble.textContent = `Couldn't reach the backend. Make sure api/app.py is running (python api/app.py). Error: ${err.message}`;
         history.pop(); // remove the user message so conversation stays coherent
     } finally {
         setLoading(false);

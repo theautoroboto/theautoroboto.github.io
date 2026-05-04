@@ -27,4 +27,4 @@ def family_blog():
 
 @app.route('/favicon.ico')
 def favicon():
-    return 'This is my family blog'
+    return '', 404

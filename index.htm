@@ -106,16 +106,6 @@
     </li>
     <li>
       <div>
-        <time>2026</time><b>FedRAMP Moderate Remediation — NIST 800-53 Controls &amp; Observability Platform</b>
-        <ul>
-          <li>Leading FedRAMP Moderate compliance remediation for the ROSA Regional Platform</li>
-          <li>Implementing 13+ NIST 800-53 Rev 5 controls spanning AU, AC, SC, SI, RA, IA, CA, and CP families</li>
-          <li>Enhanced platform visibility by architecting Thanos and Grafana observability suites, utilizing IaC to ensure consistent, repeatable deployments across multi-cluster environments</li>
-        </ul>
-      </div>
-    </li>
-    <li>
-      <div>
         <time>2026</time><b>ROSA Regional Platform — GitOps Pipeline Architecture &amp; Reliability Engineering</b>
         <ul>
           <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy — a meta-pipeline provisioner that dynamically creates, updates, and destroys per-cluster pipelines from Git commits — scaling infrastructure delivery to hundreds of independent regional EKS clusters without operator intervention</li>
@@ -145,13 +135,13 @@
     </li>
     <li>
       <div>
-        <time>2026 Q1</time><b>ROSA Regional Platform — Secret Management, Pipeline Modernization &amp; Observability Scale-Out</b>
+        <time>2026</time><b>ROSA Regional Platform — FedRAMP Moderate Remediation, Secret Management &amp; Observability</b>
         <ul>
-          <li>Architected and implemented a comprehensive Secret Management framework for the ROSA Regional Platform, establishing a secure, scalable standard for sensitive credential handling across multi-region infrastructure.</li>
-          <li>Engineered an automated AWS Sandbox account leasing system to provide ephemeral, isolated environments for end-to-end testing, significantly reducing infrastructure drift and resource contention.</li>
-          <li>Modernized infrastructure delivery by migrating legacy Terraform provisioning into containerized workflows, enhancing pipeline portability and ensuring environment consistency across the CI/CD lifecycle.</li>
-          <li>Orchestrated the global expansion of the Red Hat Observability Stack by developing reusable Infrastructure as Code (IaC) modules, enabling rapid, consistent deployments across multiple new geographic regions.</li>
-          <li>Validated the Terraform-based deployment architecture for ROSA Hosted Control Planes (HCP) to ensure alignment with FedRAMP Moderate security baselines and NIST 800-53 controls</li>
+          <li>Drove FedRAMP Moderate compliance remediation across the ROSA Regional Platform, implementing 13+ NIST 800-53 Rev 5 controls spanning AU, AC, SC, SI, RA, IA, CA, and CP families; performed control-by-control mapping of HCP Terraform modules against NIST 800-53 Rev 5, annotating resource definitions with control IDs and surfacing gaps to the authorization team for remediation prioritization</li>
+          <li>Deployed a unified Thanos, Prometheus, Alertmanager, and Grafana observability suite using parameterized Terraform modules — a single variable change drives a full regional deployment with no config duplication</li>
+          <li>Designed and rolled out a Secret Management framework using AWS Secrets Manager and Vault sidecar injection — enforcing least-privilege IAM policies per service, rotating credentials on a defined TTL, and eliminating plaintext secrets from all repositories</li>
+          <li>Built an AWS Sandbox account leasing system in Python backed by DynamoDB state tracking — accounts claimed via API, provisioned with scoped IAM roles and SCPs, automatically reclaimed and scrubbed after test completion, cutting environment setup from hours to minutes</li>
+          <li>Containerized Terraform execution in Docker images pinned to specific provider versions, run through CodeBuild with OIDC-based AWS credential federation — removing tfstate drift and making every infrastructure change reproducible from CI</li>
         </ul>
       </div>
     </li>
@@ -163,32 +153,30 @@
     </li>
     <li>
       <div>
-        <time>2025 Q4</time><b>Extended Update Support Lifecycle, Terraform Automation &amp; API Cleanup</b>
+        <time>2025</time><b>Extended Update Support Lifecycle, Terraform Automation &amp; API Cleanup</b>
         <ul>
           <li>Managed production rollout of Extended Update Support (EUS) ClusterImageSets, enabling standardized, multi-year support cycles for automated OpenShift cluster provisioning</li>
-          <li>Architected and implemented a comprehensive Terraform automation framework, standardizing infrastructure-as-code (IaC) execution and ensuring repeatable, high-velocity deployments across multi-cloud environments</li>
+          <li>Built a standardized Terraform execution framework enforcing remote S3 state with DynamoDB locking, provider version pinning via <code>.terraform.lock.hcl</code>, and a shared module registry — eliminating state conflicts across teams and making every apply auditable and reproducible across AWS and GCP environments</li>
           <li>Streamlined <a href="https://github.com/openshift/hive" target="_blank">Hive</a> infrastructure by identifying and removing redundant api components, leading to improved system maintainability and a leaner service architecture.</li>
         </ul>
       </div>
     </li>
     <li>
       <div>
-        <time>2025 Q3</time><b>Dynatrace Observability Platform Deployment</b>
+        <time>2025</time><b>Dynatrace Observability Platform Deployment</b>
         <ul>
           <li>Architected and deployed Dynatrace Managed Service across FedRAMP environments, implementing OneAgent log forwarding to satisfy strict federal auditability and centralized monitoring requirements</li>
           <li>Authored detailed Dynatrace architecture diagrams to support Significant Change Requests (SCRs), providing the technical visualization required to secure stakeholder approval for complex observability migrations</li>
-          <li>Streamlined container image management by engineering a secure mirroring pipeline from AWS ECR to Quay, ensuring consistent image availability and local registry performance for the ROSA platform</li>
         </ul>
       </div>
     </li>
     <li>
       <div>
-        <time>2025 Q2</time><b>Backplane FedRAMP Integration &amp; CONMON Remediation</b>
+        <time>2025</time><b>Backplane FedRAMP Integration &amp; CONMON Remediation</b>
         <ul>
           <li>Eliminated critical infrastructure blockers by integrating backplane-cli and backplane-api with FedRAMP-compliant authentication protocols, resolving high-priority bugs that had previously impeded SRE emergency cluster access</li>
           <li>Spearheaded the FedRAMP Continuous Monitoring (CONMON) remediation effort, architecting and deploying compliance-monkey across Management Clusters to automate security auditing and ensure persistent adherence to federal baselines</li>
           <li>Authored the Architecture Decision Record (ADR) for the implementation of the External DNS Operator within FedRAMP-authorized environments, formalizing the technical strategy for secure, automated DNS management</li>
-          <li>Authored the definitive operational playbook for Hosted Control Plane (HCP) upgrades, codifying the sequence for Management and Service Cluster updates to ensure zero-downtime migrations and environment stability</li>
         </ul>
       </div>
     </li>
@@ -200,26 +188,17 @@
     </li>
     <li>
       <div>
-        <time>2025 Q1</time><b>ROSA Hosted Control Plane</b>
+        <time>2024</time><b>ROSA Hosted Control Plane — PrivateLink Architecture &amp; FedRAMP Authorization</b>
         <ul>
-          <li>Architected and implemented AWS PrivateLink support for ROSA Hosted Control Planes (HCP) across all GovCloud regions, establishing secure, private network connectivity that bypasses the public internet for sensitive federal workloads</li>
-          <li>Directed and delivered over 10 comprehensive Hosted Control Plane (HCP) technical training sessions, educating cross-functional teams on Fleet Manager architecture, Service/Management cluster dynamics, and automated AMI deployment pipelines</li>
+          <li>Designed the AWS PrivateLink networking framework for ROSA HCP — cross-account VPC Peering topology, automated AWS infrastructure provisioning — then extended the rollout across all GovCloud regions, establishing private connectivity that bypasses the public internet for sensitive federal workloads</li>
+          <li>Authored mission-critical FedRAMP architectural diagrams for HCP, providing the technical visualizations required for formal system authorization and boundary definition</li>
+          <li>Delivered 10+ HCP technical training sessions covering Fleet Manager architecture, Service/Management cluster dynamics, and automated AMI deployment pipelines</li>
         </ul>
       </div>
     </li>
     <li>
       <div>
-        <time>2024 Q4</time><b>ROSA Hosted Control Plane &amp; Continuous CVE Remediation</b>
-        <ul>
-          <li>Architected and delivered the AWS PrivateLink networking framework for ROSA Hosted Control Planes, designing a secure cross-account VPC Peering strategy and automating the provisioning of underlying AWS infrastructure</li>
-          <li>Authored and finalized mission-critical FedRAMP architectural diagrams for Hosted Control Planes (HCP), providing the high-fidelity technical visualizations required for formal system authorization and boundary definition</li>
-          <li>Optimized platform availability by troubleshooting and resolving critical Keycloak IDP authentication failures and proactively scaling AWS Elastic IP (EIP) limits to support rapid cluster expansion</li>
-        </ul>
-      </div>
-    </li>
-    <li>
-      <div>
-        <time>2024 Q3</time><b>CVE Remediation Sprints &amp; Keycloak Simplification</b>
+        <time>2024</time><b>CVE Remediation Sprints &amp; Keycloak Simplification</b>
         <ul>
           <li>Streamlined the Keycloak identity architecture by decommissioning redundant metrics sidecars, significantly reducing resource overhead and simplifying the container lifecycle for the regional platform</li>
           <li>Codified the ClusterImageSet update lifecycle for the ROSA Regional Platform, authoring the definitive operational playbook to ensure consistent, repeatable version transitions across global management and service clusters</li>
@@ -228,7 +207,7 @@
     </li>
     <li>
       <div>
-        <time>2024 Q2</time><b>Critical User Journey, PSCR Remediations &amp; OCP 4.14 Upgrade Analysis</b>
+        <time>2024</time><b>Critical User Journey, PSCR Remediations &amp; OCP 4.14 Upgrade Analysis</b>
         <ul>
           <li>Defined and formalized the Critical User Journey (CUJ) for 'Create a Cluster' within the ROSA FedRAMP environment, establishing a comprehensive reliability framework through detailed documentation, multi-layer dependency analysis, and full-stack observability traceability</li>
           <li>Directed the comprehensive technical analysis for the OpenShift (OCP) 4.14 regional upgrade, meticulously auditing STS (Security Token Service) policies, version gates, and API deprecations to ensure zero-impact migrations across high-compliance clusters</li>
@@ -237,7 +216,7 @@
     </li>
     <li>
       <div>
-        <time>2024 Q1</time><b>Keycloak Observability &amp; Day 2 Alerting Improvements</b>
+        <time>2024</time><b>Keycloak Observability &amp; Day 2 Alerting Improvements</b>
         <ul>
           <li>Engineered a secure observability pipeline to ship Keycloak identity logs to Splunk, establishing centralized audit trails and real-time security monitoring for the regional platform's authentication layer</li>
           <li>Optimized platform reliability by troubleshooting and resolving critical Keycloak ephemeral storage exhaustion issues and patching AWS SES/SNS logging failures to ensure persistent delivery auditability</li>
@@ -253,7 +232,7 @@
     </li>
     <li>
       <div>
-        <time>2023 Q4</time><b>Keycloak Production Launch &amp; FedRAMP Boundary Diagrams</b>
+        <time>2023</time><b>Keycloak Production Launch &amp; FedRAMP Boundary Diagrams</b>
         <ul>
           <li>Deployed Red Hat build of Keycloak (RHBK) to production via SES — replacing the legacy FedRAMP identity provider</li>
           <li>Architected and authored six comprehensive FedRAMP Boundary Architecture Diagrams, establishing the definitive technical visualization for Customer Clusters, SREP Administration, and Keycloak/KCM identity services to secure formal system authorization</li>
@@ -263,7 +242,7 @@
     </li>
     <li>
       <div>
-        <time>2023 Q3</time><b>AWS Security Services Deployment &amp; FedRAMP Hardening</b>
+        <time>2023</time><b>AWS Security Services Deployment &amp; FedRAMP Hardening</b>
         <ul>
           <li>Automated the deployment of AWS Config, GuardDuty, and SecurityHub using Terraform, establishing a hardened security baseline and continuous compliance monitoring across the ROSA FedRAMP infrastructure</li>
           <li>Eliminated critical infrastructure technical debt by resolving an AWS Account Operator networking cleanup defect and successfully orchestrating the platform-wide migration from PagerDuty to GoAlert, streamlining incident response workflows</li>
@@ -272,7 +251,7 @@
     </li>
     <li>
       <div>
-        <time>2023 Q2</time><b>GoAlert Maintenance</b>
+        <time>2023</time><b>GoAlert Maintenance</b>
         <ul>
           <li>Streamlined the GoAlert deployment lifecycle by redirecting the GitLab build repository to the managed internal fork, mitigating risks associated with external upstream changes and stabilizing regional platform releases</li>
           <li>Conducted a comprehensive gap analysis of the regional platform's observability stack, identifying and remediating missing Splunk datasets to restore critical audit trails and security visibility across FedRAMP environments</li>
@@ -281,9 +260,8 @@
     </li>
     <li>
       <div>
-        <time>2023 Q1</time><b>GoAlert Production Deployment &amp; FedRAMP OSDE2E</b>
+        <time>2023</time><b>FedRAMP Platform Operations — SSO Architecture &amp; Toil Reduction</b>
         <ul>
-          <li>Spearheaded the production deployment of GoAlert as the primary on-call alerting platform for FedRAMP environments, orchestrating the full lifecycle from Initial PoC through Configure Alert Manager Operator integration and VPCE network architecture</li>
           <li>Engineered the standardized framework for integrating Single Sign-On (SSO) across the AWS organization, establishing a secure, scalable methodology for centralized identity management and federated access control</li>
           <li>Spearheaded the FedRAMP Maintenance and Toil Reduction epic, directing a cross-functional initiative to automate repetitive operational tasks and reclaim engineering velocity within high-compliance environments</li>
         </ul>
@@ -291,7 +269,7 @@
     </li>
     <li>
       <div>
-        <time>2022 Q4</time><b>GoAlert Launch &amp; Alerting Infrastructure</b>
+        <time>2022</time><b>GoAlert Launch &amp; Alerting Infrastructure</b>
         <ul>
           <li>Engineered the production rollout of GoAlert within FedRAMP-authorized environments, orchestrating the end-to-end app-interface onboarding and deep-level integration with Configure Alert Manager Operator to provide secure, high-availability incident response</li>
           <li>Remediated critical Splunk configuration defects that were obstructing automated alerting for Malware Detected events, restoring mission-critical security visibility and ensuring rapid incident response capabilities for the regional platform</li>
@@ -301,18 +279,17 @@
     </li>
     <li>
       <div>
-        <time>2022 Q3</time><b>Terraform GitOps, Infrastructure Refactoring &amp; Incident Preparedness</b>
+        <time>2022</time><b>Terraform GitOps, Infrastructure Refactoring &amp; Incident Preparedness</b>
         <ul>
           <li>Executed a technical spike of Atlantis to architect a GitOps-driven Terraform automation workflow, evaluating its ability to standardize pull-request-based infrastructure changes and enhance peer review transparency across the engineering organization</li>
           <li>Completed major infrastructure refactoring — stackarmor_network, stackarmor_shared_services, SREP, and PrivateLink terraform repos</li>
-          <li>Led the production rollout of GoAlert, establishing a hardened deployment framework and performing end-to-end functional testing to verify mission-critical alerting paths and cross-service dependencies within FedRAMP security boundaries</li>
           <li>Directed comprehensive incident response tabletop exercises, simulating both Standard and Catastrophic Loss scenarios to validate organizational readiness and bridge operational gaps within high-compliance environments</li>
         </ul>
       </div>
     </li>
     <li>
       <div>
-        <time>2022 Q2</time><b>FedRAMP Integration Validation &amp; Platform Foundations</b>
+        <time>2022</time><b>FedRAMP Integration Validation &amp; Platform Foundations</b>
         <ul>
           <li>Validated the ROSA CLI toolchain and cluster deployment architecture for high-compliance regions, confirming the integrity of the provisioning pipeline and cross-service authentication within the FedRAMP boundary/li>
           <li>Hardened the platform's security posture through the global implementation of VPC Flow Logs, providing the deep-packet metadata necessary for advanced threat detection and proactive network troubleshooting across long-lived production environments</li>

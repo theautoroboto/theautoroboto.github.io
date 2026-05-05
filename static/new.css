@@ -348,7 +348,7 @@ a:hover { color: var(--accent); }
   content: '';
   position: absolute;
   left: 50%;
-  bottom: 0;
+  top: 14px;
   transform: translateX(-50%);
   width: 12px;
   height: 12px;

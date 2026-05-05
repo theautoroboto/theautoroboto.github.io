@@ -94,5 +94,5 @@ function clearOutput() {
 function showError(msg) {
     placeholder.classList.add('hidden');
     content.innerHTML = '';
-    errorEl.textContent = `Error: ${msg}. Make sure the backend is running (python fedramp_api.py).`;
+    errorEl.textContent = `Error: ${msg}. Make sure the backend is running (python api/app.py).`;
 }

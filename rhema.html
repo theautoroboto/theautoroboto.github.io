@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rhema Order System — Brian W. Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./static/new.css">
+  <style>
+    :root {
+      --accent: #b8891e;
+      --accent-light: #f5ecd4;
+      --border: #e0ddd6;
+      --muted: #6e6a82;
+      --text: #1a1a26;
+      --surface: #f7f6f3;
+      --serif: 'Source Serif 4', Georgia, serif;
+      --mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    body {
+      font-family: var(--serif);
+      color: var(--text);
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      font-size: 10.5pt;
+      line-height: 1.65;
+    }
+
+    .page-header {
+      border-bottom: 2.5px solid var(--accent);
+      padding: 40px 0 20px;
+      margin-bottom: 40px;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      font-family: var(--mono);
+      font-size: 8pt;
+      color: var(--muted);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .overview {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      font-size: 10.5pt;
+      line-height: 1.7;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 7pt;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+    }
+
+    .caption {
+      font-size: 10pt;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+
+    .screenshot {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .screenshot-label {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .screenshot-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .screenshot-pair .screenshot {
+      margin-bottom: 0;
+    }
+
+    .tech-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 3px 9px;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <ul>
+    <li><a href="index.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="seniority-paradox.html">Blog</a></li>
+    <li><a href="resume.html">Resume</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Independent Contract Project</div>
+  <h1>Rhema Order System</h1>
+  <div class="meta">
+    <span>Client: Rhema Christian Center</span>
+    <span>Stack: VB.NET · MS Access · SharePoint 365</span>
+    <span>Role: Solo Developer</span>
+  </div>
+</div>
+
+<div class="overview">
+  The purpose of this supply order form was to provide a method for employees of Rhema Christian Center
+  to easily submit requests for supplies. They already had a system built within SharePoint 365, but its
+  functions were limited and not all employees had access. Staff are spread throughout the country but all
+  have internet access. I exported their existing database from SharePoint to an Access database, allowing
+  me to build upon established internal processes. A live connector between SharePoint and the Access
+  database ensures any additions made in SharePoint appear in this application — and new orders entered
+  here are automatically sent to SharePoint for fulfillment. Users receive email notifications at each step
+  of their order lifecycle.
+</div>
+
+<!-- LOGIN -->
+<div class="section">
+  <div class="section-label">Authentication</div>
+  <p class="caption">
+    The initial page presents a login screen. Credentials are pulled from the Access database with
+    passwords stored in an encrypted state. Failed attempts are caught and surfaced before proceeding.
+  </p>
+  <img class="screenshot" src="static/documents/rhema/image1.png" alt="Login screen">
+  <div class="screenshot-label">Login · credentials validated against encrypted Access database</div>
+
+  <img class="screenshot" src="static/documents/rhema/image2.png" alt="Password verification">
+  <div class="screenshot-label">Password verification · failed attempts handled gracefully</div>
+</div>
+
+<!-- USER OPTIONS -->
+<div class="section">
+  <div class="section-label">User Dashboard</div>
+  <p class="caption">
+    Once logged in, users are presented with options based on their role. Administrators have additional
+    access to user management; standard users see only the order-related options.
+  </p>
+  <img class="screenshot" src="static/documents/rhema/image3.png" alt="User options after login">
+  <div class="screenshot-label">Dashboard · options vary by role (admin vs. standard user)</div>
+</div>
+
+<!-- USER MANAGEMENT -->
+<div class="section">
+  <div class="section-label">User Management</div>
+  <p class="caption">
+    Administrators can add new users by collecting basic profile information. Non-administrator
+    accounts do not have access to this screen.
+  </p>
+  <div class="screenshot-pair">
+    <div>
+      <img class="screenshot" src="static/documents/rhema/image4.png" alt="Add new user form">
+      <div class="screenshot-label">Admin: new user profile form</div>
+    </div>
+    <div>
+      <img class="screenshot" src="static/documents/rhema/image5.png" alt="Non-admin restricted view">
+      <div class="screenshot-label">Standard user: create-user option hidden</div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER CREATION -->
+<div class="section">
+  <div class="section-label">Order Creation</div>
+  <p class="caption">
+    Creating a supply order collects all required information. The Ministry dropdown is populated
+    dynamically from the database — as Ministries and Departments are added or removed in SharePoint,
+    the change is replicated here automatically. Users can submit the order, save it for later,
+    delete it, or cancel any changes.
+  </p>
+  <img class="screenshot" src="static/documents/rhema/image6.png" alt="Order creation form">
+  <div class="screenshot-label">Order form · Ministry list synced from SharePoint</div>
+
+  <img class="screenshot" src="static/documents/rhema/image7.png" alt="Order form options">
+  <div class="screenshot-label">Order actions: submit · save · delete · cancel</div>
+
+  <img class="screenshot" src="static/documents/rhema/image8.png" alt="Saved order confirmation">
+  <div class="screenshot-label">Saved orders are accessible from the Your Orders page</div>
+</div>
+
+<!-- ORDER MANAGEMENT -->
+<div class="section">
+  <div class="section-label">Order Management</div>
+  <p class="caption">
+    The Your Orders page shows all submitted, saved, and completed orders. Orders in the submitted
+    state have been sent to SharePoint for processing; once fulfilled in SharePoint, the record is
+    updated here automatically. Orders can be expanded to view item details, and saved orders can
+    be reopened for editing, re-submission, or deletion.
+  </p>
+  <img class="screenshot" src="static/documents/rhema/image9.png" alt="Order list">
+  <div class="screenshot-label">Order history · status synced from SharePoint in real time</div>
+
+  <img class="screenshot" src="static/documents/rhema/image10.png" alt="Order detail expanded">
+  <div class="screenshot-label">Expanded order detail · saved orders re-open for full editing</div>
+</div>
+
+<!-- TECH -->
+<div class="section">
+  <div class="section-label">Technologies Used</div>
+  <div class="tech-tags">
+    <span class="tag">VB.NET</span>
+    <span class="tag">MS Access</span>
+    <span class="tag">SharePoint 365</span>
+    <span class="tag">SQL</span>
+    <span class="tag">Email Automation</span>
+    <span class="tag">Role-based Access Control</span>
+    <span class="tag">Data Encryption</span>
+    <span class="tag">SharePoint Connector</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -308,7 +308,7 @@
     cloud-native platform engineering, and security automation at scale. Deep expertise in OpenShift/Kubernetes, AWS GovCloud,
     Terraform IaC, and NIST 800-53 Rev 5 control implementation. Proven track record of building greenfield platforms, leading
     cross-functional teams, and delivering compliance-driven engineering across regulated federal environments.
-    Currently architecting ROSA's FedRAMP Moderate control surface and AI-powered compliance automation tooling.
+    Currently leading FIPS cryptographic validation, Secret Management platform engineering, FedRAMP Moderate remediation, and AI-powered compliance automation across the ROSA Regional Platform.
   </div>
 </div>
 
@@ -346,12 +346,14 @@
     <div class="role-block">
       <div class="role-label">Principal SRE (January 2026 – Present) &nbsp;·&nbsp; Principal SRE Team Lead (January 2025 – January 2026)</div>
       <ul class="bullets">
-        <li>Orchestrated FedRAMP Moderate compliance remediation for the ROSA Regional Platform, implementing 13+ NIST 800-53 Rev 5 controls across AU, AC, SC, SI, RA, IA, CA, and CP families; architected Thanos and Grafana observability suites via IaC across multi-cluster environments.</li>
-        <li>Led FedRAMP Continuous Monitoring (CONMON) remediation, deploying compliance-monkey across Management Clusters to automate security auditing and ensure persistent adherence to federal baselines.</li>
-        <li>Architected AWS PrivateLink support for ROSA Hosted Control Planes (HCP) across all GovCloud regions, enabling secure private network connectivity for sensitive federal workloads; delivered 10+ cross-functional HCP training sessions.</li>
-        <li>Architected and deployed Dynatrace Managed Service across FedRAMP environments with OneAgent log forwarding; authored Significant Change Request (SCR) architecture diagrams to secure stakeholder approval for complex observability migrations.</li>
-        <li>Built a fully automated FedRAMP audit system (Claude Sonnet sub-agent) evaluating ~800 NIST 800-53 controls across ROSA repositories, producing Jira tickets, GitHub PRs, and executive-summary PDFs per run; integrates Trivy CVE scanning to auto-downgrade Met controls on CRITICAL/HIGH findings.</li>
-        <li>Validated FIPS compliance for OCP on EKS — confirming the Go binary dlopen dispatch path to host kernel flags — and collaborated with Red Hat cryptographic maintainers to implement hardcoded known-answer tests (KAT) for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+        <li>Drove FedRAMP Moderate compliance remediation across the ROSA Regional Platform, implementing 13+ NIST 800-53 Rev 5 controls (AU, AC, SC, SI, RA, IA, CA, CP) and performing control-by-control mapping of HCP Terraform modules against NIST 800-53 Rev 5; deployed a unified Thanos, Prometheus, Alertmanager, and Grafana observability suite via parameterized IaC modules enabling single-variable regional deployments.</li>
+        <li>Designed and deployed a Secret Management framework using AWS Secrets Manager and Vault sidecar injection — enforcing least-privilege IAM policies per service and eliminating plaintext secrets across all repositories; built a Python/DynamoDB Sandbox account leasing system that provisions scoped IAM roles and SCPs and auto-reclaims environments, cutting setup time from hours to minutes.</li>
+        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy — a meta-pipeline provisioner that dynamically creates, updates, and destroys per-cluster pipelines from Git commits — paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster chart delivery; implemented hash-pinned sector-based progressive deployment (integration → staging → production) from a single <code>config_revision</code> change.</li>
+        <li>Engineered zero-trust cross-cluster messaging via AWS IoT Core MQTT (eliminating VPC peering and Transit Gateway coupling), ECS Fargate bootstrap-then-handoff for fully private EKS cluster initialization, and a 17-module reusable Terraform library; built ephemeral CI environments (full provision → e2e → teardown via OpenShift CI Prow) with k6 load testing and automated S3-baseline regression detection.</li>
+        <li>Led FedRAMP CONMON remediation deploying compliance-monkey across Management Clusters; integrated backplane-cli/backplane-api with FedRAMP-compliant auth protocols resolving SRE emergency access blockers; architected AWS PrivateLink for ROSA HCP across all GovCloud regions with cross-account VPC Peering; delivered 10+ HCP technical training sessions.</li>
+        <li>Built a fully automated FedRAMP Compliance Agent (Claude Sonnet sub-agent) evaluating ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls across ROSA repositories — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR), 12 artifacts per run, Trivy CVE integration to auto-downgrade Met controls on CRITICAL/HIGH findings.</li>
+        <li>Orchestrated a cross-vendor FIPS validation effort for OCP on EKS — confirming the Go binary dlopen dispatch path to host kernel flags (<code>/proc/sys/crypto/fips_enabled</code>) using negative-control testing to distinguish infrastructure-level enforcement from binary-level compliance; collaborated with Red Hat cryptographic maintainers on hardcoded KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+        <li>Deployed Dynatrace Managed Service across FedRAMP environments with OneAgent log forwarding; engineered a Keycloak → Splunk log pipeline for centralized audit trails and real-time authentication security monitoring; authored SCR architecture diagrams and ADRs for External DNS Operator and HCP authorization.</li>
       </ul>
     </div>
 
@@ -388,7 +390,7 @@
     </div>
     <div class="job-title">Cloud Engineer</div>
     <ul class="bullets">
-      <li>Joined for the amazing culture and people. Brought my extensive infrastructure experience to the team.</li>
+      <li>Worked with customers to install and configure Immuta's data security platform across Databricks, Athena, Snowflake, and Redshift; leveraged deep Kubernetes expertise and broad infrastructure background to rapidly onboard across data warehouse technologies.</li>
     </ul>
   </div>
 

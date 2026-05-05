@@ -38,39 +38,86 @@ CURRENT ROLE: Red Hat (November 2021 – Present)
 Title progression: Senior SRE → Senior SRE Functional Lead (Dec 2023) → Principal SRE Team Lead
 (Jan 2025) → Principal SRE (Jan 2026 – present).
 
-Red Hat - FedRAMP & Compliance:
-  - Implemented 10+ NIST 800-53 Rev 5 controls directly in Terraform as part of the FedRAMP High
-    ATO effort for ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
-  - Controls implemented: FIPS endpoint enforcement (IA-07, SC-13), PIV/CAC identity validation
-    (IA-08), KMS CMK encryption for CloudWatch and S3 (AU-09), multi-region CloudTrail (AU-12),
-    365-day log retention (AU-11, AC-17), API Gateway access logging (AU-02), system use
-    notification banners (AC-08), least-functionality API method settings (CM-07).
-  - Led FedRAMP annual assessment workstreams and Significant Change Requests.
-  - Designed and deployed an AI agent workflow using Claude to automate FedRAMP control
-    evaluation and reporting, significantly reducing manual assessment toil.
+Red Hat - Security Validation & Cryptography (2026):
+  - Orchestrated a cross-vendor FIPS validation effort for OCP on EKS, confirming the integrity
+    of the dlopen dispatch path from UBI9-based Go binaries to host-level kernel flags
+    (/proc/sys/crypto/fips_enabled). Repo: https://github.com/theautoroboto/fips-validation
+  - Designed negative-control testing methodologies to distinguish infrastructure-level enforcement
+    from binary-level compliance, mitigating false-positive validation risks.
+  - Collaborated with Red Hat cryptographic maintainers to implement hardcoded known-answer tests
+    (KAT), ensuring NIST SP 800-131A compliance for AES, RSA, and ECDSA algorithm sets.
 
-Red Hat - Platform & Infrastructure:
-  - Joined as a greenfield hire to build the ROSA Regional Platform from scratch on AWS GovCloud.
-  - Championed Infrastructure as Code, establishing Terraform as the foundation for all platform
-    provisioning.
-  - Designed centralized multi-environment AWS CodeBuild deployment pipelines for regional and
-    management clusters with environment-scoped validation, retry logic, and AWS Parameter Store
-    integration.
+Red Hat - FedRAMP & Compliance:
+  - Drove FedRAMP Moderate compliance remediation for the ROSA Regional Platform, implementing
+    13+ NIST 800-53 Rev 5 controls spanning AU, AC, SC, SI, RA, IA, CA, and CP families.
+  - Performed control-by-control mapping of ROSA HCP Terraform modules against NIST 800-53 Rev 5,
+    annotating resource definitions with control IDs and surfacing gaps for remediation prioritization.
+  - Implemented 10+ NIST 800-53 Rev 5 controls directly in Terraform for the FedRAMP High ATO:
+    FIPS endpoint enforcement (IA-07, SC-13), PIV/CAC identity validation (IA-08), KMS CMK
+    encryption for CloudWatch and S3 (AU-09), multi-region CloudTrail (AU-12), 365-day log
+    retention (AU-11, AC-17), API Gateway access logging (AU-02), system use notification banners
+    (AC-08), least-functionality API method settings (CM-07).
+  - Led FedRAMP annual assessment workstreams and Significant Change Requests.
+  - Spearheaded CONMON remediation by architecting and deploying compliance-monkey across
+    Management Clusters to automate security auditing and ensure persistent adherence to baselines.
+  - Authored mission-critical FedRAMP architectural diagrams and ADRs for HCP, External DNS
+    Operator, and Keycloak identity services.
+  - Built a fully automated FedRAMP Compliance Agent (Claude Sonnet sub-agent) evaluating ~700
+    Moderate and ~100 High-only NIST 800-53 Rev 5 controls across ROSA Regional Platform repos,
+    producing 12 artifacts per run. Repo: https://github.com/theautoroboto/compliance-agent/tree/main
+
+Red Hat - GitOps Pipeline Architecture & Platform Engineering:
+  - Architected a 3-tier AWS CodePipeline GitOps hierarchy — a meta-pipeline provisioner that
+    dynamically creates, updates, and destroys per-cluster pipelines from Git commits — scaling
+    infrastructure delivery to hundreds of independent regional EKS clusters without operator
+    intervention.
+  - Designed ArgoCD ApplicationSet Matrix Generators for dynamic multi-cluster application
+    discovery with hash-pinned sector-based progressive deployment (integration → staging →
+    production) from a single config_revision change.
+  - Engineered ECS Fargate bootstrap-then-handoff for fully private EKS cluster initialization
+    and AWS IoT Core MQTT for zero-trust cross-cluster messaging — eliminating VPC peering and
+    Transit Gateway coupling between Regional and Management Clusters.
+  - Built a standardized Terraform execution framework enforcing remote S3 state with DynamoDB
+    locking, provider version pinning via .terraform.lock.hcl, and a shared module registry.
+  - Containerized Terraform execution in Docker images pinned to specific provider versions, run
+    through CodeBuild with OIDC-based AWS credential federation — removing tfstate drift.
+  - Designed and rolled out a Secret Management framework using AWS Secrets Manager and Vault
+    sidecar injection — enforcing least-privilege IAM policies per service and eliminating
+    plaintext secrets from all repositories.
+  - Built an AWS Sandbox account leasing system in Python backed by DynamoDB state tracking —
+    accounts provisioned with scoped IAM roles and SCPs, automatically reclaimed after test
+    completion, cutting environment setup from hours to minutes.
+  - Architected and implemented AWS PrivateLink for ROSA HCP across all GovCloud regions,
+    establishing private connectivity that bypasses the public internet for federal workloads.
+  - Deployed Dynatrace Managed Service across FedRAMP environments with OneAgent log forwarding.
+  - Integrated backplane-cli and backplane-api with FedRAMP-compliant authentication protocols.
+  - Streamlined Hive (https://github.com/openshift/hive) infrastructure by removing redundant
+    API components, improving maintainability and leaning the service architecture.
   - Added concurrent regional and management cluster log monitoring to the e2e test suite.
-    Contributed cluster profile and test job definitions to openshift/release (ROSAENG-34).
 
 Red Hat - Observability:
-  - Deployed Thanos and the Thanos-operator for distributed platform observability.
+  - Deployed a unified Thanos, Prometheus, Alertmanager, and Grafana observability suite using
+    parameterized Terraform modules — a single variable change drives a full regional deployment
+    with no config duplication.
   - Built Grafana dashboards for API Gateway, RDS, IoT Core, and NAT Gateway.
   - Integrated CloudWatch as a Thanos data source.
+  - Engineered a Keycloak log → Splunk pipeline for centralized audit trails and real-time
+    security monitoring of the authentication layer.
+  - Built k6 load testing with automated S3-baseline regression detection.
 
 Red Hat - AI Tooling:
   - Integrated Claude Code deeply into daily engineering workflows as a primary tool.
   - Uses MCP servers for Jira ticket creation/search, Slack messaging, and browser automation.
   - Leverages custom skills for FedRAMP compliance auditing, SREP alert triage, PR review, and
     cluster lifecycle management.
-  - Built and maintains a FedRAMP agent that evaluates NIST 800-53 controls and generates
-    compliance reports.
+  - Built and maintains a FedRAMP Compliance Agent that evaluates ~700 Moderate and ~100
+    High-only NIST 800-53 Rev 5 controls, implementing a 7-step orchestrated workflow: repo
+    cloning → control classification → evidence analysis → report generation → PDF conversion →
+    Google Drive upload → Jira ticket creation and GitHub PR opening.
+  - Integrates Trivy CVE scanning to downgrade Met controls to Gap on CRITICAL/HIGH findings,
+    mapping into SI-02, RA-05, and SA-11 assessments.
+  - Produces 12 artifacts per run — per-repo and cross-repo executive summaries in Markdown and
+    PDF, each with Mermaid control-family heatmaps and delta analysis against prior audits.
   - Uses Claude Code hooks to enforce team standards automatically.
   - Employs the agent SDK to parallelize complex multi-step investigations across the platform.
 
@@ -78,6 +125,8 @@ Red Hat - Leadership (Dec 2023 – Jan 2026):
   - Led a team of 9 SREs using agile methodologies.
   - Responsible for defining and driving projects aligned with business unit priorities.
   - Key initiatives: CVE mitigation, FedRAMP assessments, automating operational toil.
+  - Directed 10+ HCP technical training sessions covering Fleet Manager architecture, Service/
+    Management cluster dynamics, and automated AMI deployment pipelines.
 
 PREVIOUS ROLE: OneStream Software (February 2021 – November 2021)
 =================================================================

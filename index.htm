@@ -96,9 +96,9 @@
 
     <li>
       <div>
-        <time>2026 Q2</time><b>Strategic Security Validation – FedRAMP Compliance &amp; Cryptography</b>
+        <time>2026</time><b>Strategic Security Validation – FedRAMP Compliance &amp; Cryptography</b>
         <ul>
-          <li>Orchestrated a cross-vendor FIPS validation effort for OCP on EKS, confirming the integrity of the dlopen dispatch path from UBI9-based Go binaries to host-level kernel flags (<code>/proc/sys/crypto/fips_enabled</code>)</li>
+          <li>Orchestrated a cross-vendor <a href="https://github.com/theautoroboto/fips-validation" target="_blank">FIPS validation</a> effort for OCP on EKS, confirming the integrity of the dlopen dispatch path from UBI9-based Go binaries to host-level kernel flags (<code>/proc/sys/crypto/fips_enabled</code>)</li>
           <li>Designed negative-control testing methodologies to distinguish infrastructure-level enforcement from binary-level compliance, mitigating false-positive validation risks</li>
           <li>Collaborated with Red Hat cryptographic maintainers to implement hardcoded known-answer tests (KAT), ensuring NIST SP 800-131A compliance for AES, RSA, and ECDSA algorithm sets</li>
         </ul>
@@ -106,11 +106,22 @@
     </li>
     <li>
       <div>
-        <time>2026 Q2</time><b>FedRAMP Moderate Compliance &amp; Security Hardening</b>
+        <time>2026</time><b>FedRAMP Moderate Remediation — NIST 800-53 Controls &amp; Observability Platform</b>
         <ul>
           <li>Leading FedRAMP Moderate compliance remediation for the ROSA Regional Platform</li>
           <li>Implementing 13+ NIST 800-53 Rev 5 controls spanning AU, AC, SC, SI, RA, IA, CA, and CP families</li>
           <li>Enhanced platform visibility by architecting Thanos and Grafana observability suites, utilizing IaC to ensure consistent, repeatable deployments across multi-cluster environments</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <time>2026</time><b>ROSA Regional Platform — GitOps Pipeline Architecture &amp; Reliability Engineering</b>
+        <ul>
+          <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy — a meta-pipeline provisioner that dynamically creates, updates, and destroys per-cluster pipelines from Git commits — scaling infrastructure delivery to hundreds of independent regional EKS clusters without operator intervention</li>
+          <li>Designed ArgoCD ApplicationSet Matrix Generators for dynamic multi-cluster application discovery; zero-config chart additions via directory commit; implemented hash-pinned sector-based progressive deployment (integration → staging → production) enabling auditable, gated production promotions from a single <code>config_revision</code> change</li>
+          <li>Engineered ECS Fargate bootstrap-then-handoff pattern for fully private EKS cluster initialization, and AWS IoT Core MQTT for zero-trust cross-cluster messaging — eliminating VPC peering and Transit Gateway coupling between Regional and Management Clusters</li>
+          <li>Built ephemeral CI environment lifecycle in Python (full provision → e2e test → GitOps teardown via OpenShift CI Prow), k6 load testing with automated S3-baseline regression detection, and a 17-module reusable Terraform library enabling consistent, scalable multi-region IaC delivery</li>
         </ul>
       </div>
     </li>
@@ -122,7 +133,7 @@
     </li>
     <li>
       <div>
-        <time>Red Hat — AI Tooling</time><b>FedRAMP Compliance Agent</b>
+        <time>Red Hat — AI Tooling</time><b><a href="https://github.com/theautoroboto/compliance-agent/tree/main" target="_blank">FedRAMP Compliance Agent</a></b>
         <ul>
           <li>Built a fully automated FedRAMP audit system using a Claude Sonnet sub-agent that evaluates ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls across the ROSA Regional Platform repositories</li>
           <li>Implements a 7-step orchestrated workflow: repository cloning → control classification (Inherited / Out of Scope / Red Hat Responsibility) → evidence analysis → report generation → PDF conversion → Google Drive upload → Jira ticket creation and GitHub PR opening</li>
@@ -134,7 +145,7 @@
     </li>
     <li>
       <div>
-        <time>2026 Q1</time><b>ROSA Regionality Platform Engineering &amp; Secret Management</b>
+        <time>2026 Q1</time><b>ROSA Regional Platform — Secret Management, Pipeline Modernization &amp; Observability Scale-Out</b>
         <ul>
           <li>Architected and implemented a comprehensive Secret Management framework for the ROSA Regional Platform, establishing a secure, scalable standard for sensitive credential handling across multi-region infrastructure.</li>
           <li>Engineered an automated AWS Sandbox account leasing system to provide ephemeral, isolated environments for end-to-end testing, significantly reducing infrastructure drift and resource contention.</li>
@@ -156,7 +167,7 @@
         <ul>
           <li>Managed production rollout of Extended Update Support (EUS) ClusterImageSets, enabling standardized, multi-year support cycles for automated OpenShift cluster provisioning</li>
           <li>Architected and implemented a comprehensive Terraform automation framework, standardizing infrastructure-as-code (IaC) execution and ensuring repeatable, high-velocity deployments across multi-cloud environments</li>
-          <li>Streamlined Hive infrastructure by identifying and removing redundant api components, leading to improved system maintainability and a leaner service architecture.</li>
+          <li>Streamlined <a href="https://github.com/openshift/hive" target="_blank">Hive</a> infrastructure by identifying and removing redundant api components, leading to improved system maintainability and a leaner service architecture.</li>
         </ul>
       </div>
     </li>

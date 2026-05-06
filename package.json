@@ -1,0 +1,20 @@
+{
+  "name": "theautoroboto.github.io",
+  "version": "1.0.0",
+  "description": "My website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theautoroboto/theautoroboto.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theautoroboto/theautoroboto.github.io/issues"
+  },
+  "homepage": "https://github.com/theautoroboto/theautoroboto.github.io#readme"
+}

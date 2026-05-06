@@ -1,0 +1,5 @@
+{
+"name": "web_to_pdf",
+"description": "Captures a URL and saves it as a clean PDF file.",
+"command": "npx playwright pdf --wait-for-timeout 3000 --remove-elements 'nav, .no-print' resume.html static/BrianSmith_Resume_RedHat.pdf"
+}

@@ -423,11 +423,11 @@
 <div class="section">
   <div class="section-title">Summary</div>
   <div class="summary">
-    Principal SRE at Red Hat with 25+ years of enterprise infrastructure experience, specializing in FedRAMP High and Moderate compliance,
+    Principal SRE at Red Hat with 25+ years of enterprise infrastructure experience, specializing in FedRAMP High and Moderate compliance, Zero Trust architecture,
     cloud-native platform engineering, and security automation at scale. Deep expertise in OpenShift/Kubernetes, AWS GovCloud,
     Terraform IaC, and NIST 800-53 Rev 5 control implementation. Proven track record of building greenfield platforms, leading
     cross-functional teams, and delivering compliance-driven engineering across regulated federal environments.
-    Currently leading FIPS cryptographic validation, Secret Management platform engineering, FedRAMP Moderate remediation, and AI-powered compliance automation across the ROSA Regional Platform.
+    Currently leading FIPS cryptographic validation, Secret Management platform engineering, FedRAMP Moderate remediation, and AI-powered compliance automation across the ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
   </div>
 </div>
 
@@ -436,17 +436,19 @@
   <div class="section-title">Technical Skills</div>
   <div class="skills-grid">
     <div class="skill-item">OpenShift / Kubernetes (CKA)</div>
-    <div class="skill-item">FedRAMP High &amp; Moderate ATO</div>
+    <div class="skill-item">FedRAMP High ATO</div>
     <div class="skill-item">NIST 800-53 Rev 5</div>
     <div class="skill-item">AWS GovCloud / PrivateLink</div>
     <div class="skill-item">Terraform / Infrastructure as Code</div>
-    <div class="skill-item">Splunk / Dynatrace / Grafana</div>
-    <div class="skill-item">Python / Bash / Go</div>
+    <div class="skill-item">Splunk / Dynatrace / Prometheus / Grafana</div>
+    <div class="skill-item">Bash / Python / Go</div>
     <div class="skill-item">CI/CD (Tekton, Jenkins, GitLab)</div>
     <div class="skill-item">Keycloak / IAM / SSO</div>
     <div class="skill-item">Claude AI / MCP / Agent SDK</div>
-    <div class="skill-item">GitOps / Helm / Kustomize</div>
-    <div class="skill-item">Incident Response / CONMON</div>
+    <div class="skill-item">GitOps / ArgoCD / Helm / Kustomize</div>
+    <div class="skill-item">Incident Response / Continuous Monitoring (CONMON)</div>
+    <div class="skill-item">HashiCorp Vault / Secrets Management</div>
+    <div class="skill-item">Zero Trust / FIPS 140-3</div>
   </div>
 </div>
 
@@ -463,15 +465,26 @@
     <div class="job-title">Principal SRE &nbsp;·&nbsp; Principal SRE Team Lead &nbsp;·&nbsp; Senior SRE — ROSA Regional Platform</div>
 
     <div class="role-block">
-      <span class="role-label">Principal SRE (January 2026 – Present) &nbsp;·&nbsp; Principal SRE Team Lead (January 2025 – January 2026)</span>
+      <span class="role-label">Principal SRE (January 2026 – Present)</span>
       <ul class="bullets">
-        <li>Drove FedRAMP Moderate compliance remediation across the ROSA Regional Platform, implementing 13+ NIST 800-53 Rev 5 controls (AU, AC, SC, SI, RA, IA, CA, CP) and performing control-by-control mapping of HCP Terraform modules against NIST 800-53 Rev 5; deployed a unified Thanos, Prometheus, Alertmanager, and Grafana observability suite via parameterized IaC modules enabling single-variable regional deployments.</li>
-        <li>Designed and deployed a Secret Management framework using AWS Secrets Manager and Vault sidecar injection — enforcing least-privilege IAM policies per service and eliminating plaintext secrets across all repositories; built a Python/DynamoDB Sandbox account leasing system that provisions scoped IAM roles and SCPs and auto-reclaims environments, cutting setup time from hours to minutes.</li>
-        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy — a meta-pipeline provisioner that dynamically creates, updates, and destroys per-cluster pipelines from Git commits — paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster chart delivery; implemented hash-pinned sector-based progressive deployment (integration → staging → production) from a single <code>config_revision</code> change.</li>
-        <li>Engineered zero-trust cross-cluster messaging via AWS IoT Core MQTT (eliminating VPC peering and Transit Gateway coupling), ECS Fargate bootstrap-then-handoff for fully private EKS cluster initialization, and a 17-module reusable Terraform library; built ephemeral CI environments (full provision → e2e → teardown via OpenShift CI Prow) with k6 load testing and automated S3-baseline regression detection.</li>
-        <li>Led FedRAMP CONMON remediation deploying compliance-monkey across Management Clusters; integrated backplane-cli/backplane-api with FedRAMP-compliant auth protocols resolving SRE emergency access blockers; architected AWS PrivateLink for ROSA HCP across all GovCloud regions with cross-account VPC Peering; delivered 10+ HCP technical training sessions.</li>
-        <li>Built a fully automated FedRAMP Compliance Agent (Claude Sonnet sub-agent) evaluating ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls across ROSA repositories — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR), 12 artifacts per run, Trivy CVE integration to auto-downgrade Met controls on CRITICAL/HIGH findings.</li>
-        <li>Orchestrated a cross-vendor FIPS validation effort for OCP on EKS — confirming the Go binary dlopen dispatch path to host kernel flags (<code>/proc/sys/crypto/fips_enabled</code>) using negative-control testing to distinguish infrastructure-level enforcement from binary-level compliance; collaborated with Red Hat cryptographic maintainers on hardcoded KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+        <li>Implemented 13+ NIST 800-53 Rev 5 control families (AU, AC, SC, SI, RA, IA, CA, CP) for FedRAMP Moderate compliance across the ROSA Regional Platform, mapping each against HCP (Hosted Control Plane) Terraform modules to produce a gap-closed control inventory.</li>
+        <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
+        <li>Designed and deployed a Secret Management framework via AWS Secrets Manager and Vault sidecar injection, enforcing least-privilege IAM policies per service and eliminating plaintext secrets across all repositories.</li>
+        <li>Built a Python/DynamoDB Sandbox account leasing system provisioning scoped IAM roles and SCPs with auto-reclaim, cutting environment setup from hours to minutes.</li>
+        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner dynamically managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>
+        <li>Eliminated VPC peering and Transit Gateway coupling by engineering zero-trust cross-cluster messaging over AWS IoT Core MQTT; deployed ECS Fargate bootstrap-then-handoff for fully private EKS initialization and a 17-module reusable Terraform library; built ephemeral CI environments (provision → e2e → teardown via Prow) with k6 load testing and S3-baseline regression detection.</li>
+        <li>Automated FedRAMP compliance evaluation via a Claude Sonnet sub-agent pipeline assessing ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR), 12 artifacts per run, with Trivy CVE integration auto-downgrading Met controls on CRITICAL/HIGH findings.</li>
+        <li>Led cross-vendor FIPS validation for OCP on EKS, using negative-control testing on Go binary dlopen dispatch paths to <code>/proc/sys/crypto/fips_enabled</code> to distinguish infrastructure-level from binary-level enforcement; collaborated with Red Hat cryptographic maintainers on KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+      </ul>
+    </div>
+
+    <div class="role-block">
+      <span class="role-label">Principal SRE - Team Lead (January 2025 – January 2026)</span>
+      <ul class="bullets">
+        <li>Led FedRAMP CONMON remediation across a fleet of clusters; resolved SRE emergency access blockers by integrating backplane-cli/backplane-api with FedRAMP-compliant auth protocols.</li>
+        <li>Architected AWS PrivateLink for ROSA HCP across all GovCloud regions with cross-account VPC Peering.</li>
+        <li>Led the migration of 8 ROSA clusters across 2 GovCloud regions from classic to Hosted Control Plane (HCP) architecture, driving cross-functional coordination across multiple Red Hat engineering and product teams to deliver a successful FedRAMP compliance assessment.</li>
+        <li>Developed and delivered 10+ technical training sessions on ROSA HCP to SRE teams across all GovCloud regions, driving large-scale adoption of a newly launched managed control-plane architecture and reducing time-to-productivity for engineers onboarding to the platform.</li>
         <li>Deployed Dynatrace Managed Service across FedRAMP environments with OneAgent log forwarding; engineered a Keycloak → Splunk log pipeline for centralized audit trails and real-time authentication security monitoring; authored SCR architecture diagrams and ADRs for External DNS Operator and HCP authorization.</li>
       </ul>
     </div>
@@ -480,11 +493,11 @@
       <span class="role-label">Senior SRE Functional Lead (December 2023 – January 2025) &nbsp;·&nbsp; Senior SRE (November 2021 – December 2023)</span>
       <ul class="bullets">
         <li>Led a team of 9 SREs; defined and drove agile epics aligned with business priorities — CVE mitigation, annual FedRAMP assessments, Significant Change Requests, and operational toil reduction.</li>
-        <li>Deployed Red Hat build of Keycloak (RHBK) to production, authored six comprehensive FedRAMP Boundary Architecture Diagrams, and engineered real-time synthetic availability monitoring for the identity platform.</li>
-        <li>Automated AWS Config, GuardDuty, and SecurityHub via Terraform, establishing a hardened FedRAMP security baseline; orchestrated platform-wide migration from PagerDuty to GoAlert, reducing incident response latency.</li>
-        <li>Spearheaded production deployment of GoAlert as primary FedRAMP on-call platform (PoC → VPCE network architecture); authored the SSP Access Control validation epic for the ROSA Regional Platform.</li>
-        <li>Built greenfield FedRAMP High GovCloud platform on AWS from scratch; led IaC initiative establishing Terraform as the provisioning foundation; delivered ATO workstreams including annual assessment support.</li>
-        <li>Championed Transit Gateway hub-and-spoke topology for GovCloud, VPC Flow Logs global rollout, and WAF compliance audit across all high-compliance regions.</li>
+        <li>Deployed Red Hat build of Keycloak (RHBK) to production, authored six FedRAMP Boundary Architecture Diagrams, and engineered real-time synthetic availability monitoring for the identity platform.</li>
+        <li>Automated AWS Config, GuardDuty, and SecurityHub via Terraform to establish the FedRAMP security baseline; authored the SSP Access Control validation epic for the ROSA Regional Platform.</li>
+        <li>Led GoAlert deployment as the FedRAMP on-call platform from PoC through VPCE network architecture to production, replacing PagerDuty and reducing on-call escalation latency.</li>
+        <li>Built the greenfield FedRAMP High GovCloud platform on AWS; established Terraform as the IaC provisioning foundation; led ATO workstreams including annual FedRAMP assessment support.</li>
+        <li>Architected Transit Gateway hub-and-spoke topology for GovCloud; drove global VPC Flow Logs rollout and WAF compliance audit across all high-compliance regions.</li>
       </ul>
     </div>
   </div>
@@ -497,7 +510,7 @@
     </div>
     <div class="job-title">First DevOps Engineer</div>
     <ul class="bullets">
-      <li>Migrated 70+ repositories from TFS to Azure DevOps; implemented SonarQube SAST scanning, GitFlow branch strategy, and Azure Pipelines CI/CD as the organization's founding DevOps engineer.</li>
+      <li>As the organization's first DevOps engineer, migrated 70+ repositories from TFS to Azure DevOps and established CI/CD foundations including SonarQube SAST, GitFlow branching, and Azure Pipelines.</li>
     </ul>
   </div>
 
@@ -509,7 +522,7 @@
     </div>
     <div class="job-title">Cloud Engineer</div>
     <ul class="bullets">
-      <li>Worked with customers to install and configure Immuta's data security platform across Databricks, Athena, Snowflake, and Redshift; leveraged deep Kubernetes expertise and broad infrastructure background to rapidly onboard across data warehouse technologies.</li>
+      <li>Deployed and configured Immuta's data security platform for enterprise customers across Databricks, Athena, Snowflake, and Redshift, applying Kubernetes expertise to accelerate onboarding across data warehouse environments.</li>
     </ul>
   </div>
 
@@ -521,10 +534,10 @@
     </div>
     <div class="job-title">Senior System Engineer Lead — Cloud Platform</div>
     <ul class="bullets">
-      <li>Designed and built 16 Pivotal Cloud Foundry foundations supporting 7,000+ microservices; designed and implemented Kubernetes solution into Azure using Pivotal Kubernetes Service (PKS/TKGI).</li>
-      <li>Led the PaaS deployment of a Fiserv presence into Azure; presented at SpringOne 2019 on hybrid-cloud Terraform architecture. Authored Terraform solution for Azure enterprise infrastructure.</li>
+      <li>Designed and built 16 Pivotal Cloud Foundry foundations supporting 7,000+ microservices; deployed Kubernetes into Azure using Pivotal Kubernetes Service (PKS/TKGI).</li>
+      <li>Led Fiserv's PaaS deployment to Azure and authored the enterprise Terraform infrastructure; presented the hybrid-cloud Terraform architecture at SpringOne 2019.</li>
       <li>Built a self-service Kubernetes cluster provisioning platform (web form → Git → pipeline → Helm-deployed Prometheus/Grafana stack + expiration cleanup); designed centralized SLI dashboards across 14 PAS foundations using Grafana, AlertManager, and Prometheus.</li>
-      <li>Achieved Certified Kubernetes Administrator (CKA-2000-008308-0100) certification; formed and trained the Cloud Platform team using agile methodologies.</li>
+      <li>Formed and trained the Cloud Platform team, establishing agile delivery practices across the enterprise Kubernetes and PaaS program.</li>
     </ul>
   </div>
 

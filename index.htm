@@ -111,7 +111,7 @@
           <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy — a meta-pipeline provisioner that dynamically creates, updates, and destroys per-cluster pipelines from Git commits — scaling infrastructure delivery to hundreds of independent regional EKS clusters without operator intervention</li>
           <li>Designed ArgoCD ApplicationSet Matrix Generators for dynamic multi-cluster application discovery; zero-config chart additions via directory commit; implemented hash-pinned sector-based progressive deployment (integration → staging → production) enabling auditable, gated production promotions from a single <code>config_revision</code> change</li>
           <li>Engineered ECS Fargate bootstrap-then-handoff pattern for fully private EKS cluster initialization, and AWS IoT Core MQTT for zero-trust cross-cluster messaging — eliminating VPC peering and Transit Gateway coupling between Regional and Management Clusters</li>
-          <li>Built ephemeral CI environment lifecycle in Python (full provision → e2e test → GitOps teardown via OpenShift CI Prow), k6 load testing with automated S3-baseline regression detection, and a 17-module reusable Terraform library enabling consistent, scalable multi-region IaC delivery</li>
+          <li>Built ephemeral CI environment lifecycle in Python (full provision → e2e test → GitOps teardown via OpenShift CI Prow), with automated S3-baseline regression detection, and a 17-module reusable Terraform library enabling consistent, scalable multi-region IaC delivery</li>
         </ul>
       </div>
     </li>

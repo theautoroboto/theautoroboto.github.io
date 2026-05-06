@@ -103,7 +103,6 @@ Red Hat - Observability:
   - Integrated CloudWatch as a Thanos data source.
   - Engineered a Keycloak log → Splunk pipeline for centralized audit trails and real-time
     security monitoring of the authentication layer.
-  - Built k6 load testing with automated S3-baseline regression detection.
 
 Red Hat - AI Tooling:
   - Integrated Claude Code deeply into daily engineering workflows as a primary tool.

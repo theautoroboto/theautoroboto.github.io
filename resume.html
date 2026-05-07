@@ -423,7 +423,7 @@
 <div class="section">
   <div class="section-title">Summary</div>
   <div class="summary">
-    Principal SRE at Red Hat with 25+ years of production systems experience, specializing in establishing and scaling SRE culture across engineering organizations — defining reliability frameworks, coaching teams on incident management and SLI/SLO ownership, and building observability platforms from the ground up. Deep hands-on expertise in the Grafana observability stack (Thanos, Prometheus, Alertmanager, Grafana), Python and Go, and cloud-native distributed systems at scale. Proven track record building reliability culture from first principles: SLI dashboard architecture across 14 foundations, GoAlert-based incident management, cross-team SRE coaching programs, and AI-powered operational automation — operating environments with 100+ clusters and 7,000+ microservices. Currently driving reliability engineering and observability automation across the ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
+    Principal SRE at Red Hat with 25+ years of production systems experience. Scales SRE culture across large engineering organizations — SLI/SLO frameworks, incident management, and observability platforms built for environments running 100+ Kubernetes clusters and 7,000+ microservices. Deep hands-on expertise in Thanos/Prometheus/Alertmanager/Grafana, Python, Go, and cloud-native infrastructure; currently leading reliability engineering and AI-powered automation across the ROSA Regional Platform on AWS.
   </div>
 </div>
 
@@ -463,25 +463,28 @@
     <div class="role-block">
       <span class="role-label">Principal SRE (January 2026 – Present)</span>
       <ul class="bullets">
-        <li>Implemented 13+ NIST 800-53 Rev 5 control families (AU, AC, SC, SI, RA, IA, CA, CP) for FedRAMP Moderate compliance across the ROSA Regional Platform, mapping each against HCP (Hosted Control Plane) Terraform modules to produce a gap-closed control inventory.</li>
+        <li>Mapped 13 NIST 800-53 Rev 5 control families to HCP Terraform modules for FedRAMP Moderate compliance, producing a fully gap-closed control inventory for the ROSA Regional Platform.</li>
         <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
-        <li>Designed and deployed a Secret Management framework via AWS Secrets Manager and Vault sidecar injection, enforcing least-privilege IAM policies per service and eliminating plaintext secrets across all repositories.</li>
-        <li>Built a Python/DynamoDB Sandbox account leasing system provisioning scoped IAM roles and SCPs with auto-reclaim, cutting environment setup from hours to minutes.</li>
-        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner dynamically managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>
-        <li>Eliminated VPC peering and Transit Gateway coupling by engineering zero-trust cross-cluster messaging over AWS IoT Core MQTT; deployed ECS Fargate bootstrap-then-handoff for fully private EKS initialization and a 17-module reusable Terraform library; built ephemeral CI environments (provision → e2e → teardown via Prow).</li>
-        <li>Automated FedRAMP compliance evaluation via a Claude Sonnet sub-agent pipeline assessing ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR), 12 artifacts per run, with Trivy CVE integration auto-downgrading Met controls on CRITICAL/HIGH findings.</li>
-        <li>Led cross-vendor FIPS validation for OCP on EKS, using negative-control testing on Go binary dlopen dispatch paths to <code>/proc/sys/crypto/fips_enabled</code> to distinguish infrastructure-level from binary-level enforcement; collaborated with Red Hat cryptographic maintainers on KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+        <li>Eliminated plaintext secrets across all repositories by deploying AWS Secrets Manager + Vault sidecar injection with per-service least-privilege IAM policies.</li>
+        <li>Built a Python/DynamoDB sandbox account leasing system with scoped IAM roles, SCPs, and auto-reclaim — cutting environment setup from hours to minutes.</li>
+        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>
+        <li>Eliminated VPC peering and Transit Gateway coupling via zero-trust cross-cluster messaging over AWS IoT Core MQTT, with ECS Fargate bootstrap-then-handoff for fully private EKS initialization.</li>
+        <li>Built a 17-module reusable Terraform library and ephemeral CI environments (provision → e2e → teardown via Prow) for isolated, reproducible testing across clusters.</li>
+        <li>Automated FedRAMP compliance evaluation with a Claude Sonnet sub-agent pipeline — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR) covering ~800 NIST 800-53 controls, with Trivy CVE integration auto-downgrading verified controls on critical findings.</li>
+        <li>Led cross-vendor FIPS validation for OCP on EKS using negative-control testing on Go binary dlopen paths to <code>/proc/sys/crypto/fips_enabled</code>, distinguishing infrastructure-level from binary-level enforcement.</li>
+        <li>Collaborated with Red Hat cryptographic maintainers on KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
       </ul>
     </div>
 
     <div class="role-block">
       <span class="role-label">Principal SRE - Team Lead (January 2025 – January 2026)</span>
       <ul class="bullets">
-        <li>Led FedRAMP CONMON remediation across a fleet of clusters; resolved SRE emergency access blockers by integrating backplane-cli/backplane-api with FedRAMP-compliant auth protocols.</li>
+        <li>Led FedRAMP CONMON remediation across a fleet of clusters and resolved SRE emergency access blockers by integrating backplane-cli with FedRAMP-compliant auth protocols.</li>
         <li>Architected AWS PrivateLink for ROSA HCP across all GovCloud regions with cross-account VPC Peering.</li>
-        <li>Led the migration of 8 ROSA clusters across 2 GovCloud regions from classic to Hosted Control Plane (HCP) architecture, driving cross-functional coordination across multiple Red Hat engineering and product teams to deliver a successful FedRAMP compliance assessment.</li>
-        <li>Developed and delivered 10+ technical training sessions on ROSA HCP to SRE teams across all GovCloud regions, driving large-scale adoption of a newly launched managed control-plane architecture and reducing time-to-productivity for engineers onboarding to the platform.</li>
-        <li>Deployed Dynatrace Managed Service across FedRAMP environments with OneAgent log forwarding; engineered a Keycloak → Splunk log pipeline for centralized audit trails and real-time authentication security monitoring; authored SCR architecture diagrams and ADRs for External DNS Operator and HCP authorization.</li>
+        <li>Led migration of 8 ROSA clusters across 2 GovCloud regions from classic to HCP architecture, coordinating across Red Hat engineering and product teams to pass FedRAMP compliance assessment.</li>
+        <li>Delivered 10+ technical training sessions on ROSA HCP to SRE teams across all GovCloud regions, accelerating adoption of the newly launched managed control-plane architecture.</li>
+        <li>Deployed Dynatrace Managed Service across FedRAMP environments and engineered a Keycloak → Splunk audit log pipeline for real-time authentication monitoring.</li>
+        <li>Authored SCR architecture diagrams and ADRs for External DNS Operator and HCP authorization.</li>
       </ul>
     </div>
 

@@ -338,7 +338,7 @@
       .resume-body {}
 
       .section { margin-bottom: 13px; }
-      .section-title { font-family: var(--mono); font-size: 6.5pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 3px; margin-bottom: 9px; }
+      .section-title { font-family: var(--mono); font-size: 6.5pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 3px; margin-bottom: 9px; page-break-after: avoid; }
       .summary { font-size: 9.5pt; line-height: 1.6; }
 
       .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 16px; }
@@ -384,7 +384,7 @@
 <div class="resume-header">
   <div class="header-left">
     <div class="name">Brian W. Smith</div>
-    <div class="title-line">Principal Site Reliability Engineer &nbsp;·&nbsp; Distributed Systems Reliability &nbsp;·&nbsp; Observability at Scale</div>
+    <div class="title-line">Principal Site Reliability Engineer &nbsp;·&nbsp; Engineering Excellence &nbsp;·&nbsp; Reliability Frameworks &nbsp;·&nbsp; Observability at Scale</div>
     <div class="contact-row">
       <span>Columbus, OH</span>
       <a href="https://theautoroboto.github.io">theautoroboto.github.io</a>
@@ -423,27 +423,26 @@
 <div class="section">
   <div class="section-title">Summary</div>
   <div class="summary">
-    Principal SRE at Red Hat with 25+ years of enterprise infrastructure experience, specializing in large-scale reliability engineering, distributed systems observability, and operational excellence. Deep expertise in SLI/SLO frameworks, incident management, and cloud-native platform engineering across OpenShift/Kubernetes, AWS, and Terraform IaC. Proven track record of building and operating platforms at scale — from greenfield infrastructure to 100+ cluster multi-region environments — while driving reliability improvements and automation across cross-functional engineering teams.
-    Currently leading platform reliability, secret management engineering, and AI-powered operational automation across the ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
+    Principal SRE at Red Hat with 25+ years of production systems experience, specializing in establishing and scaling SRE culture across engineering organizations — defining reliability frameworks, coaching teams on incident management and SLI/SLO ownership, and building observability platforms from the ground up. Deep hands-on expertise in the Grafana observability stack (Thanos, Prometheus, Alertmanager, Grafana), Python and Go, and cloud-native distributed systems at scale. Proven track record building reliability culture from first principles: SLI dashboard architecture across 14 foundations, GoAlert-based incident management, cross-team SRE coaching programs, and AI-powered operational automation — operating environments with 100+ clusters and 7,000+ microservices. Currently driving reliability engineering and observability automation across the ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
   </div>
 </div>
 
 <!-- ══════════════ SKILLS ══════════════ -->
-<div class="section">
+<div class="section skills-section">
   <div class="section-title">Technical Skills</div>
   <div class="skills-grid">
-    <div class="skill-item">OpenShift / Kubernetes (CKA)</div>
-    <div class="skill-item">Splunk / Dynatrace / Prometheus / Grafana</div>
     <div class="skill-item">Incident Response / SLI/SLO / Error Budgets</div>
-    <div class="skill-item">AWS Multi-Region / PrivateLink</div>
-    <div class="skill-item">Terraform / Infrastructure as Code</div>
-    <div class="skill-item">Bash / Python / Go</div>
+    <div class="skill-item">Prometheus / Grafana / Thanos / Alertmanager</div>
+    <div class="skill-item">Python / Go / Bash</div>
+    <div class="skill-item">OpenShift / Kubernetes (CKA)</div>
+    <div class="skill-item">AWS / Cloud-Native Infrastructure</div>
+    <div class="skill-item">Distributed Systems / Large-Scale Operations</div>
     <div class="skill-item">GitOps / ArgoCD / Helm / Kustomize</div>
-    <div class="skill-item">CI/CD (Tekton, Jenkins, GitLab)</div>
-    <div class="skill-item">HashiCorp Vault / Secrets Management</div>
-    <div class="skill-item">Zero Trust / FIPS 140-2</div>
-    <div class="skill-item">Keycloak / IAM / SSO</div>
+    <div class="skill-item">CI/CD / Test Automation (Tekton, Prow, Jenkins)</div>
+    <div class="skill-item">Terraform / Infrastructure as Code</div>
     <div class="skill-item">Claude AI / MCP / Agent SDK</div>
+    <div class="skill-item">HashiCorp Vault / Secrets Management</div>
+    <div class="skill-item">Keycloak / IAM / SSO</div>
     <div class="skill-item">FedRAMP High ATO</div>
     <div class="skill-item">NIST 800-53 Rev 5</div>
   </div>

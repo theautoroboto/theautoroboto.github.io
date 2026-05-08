@@ -467,7 +467,7 @@
       <ul class="bullets">
         <li>Mapped 13 NIST 800-53 Rev 5 control families to HCP Terraform modules for FedRAMP Moderate compliance, producing a fully gap-closed control inventory for the ROSA Regional Platform.</li>
         <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
-        <li>Eliminated plaintext secrets across core IaC repositories by deploying AWS Secrets Manager and Vault sidecar injection with per-service least-privilege IAM policies.</li>
+        <li>Migrated plaintext secrets from environment variables to AWS Secrets Manager and Vault sidecar injection, enforcing per-service least-privilege IAM policies across core IaC.</li>
         <li>Built a Python/DynamoDB sandbox account leasing system with scoped IAM roles, SCPs, and auto-reclaim — cutting environment setup from hours to minutes.</li>
         <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>
         <li>Eliminated VPC peering and Transit Gateway coupling via zero-trust cross-cluster messaging over AWS IoT Core MQTT, with ECS Fargate bootstrap-then-handoff for fully private EKS initialization.</li>

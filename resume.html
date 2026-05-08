@@ -384,7 +384,7 @@
 <div class="resume-header">
   <div class="header-left">
     <div class="name">Brian W. Smith</div>
-    <div class="title-line">Principal Site Reliability Engineer &nbsp;·&nbsp; Engineering Excellence &nbsp;·&nbsp; Reliability Frameworks &nbsp;·&nbsp; Observability at Scale</div>
+    <div class="title-line">Principal Site Reliability Engineer &nbsp;·&nbsp; Platform Engineering &nbsp;·&nbsp; Developer Tooling &nbsp;·&nbsp; Observability at Scale</div>
     <div class="contact-row">
       <span>Columbus, OH</span>
       <a href="https://theautoroboto.github.io">theautoroboto.github.io</a>
@@ -423,7 +423,7 @@
 <div class="section">
   <div class="section-title">Summary</div>
   <div class="summary">
-    Principal SRE at Red Hat with 25+ years of production systems experience, specializing in establishing and scaling SRE culture across engineering organizations — defining reliability frameworks, coaching teams on incident management and SLI/SLO ownership, and building observability platforms from the ground up. Deep hands-on expertise in the Grafana observability stack (Thanos, Prometheus, Alertmanager, Grafana), Python and Go, and cloud-native distributed systems at scale. Proven track record building reliability culture from first principles: SLI dashboard architecture across 14 foundations, GoAlert-based incident management, cross-team SRE coaching programs, and AI-powered operational automation — operating environments with 100+ clusters and 7,000+ microservices. Currently driving reliability engineering and observability automation across the ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
+    Principal SRE at Red Hat with 25+ years of production systems experience, specializing in developer tooling, internal platform automation, and observability infrastructure that eliminates engineering toil. Deep expertise operating environments at scale — 100+ Kubernetes clusters, 7,000+ microservices — built on the Grafana observability stack (Thanos, Prometheus, Alertmanager), CI/CD pipeline engineering, and Terraform IaC. Security-first mindset built on zero trust principles, identity-based access controls, and FIPS-validated cryptography across AWS GovCloud environments. Currently driving platform reliability and AI-powered operational automation across the ROSA (Red Hat OpenShift Service on AWS) Regional Platform.
   </div>
 </div>
 
@@ -431,20 +431,20 @@
 <div class="section skills-section">
   <div class="section-title">Technical Skills</div>
   <div class="skills-grid">
-    <div class="skill-item">Incident Response / SLI/SLO / Error Budgets</div>
+    <div class="skill-item">HashiCorp Vault / Secrets Management</div>
+    <div class="skill-item">CI/CD / Developer Tooling (Tekton, Prow, Jenkins)</div>
+    <div class="skill-item">Terraform / Infrastructure as Code</div>
     <div class="skill-item">Prometheus / Grafana / Thanos / Alertmanager</div>
-    <div class="skill-item">Python / Go / Bash</div>
+    <div class="skill-item">Python (familiar) / Go (proficient) / Bash</div>
     <div class="skill-item">OpenShift / Kubernetes (CKA)</div>
     <div class="skill-item">AWS / Cloud-Native Infrastructure</div>
-    <div class="skill-item">Distributed Systems / Large-Scale Operations</div>
-    <div class="skill-item">GitOps / ArgoCD / Helm / Kustomize</div>
-    <div class="skill-item">CI/CD / Test Automation (Tekton, Prow, Jenkins)</div>
-    <div class="skill-item">Terraform / Infrastructure as Code</div>
-    <div class="skill-item">Claude AI / MCP / Agent SDK</div>
-    <div class="skill-item">HashiCorp Vault / Secrets Management</div>
+    <div class="skill-item">Zero Trust / Identity-Based Networking</div>
     <div class="skill-item">Keycloak / IAM / SSO</div>
+    <div class="skill-item">GitOps / ArgoCD / Helm / Kustomize</div>
+    <div class="skill-item">Incident Response / SLI/SLO / Error Budgets</div>
+    <div class="skill-item">Claude Code / MCP / Agent SDK</div>
+    <div class="skill-item">Distributed Systems / Large-Scale Operations</div>
     <div class="skill-item">FedRAMP High ATO</div>
-    <div class="skill-item">NIST 800-53 Rev 5</div>
   </div>
 </div>
 
@@ -463,21 +463,19 @@
     <div class="role-block">
       <span class="role-label">Principal SRE (January 2026 – Present)</span>
       <ul class="bullets">
-        <li>Implemented 13+ NIST 800-53 Rev 5 control families (AU, AC, SC, SI, RA, IA, CA, CP) for FedRAMP Moderate compliance across the ROSA Regional Platform, mapping each against HCP (Hosted Control Plane) Terraform modules to produce a gap-closed control inventory.</li>
-        <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
-        <li>Designed and deployed a Secret Management framework via AWS Secrets Manager and Vault sidecar injection, enforcing least-privilege IAM policies per service and eliminating plaintext secrets across all repositories.</li>
+        <li>Automated FedRAMP compliance evaluation via Claude Sonnet sub-agent pipeline — clone → classify → analyze → PDF report → Jira → PR with fixes — covering ~800 NIST 800-53 controls, Trivy CVE integration auto-downgrading verified controls on critical findings. <a href="https://github.com/theautoroboto/compliance-agent">github.com/theautoroboto/compliance-agent</a></li>
+        <li>Validated Red Hat's FIPS-enabled Go toolchain (BoringCrypto) against AWS EKS nodes running Bottlerocket OS in FIPS kernel mode — using negative-control testing to confirm binary-level crypto enforcement aligned with kernel-level FIPS state via <code>/proc/sys/crypto/fips_enabled</code>; collaborated with Red Hat cryptographic maintainers to resolve compliance gaps. <a href="https://github.com/theautoroboto/fips-validation">github.com/theautoroboto/fips-validation</a></li>
+        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner dynamically managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>        <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
+        <li>Designed and deployed a Secret Management framework via AWS Secrets Manager and Vault sidecar injection, enforcing least-privilege IAM policies per service and eliminating plaintext secrets from environment variables across all services.</li>
         <li>Built a Python/DynamoDB Sandbox account leasing system provisioning scoped IAM roles and SCPs with auto-reclaim, cutting environment setup from hours to minutes.</li>
-        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner dynamically managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>
-        <li>Eliminated VPC peering and Transit Gateway coupling by engineering zero-trust cross-cluster messaging over AWS IoT Core MQTT; deployed ECS Fargate bootstrap-then-handoff for fully private EKS initialization and a 17-module reusable Terraform library; built ephemeral CI environments (provision → e2e → teardown via Prow).</li>
-        <li>Automated FedRAMP compliance evaluation via a Claude Sonnet sub-agent pipeline assessing ~700 Moderate and ~100 High-only NIST 800-53 Rev 5 controls — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR), 12 artifacts per run, with Trivy CVE integration auto-downgrading Met controls on CRITICAL/HIGH findings.</li>
-        <li>Led cross-vendor FIPS validation for OCP on EKS, using negative-control testing on Go binary dlopen dispatch paths to <code>/proc/sys/crypto/fips_enabled</code> to distinguish infrastructure-level from binary-level enforcement; collaborated with Red Hat cryptographic maintainers on KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+        <li>Eliminated VPC peering and Transit Gateway coupling by engineering zero-trust cross-cluster messaging over AWS IoT Core MQTT; deployed ECS Fargate bootstrap-then-handoff for fully private EKS initialization; authored a 17-module reusable Terraform library.</li>
       </ul>
     </div>
 
     <div class="role-block">
       <span class="role-label">Principal SRE - Team Lead (January 2025 – January 2026)</span>
       <ul class="bullets">
-        <li>Led FedRAMP CONMON remediation across a fleet of clusters; resolved SRE emergency access blockers by integrating backplane-cli/backplane-api with FedRAMP-compliant auth protocols.</li>
+        <li>Led FedRAMP CONMON remediation across a fleet of clusters and resolved SRE emergency access blockers by integrating backplane-cli with FedRAMP-compliant auth protocols.</li>
         <li>Architected AWS PrivateLink for ROSA HCP across all GovCloud regions with cross-account VPC Peering.</li>
         <li>Led the migration of 8 ROSA clusters across 2 GovCloud regions from classic to Hosted Control Plane (HCP) architecture, driving cross-functional coordination across multiple Red Hat engineering and product teams to deliver a successful FedRAMP compliance assessment.</li>
         <li>Developed and delivered 10+ technical training sessions on ROSA HCP to SRE teams across all GovCloud regions, driving large-scale adoption of a newly launched managed control-plane architecture and reducing time-to-productivity for engineers onboarding to the platform.</li>
@@ -489,11 +487,11 @@
       <span class="role-label">Senior SRE Functional Lead (December 2023 – January 2025) &nbsp;·&nbsp; Senior SRE (November 2021 – December 2023)</span>
       <ul class="bullets">
         <li>Led a team of 9 SREs; defined and drove agile epics aligned with business priorities — CVE mitigation, annual FedRAMP assessments, Significant Change Requests, and operational toil reduction.</li>
-        <li>Deployed Red Hat build of Keycloak (RHBK) to production, authored six FedRAMP Boundary Architecture Diagrams, and engineered real-time synthetic availability monitoring for the identity platform.</li>
+        <li>Architected FedRAMP High GovCloud network fabric: Transit Gateway hub-and-spoke, per-tier VPC segmentation, PrivateLink, cross-account peering, VPC Flow Logs, and WAF — securing the ROSA platform foundation.</li>
+        <li>Deployed Red Hat build of Keycloak (RHBK) to production, authored FedRAMP Boundary Architecture Diagrams, and engineered real-time synthetic availability monitoring for the identity platform.</li>
         <li>Automated AWS Config, GuardDuty, and SecurityHub via Terraform to establish the FedRAMP security baseline; authored the SSP Access Control validation epic for the ROSA Regional Platform.</li>
-        <li>Led GoAlert deployment as the FedRAMP on-call platform from PoC through VPCE network architecture to production, replacing PagerDuty and reducing on-call escalation latency.</li>
+        <li>Owned full GoAlert deployment lifecycle — PoC through VPCE network design to production — replacing PagerDuty with a FedRAMP-compliant on-call platform and reducing on-call escalation latency across all GovCloud regions.</li>
         <li>Built the greenfield FedRAMP High GovCloud platform on AWS; established Terraform as the IaC provisioning foundation; led ATO workstreams including annual FedRAMP assessment support.</li>
-        <li>Architected Transit Gateway hub-and-spoke topology for GovCloud; drove global VPC Flow Logs rollout and WAF compliance audit across all high-compliance regions.</li>
       </ul>
     </div>
   </div>
@@ -541,11 +539,11 @@
   <div class="job">
     <div class="job-header">
       <span class="job-company">Earlier Roles</span>
-      <span class="job-dates">1998 – 2008</span>
+      <span class="job-dates">1998 – 2017</span>
     </div>
     <div class="job-title">Grange Insurance (Senior System Engineer) · NetJets (Sr. Network Admin) · BMW Financial (CRM Admin) · Cardinal Health (Sr. Messaging Engineer) · WD Partners (IT Admin)</div>
     <ul class="bullets">
-      <li>25+ years of progressive infrastructure experience spanning messaging, networking, virtualisation, enterprise AD/Exchange, and automation — from first ISP support role (BellSouth.net) through senior engineering leadership.</li>
+      <li>25+ years of progressive infrastructure experience spanning messaging, networking, virtualization, enterprise AD/Exchange, and automation — from first ISP support role (BellSouth.net) through senior engineering leadership.</li>
     </ul>
   </div>
 </div>

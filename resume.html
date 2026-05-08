@@ -474,7 +474,7 @@
         <li>Deployed ECS Fargate bootstrap-then-handoff for fully private EKS initialization, removing the need for a public cluster endpoint.</li>
         <li>Built a 17-module reusable Terraform library and ephemeral CI environments (provision → e2e → teardown via Prow) for isolated, reproducible testing across clusters.</li>
         <li>Automated FedRAMP compliance evaluation with a Claude Sonnet sub-agent pipeline — 7-step workflow (clone → classify → analyze → report → PDF → Drive → Jira/PR) covering ~800 NIST 800-53 controls, with Trivy CVE integration auto-downgrading verified controls on critical findings.</li>
-        <li>Led cross-vendor FIPS validation for OCP on EKS using negative-control testing on Go binary dlopen paths to <code>/proc/sys/crypto/fips_enabled</code> to distinguish infrastructure-level from binary-level enforcement; collaborated with Red Hat cryptographic maintainers on KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
+        <li>Led cross-vendor FIPS validation for OCP on EKS using negative-control testing on Red Hat's go-fips fork, verifying that CGo/dlopen correctly routes crypto calls through OpenSSL against <code>/proc/sys/crypto/fips_enabled</code> to distinguish infrastructure-level from binary-level enforcement; collaborated with Red Hat cryptographic maintainers on KAT tests for NIST SP 800-131A AES/RSA/ECDSA compliance.</li>
       </ul>
     </div>
 

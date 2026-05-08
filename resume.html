@@ -100,8 +100,16 @@
         font-size: 8pt;
         color: var(--muted);
         display: flex;
-        gap: 18px;
-        flex-wrap: wrap;
+        align-items: center;
+        gap: 0;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+      }
+
+      .contact-row > * + *::before {
+        content: '|';
+        margin: 0 10px;
+        color: var(--border);
       }
 
       .contact-row a { color: var(--accent); }

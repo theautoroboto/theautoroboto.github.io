@@ -100,9 +100,13 @@
         font-size: 8pt;
         color: var(--muted);
         display: flex;
-        gap: 18px;
+        gap: 12px 20px;
         flex-wrap: wrap;
+        align-items: center;
       }
+
+      .contact-row a,
+      .contact-row span { white-space: nowrap; }
 
       .contact-row a { color: var(--accent); }
 
@@ -384,7 +388,7 @@
 <div class="resume-header">
   <div class="header-left">
     <div class="name">Brian W. Smith</div>
-    <div class="title-line">Principal Site Reliability Engineer &nbsp;·&nbsp; Platform Engineering &nbsp;·&nbsp; Developer Tooling &nbsp;·&nbsp; Observability at Scale</div>
+    <div class="title-line">Principal Site Reliability Engineer · Platform Engineering · Developer Tooling · Observability at Scale</div>
     <div class="contact-row">
       <span>Columbus, OH</span>
       <a href="https://theautoroboto.github.io">theautoroboto.github.io</a>
@@ -393,7 +397,7 @@
     </div>
   </div>
   <div class="header-right">
-    <a href="./static/BrianSmith_Resume_RedHat.pdf" download class="download-btn">Download PDF</a>
+    <a href="./static/BrianSmith_Resume_Tailscale.pdf" download class="download-btn">Download PDF</a>
   </div>
 </div>
 
@@ -405,15 +409,15 @@
   </div>
   <div class="stat-item">
     <span class="stat-num">100+</span>
-    <span class="stat-lbl">Kubernetes Clusters Operated at Scale</span>
+    <span class="stat-lbl">Kubernetes Clusters at Scale</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num">SLO</span>
-    <span class="stat-lbl">SLI / Error Budget Frameworks</span>
+    <span class="stat-num">800+</span>
+    <span class="stat-lbl">NIST 800-53 Controls Automated</span>
   </div>
   <div class="stat-item">
     <span class="stat-num">7,000+</span>
-    <span class="stat-lbl">Microservices Operated at Scale</span>
+    <span class="stat-lbl">Microservices — Fiserv PCF Platform</span>
   </div>
 </div>
 
@@ -445,6 +449,7 @@
     <div class="skill-item">Claude Code / MCP / Agent SDK</div>
     <div class="skill-item">Distributed Systems / Large-Scale Operations</div>
     <div class="skill-item">FedRAMP High ATO</div>
+
   </div>
 </div>
 
@@ -464,8 +469,9 @@
       <span class="role-label">Principal SRE (January 2026 – Present)</span>
       <ul class="bullets">
         <li>Automated FedRAMP compliance evaluation via Claude Sonnet sub-agent pipeline — clone → classify → analyze → PDF report → Jira → PR with fixes — covering ~800 NIST 800-53 controls, Trivy CVE integration auto-downgrading verified controls on critical findings. <a href="https://github.com/theautoroboto/compliance-agent">github.com/theautoroboto/compliance-agent</a></li>
-        <li>Validated Red Hat's FIPS-enabled Go toolchain (BoringCrypto) against AWS EKS nodes running Bottlerocket OS in FIPS kernel mode — using negative-control testing to confirm binary-level crypto enforcement aligned with kernel-level FIPS state via <code>/proc/sys/crypto/fips_enabled</code>; collaborated with Red Hat cryptographic maintainers to resolve compliance gaps. <a href="https://github.com/theautoroboto/fips-validation">github.com/theautoroboto/fips-validation</a></li>
-        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner dynamically managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>        <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
+        <li>Validated Red Hat’s FIPS-enabled Go toolchain (BoringCrypto) against AWS EKS nodes running Bottlerocket OS in FIPS kernel mode — using negative-control testing to confirm binary-level crypto enforcement aligned with kernel-level FIPS state via <code>/proc/sys/crypto/fips_enabled</code>; collaborated with Red Hat cryptographic maintainers to resolve compliance gaps. <a href="https://github.com/theautoroboto/fips-validation">github.com/theautoroboto/fips-validation</a></li>
+        <li>Architected a 3-tier AWS CodePipeline GitOps hierarchy with a meta-pipeline provisioner dynamically managing per-cluster pipelines from Git commits, paired with ArgoCD ApplicationSet Matrix Generators for zero-config multi-cluster delivery.</li>
+        <li>Deployed a Thanos/Prometheus/Alertmanager/Grafana observability suite via parameterized IaC, enabling single-variable regional rollouts across all ROSA environments.</li>
         <li>Designed and deployed a Secret Management framework via AWS Secrets Manager and Vault sidecar injection, enforcing least-privilege IAM policies per service and eliminating plaintext secrets from environment variables across all services.</li>
         <li>Built a Python/DynamoDB Sandbox account leasing system provisioning scoped IAM roles and SCPs with auto-reclaim, cutting environment setup from hours to minutes.</li>
         <li>Eliminated VPC peering and Transit Gateway coupling by engineering zero-trust cross-cluster messaging over AWS IoT Core MQTT; deployed ECS Fargate bootstrap-then-handoff for fully private EKS initialization; authored a 17-module reusable Terraform library.</li>
@@ -475,11 +481,12 @@
     <div class="role-block">
       <span class="role-label">Principal SRE - Team Lead (January 2025 – January 2026)</span>
       <ul class="bullets">
-        <li>Led FedRAMP CONMON remediation across a fleet of clusters and resolved SRE emergency access blockers by integrating backplane-cli with FedRAMP-compliant auth protocols.</li>
+        <li>Led FedRAMP CONMON remediation across a fleet of clusters and resolved SRE emergency access blockers by integrating <a href="https://github.com/openshift/backplane-cli" target="_blank">backplane-cli</a> with FedRAMP-compliant auth protocols.</li>
         <li>Architected AWS PrivateLink for ROSA HCP across all GovCloud regions with cross-account VPC Peering.</li>
-        <li>Led the migration of 8 ROSA clusters across 2 GovCloud regions from classic to Hosted Control Plane (HCP) architecture, driving cross-functional coordination across multiple Red Hat engineering and product teams to deliver a successful FedRAMP compliance assessment.</li>
-        <li>Developed and delivered 10+ technical training sessions on ROSA HCP to SRE teams across all GovCloud regions, driving large-scale adoption of a newly launched managed control-plane architecture and reducing time-to-productivity for engineers onboarding to the platform.</li>
-        <li>Deployed Dynatrace Managed Service across FedRAMP environments with OneAgent log forwarding; engineered a Keycloak → Splunk log pipeline for centralized audit trails and real-time authentication security monitoring; authored SCR architecture diagrams and ADRs for External DNS Operator and HCP authorization.</li>
+        <li>Led migration of 8 ROSA clusters across 2 GovCloud regions from classic to HCP architecture, coordinating across Red Hat engineering and product teams to pass FedRAMP compliance assessment.</li>
+        <li>Delivered 10+ technical training sessions on ROSA HCP to teams across the organization, accelerating adoption of the newly launched managed control-plane architecture.</li>
+        <li>Deployed Dynatrace Managed Service across FedRAMP environments and engineered a Keycloak → Splunk audit log pipeline for real-time authentication monitoring.</li>
+        <li>Authored SCR architecture diagrams and ADRs for External DNS Operator and HCP authorization.</li>
       </ul>
     </div>
 

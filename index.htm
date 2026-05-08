@@ -98,7 +98,7 @@
       <div>
         <time>2026</time><b>Strategic Security Validation – FedRAMP Compliance &amp; Cryptography</b>
         <ul>
-          <li>Orchestrated a cross-vendor <a href="https://github.com/theautoroboto/fips-validation" target="_blank">FIPS validation</a> effort for OCP on EKS, confirming the integrity of the dlopen dispatch path from UBI9-based Go binaries to host-level kernel flags (<code>/proc/sys/crypto/fips_enabled</code>)</li>
+          <li>Orchestrated a cross-vendor <a href="https://github.com/theautoroboto/fips-validation" target="_blank">FIPS validation</a> effort for OCP on EKS, verifying that Red Hat's go-fips fork correctly routes crypto calls through OpenSSL via CGo/dlopen against host-level kernel flags (<code>/proc/sys/crypto/fips_enabled</code>)</li>
           <li>Designed negative-control testing methodologies to distinguish infrastructure-level enforcement from binary-level compliance, mitigating false-positive validation risks</li>
           <li>Collaborated with Red Hat cryptographic maintainers to implement hardcoded known-answer tests (KAT), ensuring NIST SP 800-131A compliance for AES, RSA, and ECDSA algorithm sets</li>
         </ul>

@@ -8,6 +8,7 @@ Render: gunicorn app:app  (PORT and ANTHROPIC_API_KEY set in Render dashboard)
 """
 
 import json
+import logging
 import os
 import re
 import sys
@@ -305,7 +306,8 @@ def _sse_generate(client, model, system_blocks, messages, max_tokens=1024):
         yield f"data: {json.dumps({'text': 'Error: Invalid API key.'})}\n\n"
         yield "data: [DONE]\n\n"
     except Exception as e:
-        yield f"data: {json.dumps({'text': f'Error: {e}'})}\n\n"
+        logging.exception("Unhandled exception during SSE generation: %s", e)
+        yield f"data: {json.dumps({'text': 'Error: An internal server error occurred.'})}\n\n"
         yield "data: [DONE]\n\n"
 
 

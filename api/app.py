@@ -17,7 +17,7 @@ from flask import Flask, Response, request, stream_with_context
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://theautoroboto.github.io", "http://localhost:5001", "http://127.0.0.1:5001"])
 
 # ---------------------------------------------------------------------------
 # Ask Brian — system prompt with full career context (prompt-cached)

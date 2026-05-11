@@ -74,7 +74,7 @@ async function sendMessage() {
                 try {
                     const parsed = JSON.parse(data);
                     accumulated += parsed.text;
-                    assistantBubble.innerHTML = marked.parse(accumulated);
+                    assistantBubble.innerHTML = DOMPurify.sanitize(marked.parse(accumulated));
                     scrollToBottom();
                 } catch (_) {}
             }

@@ -63,7 +63,7 @@ async function explain() {
                 try {
                     const parsed = JSON.parse(data);
                     accumulated += parsed.text;
-                    content.innerHTML = marked.parse(accumulated);
+                    content.innerHTML = DOMPurify.sanitize(marked.parse(accumulated));
                 } catch (_) {}
             }
         }

@@ -57,6 +57,7 @@ async function sendMessage() {
         const decoder = new TextDecoder();
         let buffer = '';
         let accumulated = '';
+        let updateScheduled = false;
 
         while (true) {
             const { done, value } = await reader.read();
@@ -74,11 +75,22 @@ async function sendMessage() {
                 try {
                     const parsed = JSON.parse(data);
                     accumulated += parsed.text;
-                    assistantBubble.innerHTML = marked.parse(accumulated);
-                    scrollToBottom();
+
+                    if (!updateScheduled) {
+                        updateScheduled = true;
+                        requestAnimationFrame(() => {
+                            assistantBubble.innerHTML = DOMPurify.sanitize(marked.parse(accumulated));
+                            scrollToBottom();
+                            updateScheduled = false;
+                        });
+                    }
                 } catch (_) {}
             }
         }
+
+        // Ensure the final state is rendered after the stream ends
+        assistantBubble.innerHTML = DOMPurify.sanitize(marked.parse(accumulated));
+        scrollToBottom();
 
         assistantBubble.classList.remove('streaming');
         history.push({ role: 'assistant', content: accumulated });

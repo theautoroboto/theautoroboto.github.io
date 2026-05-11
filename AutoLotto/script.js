@@ -30,8 +30,6 @@ let isValid = false;
 
 function validateForm() {
     isValid = form.checkValidity();
-    // console.log(isValid);
-    // message.textContent = 'Invalid'
 }
 
 function playLotto() {
@@ -46,8 +44,6 @@ function playLotto() {
     number3.textContent = lotto_number3.toString();
     number4.textContent = lotto_number4.toString();
     number5.textContent = lotto_number5.toString();
-    // console.log(number1.textContent);
-    // console.log(my_number1.value);
     if (my_number1.value === number1.textContent) correct++;
     if (my_number2.value === number2.textContent) correct++;
     if (my_number3.value === number3.textContent) correct++;

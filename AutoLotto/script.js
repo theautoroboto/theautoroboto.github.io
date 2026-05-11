@@ -16,12 +16,6 @@ const times_played = document.getElementById('times_played');
 const num_correct = document.getElementById('correct');
 const auto_btn = document.getElementById('autoPick');
 
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2
-  })
-
 winnings.textContent = 0;
 times_played.textContent = 0;
 

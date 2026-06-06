@@ -363,6 +363,30 @@ button#send-btn:disabled {
     box-shadow: none;
 }
 
+/* Keyboard focus */
+:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Character counter */
+.input-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.2rem 1.25rem 0;
+    background: var(--navy-mid);
+}
+
+#char-count {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+}
+
+#char-count.near-limit { color: #f0a080; }
+
 /* Mobile */
 @media (max-width: 600px) {
     .header-text p {

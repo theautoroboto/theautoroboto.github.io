@@ -4,14 +4,18 @@ const messagesEl = document.getElementById('messages');
 const inputEl = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 const suggestionsEl = document.getElementById('suggestions');
+const charCountEl = document.getElementById('char-count');
 
 // Conversation history sent to the API (excludes the hardcoded welcome message)
 const history = [];
 
-// Auto-resize textarea
+// Auto-resize textarea + character counter
 inputEl.addEventListener('input', () => {
     inputEl.style.height = 'auto';
     inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
+    const len = inputEl.value.length;
+    charCountEl.textContent = `${len} / 500`;
+    charCountEl.classList.toggle('near-limit', len > 450);
 });
 
 inputEl.addEventListener('keydown', (e) => {
